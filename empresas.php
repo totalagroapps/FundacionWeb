@@ -196,6 +196,7 @@
                         <a href="programas#cdt">Centro de Desarrollo de Talentos</a>
                         <a href="programas#esperanza">Programa Esperanza</a>
                         <a href="programas#choco">Misión Chocó</a>
+                        <a href="programas#eventos">Eventos: Charlas de los Jueves</a>
                         <a href="programas#linea">Línea de Ayuda ADN</a>
                         <a href="memorias">Memorias de Nuestra Labor</a>
                     </div>

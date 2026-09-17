@@ -71,6 +71,32 @@ INSERT INTO `products` (`id`, `name`, `price`, `discount`, `whatsapp_link`, `ima
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `eventos`
+--
+
+CREATE TABLE `eventos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subtitulo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT '6:30 PM',
+  `dia_semana` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT 'Jueves',
+  `lugar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'Sede Finca Guacas (Santa Rosa de Cabal) / En Vivo',
+  `modalidad` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT 'Híbrida (Presencial y Virtual)',
+  `expositor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'Equipo ADN de Amor & Invitados',
+  `imagen` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cupos` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT 'Entrada libre con inscripción previa',
+  `whatsapp_contacto` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT '573162522445',
+  `estado` enum('activo','proximo','finalizado') COLLATE utf8mb4_unicode_ci DEFAULT 'proximo',
+  `destacado` tinyint(1) DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `site_content`
 --
 

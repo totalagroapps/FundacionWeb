@@ -297,6 +297,7 @@ $count_nuevos = $pdo->query("SELECT COUNT(*) FROM contact_messages WHERE status 
                 <a href="dashboard.php#programas" class="page-tab">Qué Hacemos</a>
                 <a href="dashboard.php#apadrinar" class="page-tab">Qué Puedes Hacer</a>
                 <a href="productos.php" class="page-tab"><i class="fas fa-store"></i> Gestionar Tienda</a>
+                <a href="eventos.php" class="page-tab"><i class="fas fa-calendar-alt"></i> Charlas y Eventos</a>
                 <a href="mensajes.php" class="page-tab active" style="border-left: 1px solid var(--border-light); margin-left: 10px; padding-left: 15px;">
                     <i class="fas fa-inbox"></i> Formularios Recibidos
                     <?php if ($count_nuevos > 0): ?>

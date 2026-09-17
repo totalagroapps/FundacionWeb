@@ -1,4 +1,89 @@
-<?php require_once 'includes/db.php'; ?>
+<?php 
+require_once 'includes/db.php'; 
+
+// Cargar charlas y eventos activos
+$eventos_list = [];
+try {
+    // Auto-crear tabla si no existe
+    $pdo->exec("CREATE TABLE IF NOT EXISTS `eventos` (
+        `id` int(11) NOT NULL AUTO_INCREMENT,
+        `titulo` varchar(255) NOT NULL,
+        `subtitulo` varchar(255) DEFAULT NULL,
+        `descripcion` text NOT NULL,
+        `fecha` date NOT NULL,
+        `hora` varchar(50) DEFAULT '6:30 PM',
+        `dia_semana` varchar(50) DEFAULT 'Jueves',
+        `lugar` varchar(255) DEFAULT 'Sede Finca Guacas (Santa Rosa de Cabal) / En Vivo',
+        `modalidad` varchar(50) DEFAULT 'Híbrida (Presencial y Virtual)',
+        `expositor` varchar(255) DEFAULT 'Equipo ADN de Amor & Invitados',
+        `imagen` varchar(500) DEFAULT NULL,
+        `cupos` varchar(100) DEFAULT 'Entrada libre con inscripción previa',
+        `whatsapp_contacto` varchar(50) DEFAULT '573162522445',
+        `estado` enum('activo','proximo','finalizado') DEFAULT 'proximo',
+        `destacado` tinyint(1) DEFAULT 1,
+        `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;");
+
+    // Verificar si está vacía para precargar las charlas
+    $cnt = $pdo->query("SELECT COUNT(*) FROM eventos")->fetchColumn();
+    if ($cnt == 0) {
+        $pdo->exec("INSERT INTO eventos (titulo, subtitulo, descripcion, fecha, hora, dia_semana, lugar, modalidad, expositor, imagen, cupos, whatsapp_contacto, estado, destacado) VALUES
+        ('Crianza con Amor y Propósito: Claves para el Bienestar Familiar', 
+         'Fortaleciendo los lazos del hogar desde la empatía, el diálogo y la fe', 
+         'Un espacio de encuentro cálido para padres, madres y cuidadores. Abordaremos herramientas prácticas sobre comunicación asertiva, disciplina positiva con amor y cómo construir un ambiente protector que potencie el propósito de vida de nuestros hijos.', 
+         DATE_ADD(CURDATE(), INTERVAL (4 - WEEKDAY(CURDATE()) + 7) % 7 DAY), 
+         '6:30 PM', 
+         'Jueves', 
+         'Sede Finca Guacas (Santa Rosa de Cabal) y En Vivo por Internet', 
+         'Híbrida (Presencial y Virtual)', 
+         'Equipo Psicosocial & Pastoral ADN de Amor', 
+         'FOTOS BANNERS/MAMA CON ANGELICA  DEFINITIVA BANNER.webp', 
+         'Entrada libre (Cupos limitados con reserva)', 
+         '573162522445', 
+         'proximo', 
+         1),
+
+        ('Superando la Adversidad: Resiliencia, Esperanza y Salud Emocional', 
+         'Cómo renovar las fuerzas y encontrar dirección en momentos desafiantes', 
+         'Espacio reflexivo y de acompañamiento donde compartiremos pautas para la gestión de las emociones, superación del desánimo y el fortalecimiento de la fe en comunidad frente a los retos cotidianos.', 
+         DATE_ADD(DATE_ADD(CURDATE(), INTERVAL (4 - WEEKDAY(CURDATE()) + 7) % 7 DAY), INTERVAL 7 DAY), 
+         '6:30 PM', 
+         'Jueves', 
+         'Sede Finca Guacas y Transmisión Online', 
+         'Híbrida (Presencial y Virtual)', 
+         'Mentores Invitados y Especialistas en Bienestar', 
+         'FOTOS BANNERS/foto principal niños original tamaño mejorada luz.webp', 
+         'Entrada libre (Cupos limitados con reserva)', 
+         '573162522445', 
+         'proximo', 
+         0),
+
+        ('Juventud con Visión: Descubriendo Talentos y Proyecto de Vida', 
+         'Liderazgo, motivación y enfoque vocacional para adolescentes y jóvenes', 
+         'Charla dinámica e interactiva enfocada en inspirar a las nuevas generaciones a identificar sus dones, trazar metas claras y construir un futuro lleno de esperanza y oportunidades reales.', 
+         DATE_ADD(DATE_ADD(CURDATE(), INTERVAL (4 - WEEKDAY(CURDATE()) + 7) % 7 DAY), INTERVAL 14 DAY), 
+         '6:30 PM', 
+         'Jueves', 
+         'Sede Finca Guacas y Transmisión Online', 
+         'Híbrida (Presencial y Virtual)', 
+         'Líderes de Juventud & Talleristas del CDT', 
+         'FOTOS BANNERS/FOTO GRUPO JOVENES.webp', 
+         'Entrada libre (Cupos limitados con reserva)', 
+         '573162522445', 
+         'proximo', 
+         0)");
+    }
+
+    $stmt = $pdo->query("SELECT * FROM eventos WHERE estado IN ('proximo', 'activo') ORDER BY destacado DESC, fecha ASC");
+    $eventos_list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if (empty($eventos_list)) {
+        $stmt = $pdo->query("SELECT * FROM eventos ORDER BY fecha DESC LIMIT 3");
+        $eventos_list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+} catch (Exception $e) {}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -126,6 +211,7 @@
                         <a href="#cdt">Centro de Desarrollo de Talentos</a>
                         <a href="#esperanza">Programa Esperanza</a>
                         <a href="#choco">Misión Chocó</a>
+                        <a href="#eventos">Eventos: Charlas de los Jueves</a>
                         <a href="#linea">Línea de Ayuda ADN</a>
                         <a href="memorias">Memorias de Nuestra Labor</a>
                     </div>
@@ -595,6 +681,418 @@
                         <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_choco_img', 'FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png')) ?>" loading="lazy" decoding="async" alt="Misión Chocó"
                             style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eventos: Charlas con Propósito de los Jueves -->
+    <section id="eventos" class="section" style="background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);">
+        <style>
+            /* Estilos Sección Eventos / Charlas de los Jueves */
+            .event-program-features {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 1.25rem;
+                margin-bottom: 3.5rem;
+            }
+            .event-feature-box {
+                background: #ffffff;
+                border: 1px solid rgba(0, 16, 62, 0.08);
+                border-radius: 16px;
+                padding: 1.25rem 1.5rem;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                box-shadow: 0 4px 20px rgba(0, 16, 62, 0.04);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .event-feature-box:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 25px rgba(0, 16, 62, 0.08);
+                border-color: rgba(234, 90, 0, 0.25);
+            }
+            .event-feature-icon {
+                width: 50px;
+                height: 50px;
+                border-radius: 14px;
+                background: rgba(234, 90, 0, 0.1);
+                color: var(--primary);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.35rem;
+                flex-shrink: 0;
+            }
+            .event-feature-text strong {
+                display: block;
+                font-size: 0.88rem;
+                color: var(--secondary);
+                font-family: var(--font-heading);
+                margin-bottom: 2px;
+            }
+            .event-feature-text span {
+                font-size: 0.92rem;
+                color: #64748b;
+                font-weight: 500;
+            }
+            
+            .events-grid-public {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+                gap: 2rem;
+                margin-bottom: 3.5rem;
+            }
+            .event-public-card {
+                background: #ffffff;
+                border-radius: 20px;
+                overflow: hidden;
+                border: 1px solid rgba(0, 16, 62, 0.08);
+                box-shadow: 0 6px 25px rgba(0, 16, 62, 0.06);
+                display: flex;
+                flex-direction: column;
+                transition: all 0.35s ease;
+            }
+            .event-public-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 16px 35px rgba(0, 16, 62, 0.12);
+                border-color: rgba(234, 90, 0, 0.35);
+            }
+            .event-public-img-wrap {
+                position: relative;
+                height: 220px;
+                background: #f1f5f9;
+                overflow: hidden;
+            }
+            .event-public-img-wrap img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                transition: transform 0.5s ease;
+            }
+            .event-public-card:hover .event-public-img-wrap img {
+                transform: scale(1.06);
+            }
+            .event-public-calendar-badge {
+                position: absolute;
+                top: 14px;
+                left: 14px;
+                background: #ffffff;
+                color: var(--secondary);
+                border-radius: 12px;
+                padding: 8px 12px;
+                text-align: center;
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+                font-family: var(--font-heading);
+                line-height: 1.1;
+                min-width: 58px;
+                z-index: 2;
+            }
+            .event-public-calendar-badge .cal-day {
+                display: block;
+                font-size: 1.5rem;
+                font-weight: 800;
+                color: var(--primary);
+            }
+            .event-public-calendar-badge .cal-month {
+                display: block;
+                font-size: 0.75rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            .event-public-featured-badge {
+                position: absolute;
+                top: 14px;
+                right: 14px;
+                background: linear-gradient(135deg, #ea5a00 0%, #ff7b29 100%);
+                color: #ffffff;
+                padding: 6px 14px;
+                border-radius: 20px;
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.5px;
+                box-shadow: 0 4px 12px rgba(234, 90, 0, 0.35);
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                z-index: 2;
+            }
+            .event-public-content {
+                padding: 1.75rem;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+            }
+            .event-public-tags {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                margin-bottom: 0.9rem;
+            }
+            .tag-pill {
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+                background: #f1f5f9;
+                color: #475569;
+                font-size: 0.78rem;
+                font-weight: 600;
+                padding: 4px 10px;
+                border-radius: 6px;
+            }
+            .tag-pill i {
+                color: var(--primary);
+            }
+            .event-public-content h3 {
+                font-size: 1.3rem;
+                color: var(--secondary);
+                margin-bottom: 0.5rem;
+                line-height: 1.35;
+                font-weight: 700;
+            }
+            .event-public-sub {
+                font-size: 0.92rem;
+                color: var(--primary);
+                font-weight: 600;
+                margin-bottom: 0.85rem;
+                line-height: 1.45;
+            }
+            .event-public-desc {
+                font-size: 0.92rem;
+                color: #64748b;
+                line-height: 1.6;
+                margin-bottom: 1.25rem;
+            }
+            .event-public-meta {
+                background: #f8fafc;
+                border: 1px solid #e2e8f0;
+                border-radius: 12px;
+                padding: 0.9rem 1rem;
+                margin-top: auto;
+                margin-bottom: 1.25rem;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .meta-item {
+                display: flex;
+                align-items: flex-start;
+                gap: 9px;
+                font-size: 0.85rem;
+                color: var(--text-dark);
+                line-height: 1.4;
+            }
+            .meta-item i {
+                color: var(--primary);
+                font-size: 0.95rem;
+                margin-top: 2px;
+                width: 16px;
+                text-align: center;
+            }
+            .event-public-action {
+                margin-top: 0.25rem;
+            }
+            .event-btn-wpp {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                padding: 0.85rem 1.25rem;
+                font-weight: 700;
+                border-radius: 10px;
+                text-decoration: none;
+                box-shadow: 0 4px 15px rgba(234, 90, 0, 0.25);
+            }
+            .event-btn-wpp:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(234, 90, 0, 0.35);
+            }
+            
+            .event-callout-box {
+                background: rgba(0, 16, 62, 0.03);
+                border: 2px dashed rgba(0, 16, 62, 0.12);
+                border-radius: 20px;
+                padding: 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+            .event-callout-content {
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+                max-width: 780px;
+            }
+            .event-callout-icon {
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                background: var(--primary);
+                color: #ffffff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.6rem;
+                flex-shrink: 0;
+            }
+            .event-callout-content h3 {
+                font-size: 1.25rem;
+                color: var(--secondary);
+                margin-bottom: 0.35rem;
+            }
+            .event-callout-content p {
+                font-size: 0.95rem;
+                color: #64748b;
+                margin: 0;
+                line-height: 1.5;
+            }
+            @media (max-width: 768px) {
+                .event-callout-box {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                .event-callout-btn {
+                    width: 100%;
+                }
+                .event-callout-btn a {
+                    width: 100%;
+                    text-align: center;
+                    justify-content: center;
+                }
+            }
+        </style>
+
+        <div class="container">
+            <div class="section-header text-center" style="max-width: 820px; margin: 0 auto 3rem auto;">
+                <span style="display: inline-flex; align-items: center; gap: 8px; background: rgba(234, 90, 0, 0.1); color: var(--primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; padding: 6px 18px; border-radius: 30px; margin-bottom: 1rem;">
+                    <i class="fas fa-calendar-star"></i> Todos los Jueves • Espacio Comunitario
+                </span>
+                <h2 style="font-size: 2.3rem; margin-bottom: 1rem; color: var(--secondary);">
+                    <?= htmlspecialchars(get_site_content($pdo, 'prog_eventos_title', 'Eventos: Charlas con Propósito de los Jueves')) ?>
+                </h2>
+                <p style="font-size: 1.1rem; color: var(--text-dark); line-height: 1.65;">
+                    <?= htmlspecialchars(get_site_content($pdo, 'prog_eventos_desc', 'Un espacio semanal abierto para el crecimiento personal, la salud emocional, el fortalecimiento de la familia y los valores. Todos los jueves abrimos nuestras puertas y canales virtuales para compartir temas y herramientas prácticas que inspiran a superar la adversidad y caminar con dirección y esperanza.')) ?>
+                </p>
+            </div>
+
+            <!-- Píldoras informativas del programa -->
+            <div class="event-program-features">
+                <div class="event-feature-box">
+                    <div class="event-feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="event-feature-text">
+                        <strong>¿Cuándo?</strong>
+                        <span>Todos los Jueves • 6:30 PM</span>
+                    </div>
+                </div>
+                <div class="event-feature-box">
+                    <div class="event-feature-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="event-feature-text">
+                        <strong>¿Dónde?</strong>
+                        <span>Finca Guacas & En Vivo Virtual</span>
+                    </div>
+                </div>
+                <div class="event-feature-box">
+                    <div class="event-feature-icon"><i class="fas fa-users"></i></div>
+                    <div class="event-feature-text">
+                        <strong>¿Para quién?</strong>
+                        <span>Familias, jóvenes y comunidad</span>
+                    </div>
+                </div>
+                <div class="event-feature-box">
+                    <div class="event-feature-icon"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="event-feature-text">
+                        <strong>Inversión</strong>
+                        <span>Entrada 100% Libre y Gratuita</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listado de Charlas -->
+            <div class="events-grid-public">
+                <?php if (!empty($eventos_list)): ?>
+                    <?php 
+                    $mesesEs = ['01'=>'ENE','02'=>'FEB','03'=>'MAR','04'=>'ABR','05'=>'MAY','06'=>'JUN','07'=>'JUL','08'=>'AGO','09'=>'SEP','10'=>'OCT','11'=>'NOV','12'=>'DIC'];
+                    $diasEs = ['Sunday'=>'Domingo','Monday'=>'Lunes','Tuesday'=>'Martes','Wednesday'=>'Miércoles','Thursday'=>'Jueves','Friday'=>'Viernes','Saturday'=>'Sábado'];
+                    
+                    foreach ($eventos_list as $ev): 
+                        $time = strtotime($ev['fecha']);
+                        $numDia = date('d', $time);
+                        $numMes = date('m', $time);
+                        $nomMes = $mesesEs[$numMes] ?? 'MES';
+                        $nomDia = !empty($ev['dia_semana']) ? $ev['dia_semana'] : ($diasEs[date('l', $time)] ?? 'Jueves');
+                        
+                        $img = !empty($ev['imagen']) ? $ev['imagen'] : 'FOTOS BANNERS/MAMA CON ANGELICA  DEFINITIVA BANNER.webp';
+                        
+                        $wppMsg = "¡Hola Fundación ADN de Amor! Deseo inscribirme a la Charla con Propósito del jueves: \"" . $ev['titulo'] . "\" (Fecha: " . date('d/m/Y', $time) . "). ¿Cómo puedo participar?";
+                        $wppLink = "https://wa.me/573162522445?text=" . urlencode($wppMsg);
+                    ?>
+                        <article class="event-public-card">
+                            <div class="event-public-img-wrap">
+                                <img src="<?= htmlspecialchars($img) ?>" loading="lazy" decoding="async" alt="<?= htmlspecialchars($ev['titulo']) ?>">
+                                <div class="event-public-calendar-badge">
+                                    <span class="cal-day"><?= $numDia ?></span>
+                                    <span class="cal-month"><?= $nomMes ?></span>
+                                </div>
+                                <?php if ($ev['destacado']): ?>
+                                    <span class="event-public-featured-badge"><i class="fas fa-star"></i> Próxima Charla</span>
+                                <?php endif; ?>
+                            </div>
+                            <div class="event-public-content">
+                                <div class="event-public-tags">
+                                    <span class="tag-pill"><i class="far fa-clock"></i> <?= htmlspecialchars($ev['hora'] ?? '6:30 PM') ?></span>
+                                    <span class="tag-pill"><i class="fas fa-video"></i> <?= htmlspecialchars($ev['modalidad'] ?? 'Híbrida') ?></span>
+                                    <span class="tag-pill"><i class="fas fa-calendar-day"></i> <?= htmlspecialchars($nomDia) ?></span>
+                                </div>
+                                
+                                <h3><?= htmlspecialchars($ev['titulo']) ?></h3>
+                                <?php if (!empty($ev['subtitulo'])): ?>
+                                    <p class="event-public-sub"><?= htmlspecialchars($ev['subtitulo']) ?></p>
+                                <?php endif; ?>
+                                
+                                <p class="event-public-desc"><?= htmlspecialchars($ev['descripcion']) ?></p>
+                                
+                                <div class="event-public-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-user-tie"></i>
+                                        <span><strong>Facilitador:</strong> <?= htmlspecialchars($ev['expositor'] ?? 'Equipo ADN de Amor & Invitados') ?></span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span><?= htmlspecialchars($ev['lugar'] ?? 'Sede Finca Guacas (Santa Rosa de Cabal) / En Vivo') ?></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="event-public-action">
+                                    <a href="<?= $wppLink ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary event-btn-wpp">
+                                        <i class="fab fa-whatsapp"></i> Reservar mi Cupo por WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+
+            <!-- Banner para proponer temas o participar como facilitador -->
+            <div class="event-callout-box">
+                <div class="event-callout-content">
+                    <div class="event-callout-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.25rem; color: var(--secondary); margin-bottom: 0.35rem;">¿Deseas proponer una temática o compartir como expositor?</h3>
+                        <p style="font-size: 0.95rem; color: #64748b; margin: 0; line-height: 1.5;">Si eres profesional en salud mental, liderazgo, arte o educación y deseas compartir tu vocación en los Jueves de Propósito, ¡eres bienvenido a sumarte!</p>
+                    </div>
+                </div>
+                <div class="event-callout-btn">
+                    <a href="https://wa.me/573162522445?text=<?= urlencode('¡Hola Fundación ADN de Amor! Me gustaría proponer un tema o participar como expositor voluntario en las Charlas con Propósito de los Jueves.') ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: var(--secondary); color: #fff; white-space: nowrap;">
+                        <i class="fab fa-whatsapp"></i> Contactar al Equipo
+                    </a>
                 </div>
             </div>
         </div>

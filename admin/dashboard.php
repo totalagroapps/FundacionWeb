@@ -263,6 +263,9 @@ foreach ($pages as $p => $sections) {
                 <a href="productos.php" class="page-tab" style="text-decoration:none; color: var(--text-muted); border-left: 1px solid rgba(255,255,255,0.1); margin-left: 10px; padding-left: 15px;">
                     <i class="fas fa-store"></i> Gestionar Tienda
                 </a>
+                <a href="eventos.php" class="page-tab" style="text-decoration:none; color: var(--text-muted);">
+                    <i class="fas fa-calendar-alt"></i> Charlas y Eventos
+                </a>
                 <a href="mensajes.php" class="page-tab" style="text-decoration:none; color: var(--text-muted);">
                     <i class="fas fa-inbox"></i> Formularios Recibidos
                 </a>
@@ -334,6 +337,23 @@ foreach ($pages as $p => $sections) {
                                 <h2 class="dynamic-title">Editando Sección</h2>
                                 <p>Modifica los textos e imágenes. Los cambios se guardarán y reflejarán inmediatamente.</p>
                             </div>
+
+                            <?php if ($p === 'programas'): ?>
+                                <div style="background: rgba(234, 90, 0, 0.08); border: 1px solid rgba(234, 90, 0, 0.25); border-radius: 12px; padding: 1.1rem 1.4rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+                                    <div style="display: flex; align-items: center; gap: 14px;">
+                                        <div style="width: 44px; height: 44px; border-radius: 10px; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </div>
+                                        <div>
+                                            <strong style="color: var(--text-main); font-size: 1rem; display: block;">Charlas con Propósito de los Jueves</strong>
+                                            <span style="font-size: 0.88rem; color: var(--text-muted);">Las charlas semanales son dinámicas y se gestionan desde el módulo dedicado de eventos.</span>
+                                        </div>
+                                    </div>
+                                    <a href="eventos.php" class="btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem; text-decoration: none; border-radius: 8px;">
+                                        <i class="fas fa-calendar-check"></i> Gestionar Charlas de los Jueves
+                                    </a>
+                                </div>
+                            <?php endif; ?>
 
                             <div class="content-grid">
                                 <div class="form-column">
