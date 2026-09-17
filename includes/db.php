@@ -50,6 +50,16 @@ function get_site_content($pdo, $key, $default = '') {
             return 'Santa Rosa de Cabal, Risaralda - Colombia';
         }
     }
+
+    if ($key === 'contacto_email') {
+        if (!$result || empty($result['content_value']) || $result['content_value'] === 'info@adndeamor.org') {
+            try {
+                $up = $pdo->prepare("INSERT INTO site_content (section_key, content_type, content_value) VALUES ('contacto_email', 'text', 'info@fundacionadndeamor.org') ON DUPLICATE KEY UPDATE content_value = 'info@fundacionadndeamor.org'");
+                $up->execute();
+            } catch (\Exception $e) {}
+            return 'info@fundacionadndeamor.org';
+        }
+    }
     
     return $result ? $result['content_value'] : $default;
 }
