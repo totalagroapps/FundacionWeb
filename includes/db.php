@@ -135,6 +135,8 @@ function get_site_content($pdo, $key, $default = '') {
             }
             return 'practicas';
         }
+    }
+
     // Reemplazo automático de banners publicitarios con texto por fotografías limpias de los niños
     $clean_image_replacements = [
         'apadrinar_card2_img' => 'FOTOS BANNERS/CDT_musica_nino_guitarra.png',
