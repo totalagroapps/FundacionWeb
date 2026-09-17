@@ -429,10 +429,10 @@ if (empty($products)) {
         }
         .btn-buy {
             width: 100%;
-            background: #25D366;
-            border: 1px solid #25D366;
+            background: linear-gradient(135deg, #E63946 0%, #00103e 100%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 10px;
-            padding: 0.8rem;
+            padding: 0.85rem;
             color: #ffffff;
             font-weight: 700;
             font-size: 0.95rem;
@@ -442,20 +442,20 @@ if (empty($products)) {
             gap: 0.6rem;
             transition: all 0.25s ease;
             text-decoration: none;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.28);
         }
         .btn-buy:hover {
-            background-color: #1eb954;
-            border-color: #1eb954;
+            background: linear-gradient(135deg, #ff4d5a 0%, #001859 100%);
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
+            color: #ffffff;
         }
         .btn-buy.btn-custom-action {
-            background: linear-gradient(135deg, #ea5a00 0%, #25D366 100%);
+            background: linear-gradient(135deg, #E63946 0%, #00103e 100%);
             border: none;
         }
         .btn-buy.btn-custom-action:hover {
-            filter: brightness(1.08);
+            background: linear-gradient(135deg, #ff4d5a 0%, #001859 100%);
         }
 
         /* Banner Corporativo */
