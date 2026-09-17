@@ -30,6 +30,17 @@ function get_site_content($pdo, $key, $default = '') {
     $stmt = $pdo->prepare('SELECT content_value FROM site_content WHERE section_key = ?');
     $stmt->execute([$key]);
     $result = $stmt->fetch();
+    
+    if ($key === 'contacto_phone') {
+        if (!$result || empty($result['content_value']) || strpos($result['content_value'], '300') !== false) {
+            try {
+                $up = $pdo->prepare("INSERT INTO site_content (section_key, content_type, content_value) VALUES ('contacto_phone', 'text', '+57 316 252 2445') ON DUPLICATE KEY UPDATE content_value = '+57 316 252 2445'");
+                $up->execute();
+            } catch (\Exception $e) {}
+            return '+57 316 252 2445';
+        }
+    }
+    
     return $result ? $result['content_value'] : $default;
 }
 ?>

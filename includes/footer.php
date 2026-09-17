@@ -18,7 +18,7 @@
                 <h3>Contáctanos</h3>
                 <ul>
                     <li><i class="fas fa-map-marker-alt"></i> Santa Rosa de Cabal, Risaralda - Colombia</li>
-                    <li><i class="fas fa-phone-alt"></i> +57 300 123 4567</li>
+                    <li><a href="tel:+573162522445" style="color: inherit; text-decoration: none;"><i class="fas fa-phone-alt"></i> +57 316 252 2445</a></li>
                     <li><i class="fas fa-envelope"></i> info@adndeamor.org</li>
                 </ul>
             </div>
@@ -29,6 +29,7 @@
             <div class="footer-col-3">
                 <h3>Síguenos</h3>
                 <div class="social-icons-center">
+                    <a href="https://wa.me/573162522445" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>

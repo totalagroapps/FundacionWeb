@@ -277,7 +277,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 
                 <div class="form-group">
                     <label>Número de WhatsApp (Sin código de país)</label>
-                    <input type="text" name="whatsapp_link" id="prodWhatsapp" class="form-control" required placeholder="Ej. 3001234567">
+                    <input type="text" name="whatsapp_link" id="prodWhatsapp" class="form-control" required placeholder="Ej. 3162522445">
                     <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Ingresa tu número (se añadirá automáticamente +57). El sistema generará el enlace completo.</p>
                 </div>
                 

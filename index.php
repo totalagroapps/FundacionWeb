@@ -311,7 +311,7 @@
                     <p><?= htmlspecialchars(get_site_content($pdo, 'contacto_desc', 'Déjanos tus datos y nos pondremos en contacto contigo lo más pronto posible para contarte más sobre cómo puedes apoyar a la Fundación ADN de Amor.')) ?></p>
                     <ul class="feature-list">
                         <li><i class="fas fa-envelope"></i> <?= htmlspecialchars(get_site_content($pdo, 'contacto_email', 'info@adndeamor.org')) ?></li>
-                        <li><i class="fas fa-phone"></i> <?= htmlspecialchars(get_site_content($pdo, 'contacto_phone', '+57 (300) 000-0000')) ?></li>
+                        <li><a href="tel:+573162522445" style="color: inherit; text-decoration: none;"><i class="fas fa-phone"></i> <?= htmlspecialchars(get_site_content($pdo, 'contacto_phone', '+57 316 252 2445')) ?></a></li>
                         <li><i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars(get_site_content($pdo, 'contacto_location', 'Colombia')) ?></li>
                     </ul>
                 </div>

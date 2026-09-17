@@ -287,7 +287,7 @@
                 <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                     <div class="form-group">
                         <label>Teléfono / WhatsApp</label>
-                        <input type="tel" placeholder="+57 300 000 0000" required class="form-control">
+                        <input type="tel" placeholder="+57 316 252 2445" required class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Localidad / País</label>
