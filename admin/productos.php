@@ -195,7 +195,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <button class="btn-icon" id="darkModeToggle" title="Cambiar Tema">
                 <i class="fas fa-moon"></i>
             </button>
-            <a href="../tienda.php" target="_blank" class="btn-outline"><i class="fas fa-globe"></i> Ver Tienda</a>
+            <a href="/tienda" target="_blank" class="btn-outline"><i class="fas fa-globe"></i> Ver Tienda</a>
             <a href="logout.php" class="btn-outline btn-logout"><i class="fas fa-sign-out-alt"></i> Salir</a>
         </div>
     </header>

@@ -10,7 +10,7 @@
 
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fundacionadndeamor.org/programas.php">
+    <meta property="og:url" content="https://fundacionadndeamor.org/programas">
     <meta property="og:title" content="Nuestros Programas | Fundación ADN de Amor">
     <meta property="og:description"
         content="Conoce el Centro de Desarrollo de Talentos, Programa Esperanza y Misión Chocó.">
@@ -19,7 +19,7 @@
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://fundacionadndeamor.org/programas.php">
+    <meta property="twitter:url" content="https://fundacionadndeamor.org/programas">
     <meta property="twitter:title" content="Nuestros Programas | Fundación ADN de Amor">
     <meta property="twitter:description"
         content="Conoce el Centro de Desarrollo de Talentos, Programa Esperanza y Misión Chocó.">
@@ -97,7 +97,7 @@
     <!-- Navbar -->
     <header class="navbar">
         <div class="container nav-container">
-            <a href="index.php" class="logo">
+            <a href="/" class="logo">
                 <img src="LOGO Y VISUAL WEB BOTONES/logo ADN_de_Amor_color_rectangulo.png"
                     alt="Fundación ADN de Amor Logo">
             </a>
@@ -109,9 +109,9 @@
                         <span class="nav-text">Quiénes Somos <i class="fas fa-chevron-down dropdown-icon"></i></span>
                     </button>
                     <div class="dropdown-content">
-                        <a href="nosotros.php">¿Quiénes Somos?</a>
-                        <a href="nosotros.php#mision">Nuestra Misión y Creencias</a>
-                        <a href="nosotros.php#historia">Nuestra Historia</a>
+                        <a href="nosotros">¿Quiénes Somos?</a>
+                        <a href="nosotros#mision">Nuestra Misión y Creencias</a>
+                        <a href="nosotros#historia">Nuestra Historia</a>
                     </div>
                 </div>
 
@@ -121,13 +121,13 @@
                         <span class="nav-text">Qué Hacemos <i class="fas fa-chevron-down dropdown-icon"></i></span>
                     </button>
                     <div class="dropdown-content">
-                        <a href="programas.php#donde-estamos">Dónde Estamos</a>
-                        <a href="programas.php#que-hacemos">¿Qué Hacemos?</a>
-                        <a href="programas.php#cdt">Centro de Desarrollo de Talentos</a>
-                        <a href="programas.php#esperanza">Programa Esperanza</a>
-                        <a href="programas.php#choco">Misión Chocó</a>
-                        <a href="programas.php#linea">Línea de Ayuda ADN</a>
-                        <a href="memorias.php">Memorias de Nuestra Labor</a>
+                        <a href="#donde-estamos">Dónde Estamos</a>
+                        <a href="#que-hacemos">¿Qué Hacemos?</a>
+                        <a href="#cdt">Centro de Desarrollo de Talentos</a>
+                        <a href="#esperanza">Programa Esperanza</a>
+                        <a href="#choco">Misión Chocó</a>
+                        <a href="#linea">Línea de Ayuda ADN</a>
+                        <a href="memorias">Memorias de Nuestra Labor</a>
                     </div>
                 </div>
 
@@ -137,24 +137,24 @@
                         <span class="nav-text">Qué Puedes Hacer <i class="fas fa-chevron-down dropdown-icon"></i></span>
                     </button>
                     <div class="dropdown-content">
-                        <a href="apadrinar.php">Apadrina un Niño</a>
-                        <a href="index.php#donar">Dona por una Causa</a>
-                        <a href="index.php#empresas">Colaboradores y Prácticas</a>
-                        <a href="index.php#voluntariado">Ser Voluntario</a>
+                        <a href="apadrinar">Apadrina un Niño</a>
+                        <a href="/#donar">Dona por una Causa</a>
+                        <a href="/#empresas">Colaboradores y Prácticas</a>
+                        <a href="/#voluntariado">Ser Voluntario</a>
                     </div>
                 </div>
 
-                <a href="tienda.php" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
+                <a href="tienda" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
                     <i class="fas fa-shopping-bag nav-icon"></i>
                     <span class="nav-text">Tienda Solidaria</span>
                 </a>
                 
-                <a href="blog.php" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
+                <a href="blog" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
                     <i class="fas fa-newspaper nav-icon"></i>
                     <span class="nav-text">Blog</span>
                 </a>
 
-                <a href="#contacto" class="btn btn-primary">Contacto</a>
+                <a href="/#contacto" class="btn btn-primary">Contacto</a>
             </nav>
         </div>
     </header>
@@ -282,7 +282,7 @@
                     <p><?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_bottom_p1', 'Existen espacios para que voluntarios se unan como monitores, tutores o acompañantes de cada programa, así como la posibilidad de apadrinar a un niño o joven, apoyando su proceso de desarrollo y fortalecimiento de talentos. Más detalles sobre cómo participar se encuentran en la sección "Cómo sumarte" de nuestra web.')) ?></p>
                     <p style="margin-top: 1rem;"><strong><?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_bottom_p2', 'El Centro de Desarrollo de Talentos es un espacio donde cada participante puede descubrir sus capacidades, fortalecer su propósito y construir un futuro con esperanza, mientras crece en valores, fe y habilidades para la vida.')) ?></strong></p>
                     <div style="margin-top: 1.5rem;">
-                        <a href="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_btn_url', 'apadrinar.php')) ?>" class="btn btn-primary"><?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_btn_text', 'Apadrina un niño del CDT')) ?></a>
+                        <a href="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_btn_url', 'apadrinar')) ?>" class="btn btn-primary"><?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_btn_text', 'Apadrina un niño del CDT')) ?></a>
                     </div>
                 </div>
             </div>
@@ -304,7 +304,7 @@
                         <li><i class="fas fa-home"></i> <strong><?= htmlspecialchars(get_site_content($pdo, 'prog_esp_li5_title', 'Bienestar familiar:')) ?></strong> <?= htmlspecialchars(get_site_content($pdo, 'prog_esp_li5_desc', 'Fortalecimiento de la estabilidad familiar y celebraciones (como navidades).')) ?></li>
                     </ul>
                     <div style="margin-top: 2rem;">
-                        <a href="<?= htmlspecialchars(get_site_content($pdo, 'prog_esp_btn_url', 'index.php#donar')) ?>" class="btn btn-primary"><?= htmlspecialchars(get_site_content($pdo, 'prog_esp_btn_text', 'Dona al Programa Esperanza')) ?></a>
+                        <a href="<?= htmlspecialchars(get_site_content($pdo, 'prog_esp_btn_url', '/#donar')) ?>" class="btn btn-primary"><?= htmlspecialchars(get_site_content($pdo, 'prog_esp_btn_text', 'Dona al Programa Esperanza')) ?></a>
                     </div>
                 </div>
                 <div class="split-image">
@@ -330,7 +330,7 @@
                         <li style="color: var(--white);"><i class="fas fa-hands-helping" style="color: var(--white);"></i> <?= htmlspecialchars(get_site_content($pdo, 'prog_choco_li3', 'Entrega de ayuda humanitaria constante.')) ?></li>
                     </ul>
                     <div style="margin-top: 2rem;">
-                        <a href="<?= htmlspecialchars(get_site_content($pdo, 'prog_choco_btn_url', 'apadrinar.php')) ?>" class="btn btn-primary"
+                        <a href="<?= htmlspecialchars(get_site_content($pdo, 'prog_choco_btn_url', 'apadrinar')) ?>" class="btn btn-primary"
                             style="background: var(--white); color: var(--primary);"><?= htmlspecialchars(get_site_content($pdo, 'prog_choco_btn_text', 'Apadrina a una niña del Chocó')) ?></a>
                     </div>
                 </div>

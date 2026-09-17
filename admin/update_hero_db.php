@@ -4,11 +4,11 @@ require '../includes/db.php';
 try {
     $new_content = [
         ['hero_slide1_btn1_text', 'text', 'Apadrina Hoy', 'inicio'],
-        ['hero_slide1_btn1_url', 'text', 'apadrinar.php', 'inicio'],
+        ['hero_slide1_btn1_url', 'text', 'apadrinar', 'inicio'],
         ['hero_slide1_btn2_text', 'text', 'Dona por una Causa', 'inicio'],
         ['hero_slide1_btn2_url', 'text', '#donar', 'inicio'],
         ['hero_slide2_btn1_text', 'text', 'Apoya el CDT', 'inicio'],
-        ['hero_slide2_btn1_url', 'text', 'programas.php#cdt', 'inicio']
+        ['hero_slide2_btn1_url', 'text', 'programas#cdt', 'inicio']
     ];
 
     // Verificar si page_name existe, si no, lo insertamos sin él (el fallback de update_db.php)

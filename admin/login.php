@@ -427,7 +427,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 
                 <div style="text-align: center; margin-top: 1rem;">
-                    <a href="../index.php" style="color: var(--gray); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--gray)'">
+                    <a href="/" style="color: var(--gray); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--gray)'">
                         <i class="fas fa-arrow-left"></i> Volver a la web
                     </a>
                 </div>

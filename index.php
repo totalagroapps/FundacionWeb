@@ -55,7 +55,7 @@
     <!-- Navbar -->
     <header class="navbar">
         <div class="container nav-container">
-            <a href="index.php" class="logo">
+            <a href="/" class="logo">
                 <img src="LOGO Y VISUAL WEB BOTONES/logo ADN_de_Amor_color_rectangulo.png"
                     alt="Fundación ADN de Amor Logo">
             </a>
@@ -67,9 +67,9 @@
                         <span class="nav-text">Quiénes Somos <i class="fas fa-chevron-down dropdown-icon"></i></span>
                     </button>
                     <div class="dropdown-content">
-                        <a href="nosotros.php">¿Quiénes Somos?</a>
-                        <a href="nosotros.php#mision">Nuestra Misión y Creencias</a>
-                        <a href="nosotros.php#historia">Nuestra Historia</a>
+                        <a href="nosotros">¿Quiénes Somos?</a>
+                        <a href="nosotros#mision">Nuestra Misión y Creencias</a>
+                        <a href="nosotros#historia">Nuestra Historia</a>
                     </div>
                 </div>
 
@@ -79,13 +79,13 @@
                         <span class="nav-text">Qué Hacemos <i class="fas fa-chevron-down dropdown-icon"></i></span>
                     </button>
                     <div class="dropdown-content">
-                        <a href="programas.php#donde-estamos">Dónde Estamos</a>
-                        <a href="programas.php#que-hacemos">¿Qué Hacemos?</a>
-                        <a href="programas.php#cdt">Centro de Desarrollo de Talentos</a>
-                        <a href="programas.php#esperanza">Programa Esperanza</a>
-                        <a href="programas.php#choco">Misión Chocó</a>
-                        <a href="programas.php#linea">Línea de Ayuda ADN</a>
-                        <a href="memorias.php">Memorias de Nuestra Labor</a>
+                        <a href="programas#donde-estamos">Dónde Estamos</a>
+                        <a href="programas#que-hacemos">¿Qué Hacemos?</a>
+                        <a href="programas#cdt">Centro de Desarrollo de Talentos</a>
+                        <a href="programas#esperanza">Programa Esperanza</a>
+                        <a href="programas#choco">Misión Chocó</a>
+                        <a href="programas#linea">Línea de Ayuda ADN</a>
+                        <a href="memorias">Memorias de Nuestra Labor</a>
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@
                         <span class="nav-text">Qué Puedes Hacer <i class="fas fa-chevron-down dropdown-icon"></i></span>
                     </button>
                     <div class="dropdown-content">
-                        <a href="apadrinar.php">Apadrina un Niño</a>
+                        <a href="apadrinar">Apadrina un Niño</a>
                         <a href="#donar">Dona por una Causa</a>
                         <a href="#empresas">Empresas Socialmente Responsables</a>
                         <a href="#empresas">Colaboradores y Prácticas</a>
@@ -103,12 +103,12 @@
                     </div>
                 </div>
 
-                <a href="tienda.php" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
+                <a href="tienda" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
                     <i class="fas fa-shopping-bag nav-icon"></i>
                     <span class="nav-text">Tienda Solidaria</span>
                 </a>
                 
-                <a href="blog.php" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
+                <a href="blog" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
                     <i class="fas fa-newspaper nav-icon"></i>
                     <span class="nav-text">Blog</span>
                 </a>
@@ -128,7 +128,7 @@
                     <h1><?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_title', 'Abre Caminos de Esperanza')) ?></h1>
                     <p><?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_desc', 'Cada apadrinamiento contribuye al desarrollo de un niño y su familia, generando oportunidades de crecimiento y bienestar.')) ?></p>
                     <div class="hero-buttons">
-                        <a href="<?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_btn1_url', 'apadrinar.php')) ?>" class="btn btn-primary btn-large"><?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_btn1_text', 'Apadrina Hoy')) ?></a>
+                        <a href="<?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_btn1_url', 'apadrinar')) ?>" class="btn btn-primary btn-large"><?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_btn1_text', 'Apadrina Hoy')) ?></a>
                         <a href="<?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_btn2_url', '#donar')) ?>" class="btn btn-outline btn-large"><?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_btn2_text', 'Dona por una Causa')) ?></a>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
                     <h1><?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_title', 'Centro de Desarrollo de Talentos')) ?></h1>
                     <p><?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_desc', 'Permite que asistan a clases de inglés, arte, música, danza y actividades de formación no formal.')) ?></p>
                     <div class="hero-buttons">
-                        <a href="<?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_btn1_url', 'programas.php#cdt')) ?>" class="btn btn-primary btn-large"><?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_btn1_text', 'Apoya el CDT')) ?></a>
+                        <a href="<?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_btn1_url', 'programas#cdt')) ?>" class="btn btn-primary btn-large"><?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_btn1_text', 'Apoya el CDT')) ?></a>
                     </div>
                 </div>
             </div>
@@ -155,7 +155,7 @@
         <div class="container">
             <h2 style="margin-bottom: 1rem;"><?= htmlspecialchars(get_site_content($pdo, 'historia_title', 'Conoce Nuestra Historia')) ?></h2>
             <p class="max-w-800 mx-auto" style="margin-bottom: 2rem; font-size: 1.1rem;"><?= htmlspecialchars(get_site_content($pdo, 'historia_desc', 'Descubre el corazón de la Fundación ADN de Amor. Conoce cómo empezamos, nuestra misión y los valores que nos inspiran a transformar las vidas de miles de niños y familias.')) ?></p>
-            <a href="<?= htmlspecialchars(get_site_content($pdo, 'historia_btn_url', 'nosotros.php')) ?>" class="btn btn-outline"
+            <a href="<?= htmlspecialchars(get_site_content($pdo, 'historia_btn_url', 'nosotros')) ?>" class="btn btn-outline"
                 style="border-color: var(--primary); color: var(--primary);"><?= htmlspecialchars(get_site_content($pdo, 'historia_btn_text', 'Leer la historia completa')) ?></a>
         </div>
     </section>
@@ -196,7 +196,7 @@
             </div>
 
             <div class="text-center" style="margin-top: 4rem;">
-                <a href="<?= htmlspecialchars(get_site_content($pdo, 'apadrinar_btn_url', 'apadrinar.php')) ?>" class="btn btn-primary btn-large"><?= htmlspecialchars(get_site_content($pdo, 'apadrinar_btn_text', 'Descubre cómo apadrinar y conocer a los niños')) ?></a>
+                <a href="<?= htmlspecialchars(get_site_content($pdo, 'apadrinar_btn_url', 'apadrinar')) ?>" class="btn btn-primary btn-large"><?= htmlspecialchars(get_site_content($pdo, 'apadrinar_btn_text', 'Descubre cómo apadrinar y conocer a los niños')) ?></a>
             </div>
         </div>
     </section>
@@ -296,7 +296,7 @@
                         <li><i class="fas fa-shopping-bag"></i> <?= htmlspecialchars(get_site_content($pdo, 'tienda_li1', 'Productos con propósito.')) ?></li>
                         <li><i class="fas fa-laptop-code"></i> <?= htmlspecialchars(get_site_content($pdo, 'tienda_li2', 'Servicios educativos.')) ?></li>
                     </ul>
-                    <a href="<?= htmlspecialchars(get_site_content($pdo, 'tienda_btn_url', 'tienda.php')) ?>" class="btn btn-primary mt-3"><?= htmlspecialchars(get_site_content($pdo, 'tienda_btn_text', 'Ver Tienda')) ?></a>
+                    <a href="<?= htmlspecialchars(get_site_content($pdo, 'tienda_btn_url', 'tienda')) ?>" class="btn btn-primary mt-3"><?= htmlspecialchars(get_site_content($pdo, 'tienda_btn_text', 'Ver Tienda')) ?></a>
                 </div>
             </div>
         </div>

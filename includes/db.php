@@ -62,32 +62,32 @@ function get_site_content($pdo, $key, $default = '') {
     }
 
     if ($key === 'hero_slide1_btn1_url') {
-        if (!$result || empty($result['content_value']) || $result['content_value'] === '#apadrinar') {
+        if (!$result || empty($result['content_value']) || $result['content_value'] === '#apadrinar' || $result['content_value'] === 'apadrinar.php') {
             try {
-                $up = $pdo->prepare("INSERT INTO site_content (section_key, content_type, content_value, page_name) VALUES ('hero_slide1_btn1_url', 'text', 'apadrinar.php', 'inicio') ON DUPLICATE KEY UPDATE content_value = 'apadrinar.php'");
+                $up = $pdo->prepare("INSERT INTO site_content (section_key, content_type, content_value, page_name) VALUES ('hero_slide1_btn1_url', 'text', 'apadrinar', 'inicio') ON DUPLICATE KEY UPDATE content_value = 'apadrinar'");
                 $up->execute();
             } catch (\Exception $e) {
                 try {
-                    $up = $pdo->prepare("UPDATE site_content SET content_value = 'apadrinar.php' WHERE section_key = 'hero_slide1_btn1_url'");
+                    $up = $pdo->prepare("UPDATE site_content SET content_value = 'apadrinar' WHERE section_key = 'hero_slide1_btn1_url'");
                     $up->execute();
                 } catch (\Exception $e2) {}
             }
-            return 'apadrinar.php';
+            return 'apadrinar';
         }
     }
 
     if ($key === 'hero_slide2_btn1_url') {
-        if (!$result || empty($result['content_value']) || $result['content_value'] === '#donar') {
+        if (!$result || empty($result['content_value']) || $result['content_value'] === '#donar' || $result['content_value'] === 'programas.php#cdt') {
             try {
-                $up = $pdo->prepare("INSERT INTO site_content (section_key, content_type, content_value, page_name) VALUES ('hero_slide2_btn1_url', 'text', 'programas.php#cdt', 'inicio') ON DUPLICATE KEY UPDATE content_value = 'programas.php#cdt'");
+                $up = $pdo->prepare("INSERT INTO site_content (section_key, content_type, content_value, page_name) VALUES ('hero_slide2_btn1_url', 'text', 'programas#cdt', 'inicio') ON DUPLICATE KEY UPDATE content_value = 'programas#cdt'");
                 $up->execute();
             } catch (\Exception $e) {
                 try {
-                    $up = $pdo->prepare("UPDATE site_content SET content_value = 'programas.php#cdt' WHERE section_key = 'hero_slide2_btn1_url'");
+                    $up = $pdo->prepare("UPDATE site_content SET content_value = 'programas#cdt' WHERE section_key = 'hero_slide2_btn1_url'");
                     $up->execute();
                 } catch (\Exception $e2) {}
             }
-            return 'programas.php#cdt';
+            return 'programas#cdt';
         }
     }
 
@@ -108,18 +108,34 @@ function get_site_content($pdo, $key, $default = '') {
     }
 
     if ($result && !empty($result['content_value']) && is_string($result['content_value'])) {
-        if (stripos($result['content_value'], 'detodopelis') !== false || stripos($result['content_value'], 'pelis') !== false) {
+        $val = $result['content_value'];
+        if (stripos($val, 'detodopelis') !== false || stripos($val, 'pelis') !== false) {
             $cleaned = str_replace(
                 ['https://entornos.detodopelis.co/panel/', 'https://entornos.detodopelis.co/', 'http://entornos.detodopelis.co/panel/', 'http://entornos.detodopelis.co/', 'entornos.detodopelis.co', 'detodopelis.co'],
-                ['index.php', 'index.php', 'index.php', 'index.php', 'fundacionadndeamor.org', 'fundacionadndeamor.org'],
-                $result['content_value']
+                ['/', '/', '/', '/', 'fundacionadndeamor.org', 'fundacionadndeamor.org'],
+                $val
             );
             try {
                 $up = $pdo->prepare("UPDATE site_content SET content_value = ? WHERE section_key = ?");
                 $up->execute([$cleaned, $key]);
             } catch (\Exception $e) {}
-            return $cleaned;
+            $val = $cleaned;
         }
+
+        // Clean internal .php URLs for SEO
+        if (strpos($key, '_url') !== false || strpos($key, '_link') !== false) {
+            $clean_url = preg_replace('/^index\.php(#.*)?$/i', '/$1', $val);
+            $clean_url = preg_replace('/^(nosotros|programas|apadrinar|tienda|blog|memorias)\.php(#.*)?$/i', '$1$2', $clean_url);
+            if ($clean_url !== $val) {
+                try {
+                    $up = $pdo->prepare("UPDATE site_content SET content_value = ? WHERE section_key = ?");
+                    $up->execute([$clean_url, $key]);
+                } catch (\Exception $e) {}
+                $val = $clean_url;
+            }
+        }
+
+        return $val;
     }
     
     return $result ? $result['content_value'] : $default;

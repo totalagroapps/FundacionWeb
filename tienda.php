@@ -47,7 +47,7 @@ try {
     <!-- Navbar -->
     <header class="navbar">
         <div class="container nav-container">
-            <a href="index.php" class="logo">
+            <a href="/" class="logo">
                 <img src="LOGO Y VISUAL WEB BOTONES/logo ADN_de_Amor_color_rectangulo.png"
                     alt="Fundación ADN de Amor Logo">
             </a>
@@ -59,9 +59,9 @@ try {
                         <span class="nav-text">Quiénes Somos <i class="fas fa-chevron-down dropdown-icon"></i></span>
                     </button>
                     <div class="dropdown-content">
-                        <a href="nosotros.php">¿Quiénes Somos?</a>
-                        <a href="nosotros.php#mision">Nuestra Misión y Creencias</a>
-                        <a href="nosotros.php#historia">Nuestra Historia</a>
+                        <a href="nosotros">¿Quiénes Somos?</a>
+                        <a href="nosotros#mision">Nuestra Misión y Creencias</a>
+                        <a href="nosotros#historia">Nuestra Historia</a>
                     </div>
                 </div>
 
@@ -71,13 +71,13 @@ try {
                         <span class="nav-text">Qué Hacemos <i class="fas fa-chevron-down dropdown-icon"></i></span>
                     </button>
                     <div class="dropdown-content">
-                        <a href="programas.php#donde-estamos">Dónde Estamos</a>
-                        <a href="programas.php#que-hacemos">¿Qué Hacemos?</a>
-                        <a href="programas.php#cdt">Centro de Desarrollo de Talentos</a>
-                        <a href="programas.php#esperanza">Programa Esperanza</a>
-                        <a href="programas.php#choco">Misión Chocó</a>
-                        <a href="programas.php#linea">Línea de Ayuda ADN</a>
-                        <a href="memorias.php">Memorias de Nuestra Labor</a>
+                        <a href="programas#donde-estamos">Dónde Estamos</a>
+                        <a href="programas#que-hacemos">¿Qué Hacemos?</a>
+                        <a href="programas#cdt">Centro de Desarrollo de Talentos</a>
+                        <a href="programas#esperanza">Programa Esperanza</a>
+                        <a href="programas#choco">Misión Chocó</a>
+                        <a href="programas#linea">Línea de Ayuda ADN</a>
+                        <a href="memorias">Memorias de Nuestra Labor</a>
                     </div>
                 </div>
 
@@ -87,25 +87,25 @@ try {
                         <span class="nav-text">Qué Puedes Hacer <i class="fas fa-chevron-down dropdown-icon"></i></span>
                     </button>
                     <div class="dropdown-content">
-                        <a href="apadrinar.php">Apadrina un Niño</a>
-                        <a href="index.php#donar">Dona por una Causa</a>
-                        <a href="index.php#empresas">Empresas Socialmente Responsables</a>
-                        <a href="index.php#empresas">Colaboradores y Prácticas</a>
-                        <a href="index.php#voluntariado">Ser Voluntario</a>
+                        <a href="apadrinar">Apadrina un Niño</a>
+                        <a href="/#donar">Dona por una Causa</a>
+                        <a href="/#empresas">Empresas Socialmente Responsables</a>
+                        <a href="/#empresas">Colaboradores y Prácticas</a>
+                        <a href="/#voluntariado">Ser Voluntario</a>
                     </div>
                 </div>
 
-                <a href="tienda.php" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
+                <a href="tienda" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
                     <i class="fas fa-shopping-bag nav-icon"></i>
                     <span class="nav-text">Tienda Solidaria</span>
                 </a>
                 
-                <a href="blog.php" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
+                <a href="blog" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
                     <i class="fas fa-newspaper nav-icon"></i>
                     <span class="nav-text">Blog</span>
                 </a>
 
-                <a href="index.php#contacto" class="btn btn-primary">Contacto</a>
+                <a href="/#contacto" class="btn btn-primary">Contacto</a>
             </nav>
         </div>
     </header>
@@ -120,7 +120,7 @@ try {
                     </div>
                     <h3 style="color: var(--text-dark); margin-bottom: 1.5rem; font-weight: 500;">Nuestra Tienda Solidaria se está abasteciendo.</h3>
                     <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 2rem;">Vuelve pronto para descubrir productos con propósito. Estamos trabajando para traerte lo mejor.</p>
-                    <a href="index.php" class="btn btn-outline" style="border-color: var(--secondary); color: var(--secondary);">Volver al Inicio</a>
+                    <a href="/" class="btn btn-outline" style="border-color: var(--secondary); color: var(--secondary);">Volver al Inicio</a>
                 </div>
             </div>
         </section>

@@ -269,7 +269,7 @@ foreach ($pages as $p => $sections) {
             <button class="btn-icon" id="darkModeToggle" title="Cambiar Tema">
                 <i class="fas fa-moon"></i>
             </button>
-            <a href="../index.php" target="_blank" class="btn-outline"><i class="fas fa-globe"></i> Ver Web</a>
+            <a href="/" target="_blank" class="btn-outline"><i class="fas fa-globe"></i> Ver Web</a>
             <a href="logout.php" class="btn-outline btn-logout"><i class="fas fa-sign-out-alt"></i> Salir</a>
         </div>
     </header>

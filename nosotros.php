@@ -11,6 +11,24 @@ require 'includes/db.php';
     <meta name="description"
         content="Conoce a la Fundación ADN de Amor, nuestra misión, historia y cómo trabajamos para generar oportunidades y esperanza.">
 
+    <!-- Open Graph / Redes Sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fundacionadndeamor.org/nosotros">
+    <meta property="og:title" content="Quiénes Somos | Fundación ADN de Amor">
+    <meta property="og:description"
+        content="Conoce a la Fundación ADN de Amor, nuestra misión, historia y cómo trabajamos para generar oportunidades y esperanza.">
+    <meta property="og:image"
+        content="https://fundacionadndeamor.org/FOTOS%20BANNERS/MAMA%20CON%20ANGELICA%20%20DEFINITIVA%20BANNER.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://fundacionadndeamor.org/nosotros">
+    <meta property="twitter:title" content="Quiénes Somos | Fundación ADN de Amor">
+    <meta property="twitter:description"
+        content="Conoce a la Fundación ADN de Amor, nuestra misión, historia y cómo trabajamos para generar oportunidades y esperanza.">
+    <meta property="twitter:image"
+        content="https://fundacionadndeamor.org/FOTOS%20BANNERS/MAMA%20CON%20ANGELICA%20%20DEFINITIVA%20BANNER.png">
+
         <!-- Preconnect fuentes y assets externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +56,7 @@ require 'includes/db.php';
     <!-- Navbar -->
     <header class="navbar">
         <div class="container nav-container">
-            <a href="index.php" class="logo">
+            <a href="/" class="logo">
                 <img src="LOGO Y VISUAL WEB BOTONES/logo ADN_de_Amor_color_rectangulo.png"
                     alt="Fundación ADN de Amor Logo">
             </a>
@@ -50,9 +68,9 @@ require 'includes/db.php';
                         <span class="nav-text">Quiénes Somos <i class="fas fa-chevron-down dropdown-icon"></i></span>
                     </button>
                     <div class="dropdown-content">
-                        <a href="nosotros.php">¿Quiénes Somos?</a>
-                        <a href="nosotros.php#mision">Nuestra Misión y Creencias</a>
-                        <a href="nosotros.php#historia">Nuestra Historia</a>
+                        <a href="nosotros">¿Quiénes Somos?</a>
+                        <a href="nosotros#mision">Nuestra Misión y Creencias</a>
+                        <a href="nosotros#historia">Nuestra Historia</a>
                     </div>
                 </div>
 
@@ -62,13 +80,13 @@ require 'includes/db.php';
                         <span class="nav-text">Qué Hacemos <i class="fas fa-chevron-down dropdown-icon"></i></span>
                     </button>
                     <div class="dropdown-content">
-                        <a href="programas.php#donde-estamos">Dónde Estamos</a>
-                        <a href="programas.php#que-hacemos">¿Qué Hacemos?</a>
-                        <a href="programas.php#cdt">Centro de Desarrollo de Talentos</a>
-                        <a href="programas.php#esperanza">Programa Esperanza</a>
-                        <a href="programas.php#choco">Misión Chocó</a>
-                        <a href="programas.php#linea">Línea de Ayuda ADN</a>
-                        <a href="memorias.php">Memorias de Nuestra Labor</a>
+                        <a href="programas#donde-estamos">Dónde Estamos</a>
+                        <a href="programas#que-hacemos">¿Qué Hacemos?</a>
+                        <a href="programas#cdt">Centro de Desarrollo de Talentos</a>
+                        <a href="programas#esperanza">Programa Esperanza</a>
+                        <a href="programas#choco">Misión Chocó</a>
+                        <a href="programas#linea">Línea de Ayuda ADN</a>
+                        <a href="memorias">Memorias de Nuestra Labor</a>
                     </div>
                 </div>
 
@@ -78,25 +96,25 @@ require 'includes/db.php';
                         <span class="nav-text">Qué Puedes Hacer <i class="fas fa-chevron-down dropdown-icon"></i></span>
                     </button>
                     <div class="dropdown-content">
-                        <a href="apadrinar.php">Apadrina un Niño</a>
-                        <a href="index.php#donar">Dona por una Causa</a>
-                        <a href="index.php#empresas">Empresas Socialmente Responsables</a>
-                        <a href="index.php#empresas">Colaboradores y Prácticas</a>
-                        <a href="index.php#voluntariado">Ser Voluntario</a>
+                        <a href="apadrinar">Apadrina un Niño</a>
+                        <a href="/#donar">Dona por una Causa</a>
+                        <a href="/#empresas">Empresas Socialmente Responsables</a>
+                        <a href="/#empresas">Colaboradores y Prácticas</a>
+                        <a href="/#voluntariado">Ser Voluntario</a>
                     </div>
                 </div>
 
-                <a href="tienda.php" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
+                <a href="tienda" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
                     <i class="fas fa-shopping-bag nav-icon"></i>
                     <span class="nav-text">Tienda Solidaria</span>
                 </a>
 
-                <a href="blog.php" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
+                <a href="blog" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
                     <i class="fas fa-newspaper nav-icon"></i>
                     <span class="nav-text">Blog</span>
                 </a>
 
-                <a href="index.php#contacto" class="btn btn-primary">Contacto</a>
+                <a href="/#contacto" class="btn btn-primary">Contacto</a>
             </nav>
         </div>
     </header>

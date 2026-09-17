@@ -1,4 +1,4 @@
-﻿# --- COMPRESIÓN GZIP / DEFLATE ---
+# --- COMPRESIÓN GZIP / DEFLATE ---
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
   AddOutputFilterByType DEFLATE application/javascript text/javascript application/x-javascript
@@ -50,10 +50,36 @@
   Header always set X-Frame-Options "SAMEORIGIN"
 </IfModule>
 
-# --- SERVIR WEBP AUTOMÁTICAMENTE ---
+# --- REESCRITURA DE URLS Y REDIRECCIONES SEO LIMPIAS ---
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteBase /
+
+  # 1. Redirigir /index o /index.php a la raíz / (301 SEO)
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/(index|index\.php)(\?[^\s]*)?\s [NC]
+  RewriteRule ^ / [R=301,L]
+
+  # 2. Redirigir peticiones externas directas con .php hacia la URL limpia (301 SEO)
+  # Excluye la carpeta admin y peticiones POST
+  RewriteCond %{REQUEST_URI} !^/admin [NC]
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/([^.]+)\.php(\?[^\s]*)?\s [NC]
+  RewriteCond %{REQUEST_METHOD} !POST
+  RewriteRule ^ /%1 [R=301,L]
+
+  # 3. Quitar barra final (trailing slash) si no es un directorio real (ej: /nosotros/ -> /nosotros)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} (.+)/$
+  RewriteRule ^ %1 [R=301,L]
+
+  # 4. Servir WebP automáticamente si existe y el cliente lo soporta
   RewriteCond %{HTTP_ACCEPT} image/webp
   RewriteCond %{REQUEST_FILENAME}.webp -f
   RewriteRule ^(.+)\.(png|jpe?g)$ $1.webp [T=image/webp,L]
+
+  # 5. Reescribir internamente la URL limpia hacia el archivo .php real
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{DOCUMENT_ROOT}/$1.php -f [OR]
+  RewriteCond %{REQUEST_FILENAME}.php -f
+  RewriteRule ^([^/]+)$ $1.php [L,QSA]
 </IfModule>
