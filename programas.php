@@ -263,7 +263,7 @@ try {
                     <h2><?= htmlspecialchars(get_site_content($pdo, 'prog_donde_title', 'Dónde Estamos')) ?></h2>
                     <p><?= htmlspecialchars(get_site_content($pdo, 'prog_donde_p1', 'La Fundación ADN de Amor tiene su sede principal y finca ubicada en la vereda Guacas en Santa Rosa de Cabal, cerca al Mirador del Café, desde donde coordinamos y desarrollamos todas nuestras actividades.')) ?></p>
                     <p style="margin-top: -0.5rem; margin-bottom: 1.5rem;">
-                        <a href="https://maps.app.goo.gl/r8JanV3Fn8CeYPSt5" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                        <a href="https://maps.app.goo.gl/xvSyBJBfQMuL4wGF7" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                             <i class="fas fa-map-marked-alt"></i> Ver ubicación de la finca en Google Maps
                         </a>
                     </p>
