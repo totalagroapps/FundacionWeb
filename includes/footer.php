@@ -48,6 +48,35 @@
         </div>
     </footer>
 
+    <!-- Datos Estructurados (Schema.org) para Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "NGO",
+        "name": "Fundación ADN de Amor",
+        "alternateName": "ADN de Amor",
+        "url": "https://fundacionadndeamor.org/",
+        "logo": "https://fundacionadndeamor.org/LOGO%20Y%20VISUAL%20WEB%20BOTONES/logo%20ADN_de_Amor_color_rectangulo.png",
+        "description": "Fundación sin ánimo de lucro que acompaña a niños, niñas, adolescentes, jóvenes y madres cabeza de familia en situación de vulnerabilidad en Colombia.",
+        "email": "info@fundacionadndeamor.org",
+        "telephone": "+573162522445",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Santa Rosa de Cabal",
+            "addressRegion": "Risaralda",
+            "addressCountry": "CO"
+        },
+        "areaServed": "CO",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+57-316-252-2445",
+            "contactType": "customer service",
+            "email": "info@fundacionadndeamor.org",
+            "availableLanguage": "Spanish"
+        }
+    }
+    </script>
+
     <!-- Botón Flotante de WhatsApp -->
     <a href="https://wa.me/573162522445?text=Hola,%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20Fundaci%C3%B3n%20ADN%20de%20Amor" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Escríbenos por WhatsApp" title="Escríbenos por WhatsApp">
         <div class="whatsapp-icon-box">

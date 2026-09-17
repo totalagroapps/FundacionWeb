@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prácticas y Colaboradores Profesionales | Fundación ADN de Amor</title>
     <meta name="description" content="Realiza tus prácticas profesionales o colabora como profesional pro bono en la Fundación ADN de Amor. Desarrolla tus talentos y transforma vidas en Colombia.">
-    
+    <link rel="canonical" href="https://fundacionadndeamor.org/practicas">
+
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fundacionadndeamor.org/practicas">

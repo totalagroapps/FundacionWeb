@@ -10,6 +10,7 @@ require 'includes/db.php';
     <title>Quiénes Somos | Fundación ADN de Amor</title>
     <meta name="description"
         content="Conoce a la Fundación ADN de Amor, nuestra misión, historia y cómo trabajamos para generar oportunidades y esperanza.">
+    <link rel="canonical" href="https://fundacionadndeamor.org/nosotros">
 
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">

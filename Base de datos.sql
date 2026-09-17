@@ -113,7 +113,7 @@ CREATE TABLE `site_content` (
 --
 
 INSERT INTO `site_content` (`id`, `page_name`, `section_key`, `content_type`, `content_value`) VALUES
-(1, 'inicio', 'hero_slide1_title', 'text', 'Abre Caminos de Esperanzaaaa'),
+(1, 'inicio', 'hero_slide1_title', 'text', 'Abre Caminos de Esperanza'),
 (2, 'inicio', 'hero_slide1_desc', 'text', 'Cada apadrinamiento contribuye al desarrollo de un niño y su familia, generando oportunidades de crecimiento y bienestar.'),
 (3, 'inicio', 'hero_slide1_img', 'image', 'FOTOS BANNERS/MAJO_BANNER_LOS_NI__OS_DE_DIOS_NO_SE_TOCAN_2.png'),
 (4, 'inicio', 'hero_slide2_title', 'text', 'Centro de Desarrollo de Talentos'),

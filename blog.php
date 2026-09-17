@@ -8,6 +8,7 @@
     <title>Blog | Fundación ADN de Amor</title>
     <meta name="description"
         content="Nuestro Blog estará disponible muy pronto. Descubre historias inspiradoras y noticias sobre nuestra labor.">
+    <link rel="canonical" href="https://fundacionadndeamor.org/blog">
 
         <!-- Preconnect fuentes y assets externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

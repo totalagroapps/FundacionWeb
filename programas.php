@@ -92,6 +92,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuestros Programas | Fundación ADN de Amor</title>
     <meta name="description" content="Conoce el Centro de Desarrollo de Talentos, Programa Esperanza y Misión Chocó.">
+    <link rel="canonical" href="https://fundacionadndeamor.org/programas">
 
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">

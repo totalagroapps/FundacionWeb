@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ser Voluntario | Fundación ADN de Amor</title>
     <meta name="description" content="Únete como voluntario a la Fundación ADN de Amor. Aporta tu tiempo, talento y amor para acompañar a niños, jóvenes y familias en Colombia.">
-    
+    <link rel="canonical" href="https://fundacionadndeamor.org/voluntariado">
+
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fundacionadndeamor.org/voluntariado">

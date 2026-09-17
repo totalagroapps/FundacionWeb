@@ -48,12 +48,17 @@
   # Seguridad
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 </IfModule>
 
 # --- REESCRITURA DE URLS Y REDIRECCIONES SEO LIMPIAS ---
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # 0. Forzar HTTPS en todo el sitio (301 SEO + seguridad)
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # 1. Redirigir /index o /index.php a la raíz / (301 SEO)
   RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/(index|index\.php)(\?[^\s]*)?\s [NC]

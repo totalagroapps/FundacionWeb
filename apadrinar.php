@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apadrina un Niño | Fundación ADN de Amor</title>
     <meta name="description" content="Apadrina a un niño, niña o adolescente. Con tu apoyo, abres caminos de esperanza y bienestar.">
-    
+    <link rel="canonical" href="https://fundacionadndeamor.org/apadrinar">
+
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fundacionadndeamor.org/apadrinar">

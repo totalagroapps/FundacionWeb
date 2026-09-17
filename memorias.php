@@ -8,6 +8,7 @@
     <title>Memorias de Nuestra Labor | Fundación ADN de Amor</title>
     <meta name="description"
         content="Memorias de nuestra labor familiar previa a la constitución formal de la Fundación ADN de Amor. Más de 15 años sembrando amor, educación y esperanza en Chocó y el Eje Cafetero.">
+    <link rel="canonical" href="https://fundacionadndeamor.org/memorias">
 
     <!-- Preconnect fuentes y assets externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

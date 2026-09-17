@@ -156,6 +156,7 @@ if (empty($products)) {
     <title>Tienda Solidaria y Productos Personalizables | Fundación ADN de Amor</title>
     <meta name="description"
         content="Tienda Solidaria ADN de Amor: ropa, vasos, mugs y rompecabezas 100% personalizables con tu foto o mensaje. Cada compra financia el Centro de Desarrollo de Talentos (CDT) y apoya a niños y familias vulnerables.">
+    <link rel="canonical" href="https://fundacionadndeamor.org/tienda">
 
     <!-- Preconnect fuentes y assets externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

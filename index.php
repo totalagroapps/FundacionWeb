@@ -8,6 +8,7 @@
     <title>Fundación ADN de Amor | Oportunidades y Esperanza</title>
     <meta name="description"
         content="Apadrina, dona y colabora con la Fundación ADN de Amor para generar oportunidades, esperanza y bienestar para niños, niñas y adolescentes en situación de vulnerabilidad.">
+    <link rel="canonical" href="https://fundacionadndeamor.org/">
 
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
@@ -137,7 +138,7 @@
             <div class="slide" style="background-image: url('<?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_img', 'FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png')) ?>');">
                 <div class="hero-overlay"></div>
                 <div class="hero-content container">
-                    <h1><?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_title', 'Centro de Desarrollo de Talentos')) ?></h1>
+                    <h2><?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_title', 'Centro de Desarrollo de Talentos')) ?></h2>
                     <p><?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_desc', 'Permite que asistan a clases de inglés, arte, música, danza y actividades de formación no formal.')) ?></p>
                     <div class="hero-buttons">
                         <a href="<?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_btn1_url', 'programas#cdt')) ?>" class="btn btn-primary btn-large"><?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_btn1_text', 'Apoya el CDT')) ?></a>

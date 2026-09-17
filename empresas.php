@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empresas y Aliados con Propósito | Fundación ADN de Amor</title>
     <meta name="description" content="Suma a tu empresa a la transformación social. Alianzas estratégicas, voluntariado corporativo y responsabilidad social empresarial con la Fundación ADN de Amor.">
-    
+    <link rel="canonical" href="https://fundacionadndeamor.org/empresas">
+
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fundacionadndeamor.org/empresas">
