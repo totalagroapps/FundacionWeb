@@ -21,6 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $price = $_POST['price'] ?? 0;
         $discount = !empty($_POST['discount']) ? $_POST['discount'] : null;
         $whatsapp_input = $_POST['whatsapp_link'] ?? '';
+        $category = $_POST['category'] ?? 'general';
+        $description = $_POST['description'] ?? '';
+        $is_customizable = isset($_POST['is_customizable']) ? 1 : 0;
         
         // Si ya trae "http", lo guardamos tal cual, de lo contrario generamos el enlace
         if (strpos($whatsapp_input, 'http') !== false) {
@@ -28,14 +31,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             // Limpiamos cualquier cosa que no sea número
             $numero = preg_replace('/[^0-9]/', '', $whatsapp_input);
+            if (empty($numero)) {
+                $numero = '573162522445';
+            }
             
             // Si el número tiene 10 dígitos y empieza por 3 (formato normal de Colombia), le agregamos el 57
             if (strlen($numero) === 10 && substr($numero, 0, 1) === '3') {
                 $numero = '57' . $numero;
             }
             
-            $mensaje = urlencode("Hola, me interesa el producto: " . $name);
-            $whatsapp_link = "https://wa.me/" . $numero . "?text=" . $mensaje;
+            $mensaje = $is_customizable
+                ? "Hola Fundación ADN de Amor, me interesa personalizar el producto: " . $name
+                : "Hola, me interesa el producto: " . $name;
+            $whatsapp_link = "https://wa.me/" . $numero . "?text=" . urlencode($mensaje);
         }
         
         $imagePath = '';
@@ -54,12 +62,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
         if ($action === 'add') {
-            $stmt = $pdo->prepare("INSERT INTO products (name, price, discount, whatsapp_link, image) VALUES (?, ?, ?, ?, ?)");
-            $stmt->execute([$name, $price, $discount, $whatsapp_link, $imagePath]);
+            $stmt = $pdo->prepare("INSERT INTO products (name, price, discount, whatsapp_link, image, category, description, is_customizable) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$name, $price, $discount, $whatsapp_link, $imagePath, $category, $description, $is_customizable]);
         } else {
             $id = $_POST['id'];
-            $stmt = $pdo->prepare("UPDATE products SET name=?, price=?, discount=?, whatsapp_link=?, image=? WHERE id=?");
-            $stmt->execute([$name, $price, $discount, $whatsapp_link, $imagePath, $id]);
+            $stmt = $pdo->prepare("UPDATE products SET name=?, price=?, discount=?, whatsapp_link=?, image=?, category=?, description=?, is_customizable=? WHERE id=?");
+            $stmt->execute([$name, $price, $discount, $whatsapp_link, $imagePath, $category, $description, $is_customizable, $id]);
         }
         
         header('Location: productos.php?success=1');
@@ -75,7 +83,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$stmt = $pdo->query("SELECT * FROM products ORDER BY created_at DESC");
+// Auto-migración suave de columnas
+try {
+    $existingCols = [];
+    $colStmt = $pdo->query("SHOW COLUMNS FROM products");
+    while ($row = $colStmt->fetch(PDO::FETCH_ASSOC)) {
+        $existingCols[] = strtolower($row['Field']);
+    }
+    if (!in_array('category', $existingCols)) {
+        $pdo->exec("ALTER TABLE products ADD COLUMN category VARCHAR(50) DEFAULT 'general'");
+    }
+    if (!in_array('description', $existingCols)) {
+        $pdo->exec("ALTER TABLE products ADD COLUMN description TEXT NULL");
+    }
+    if (!in_array('is_customizable', $existingCols)) {
+        $pdo->exec("ALTER TABLE products ADD COLUMN is_customizable TINYINT(1) DEFAULT 0");
+    }
+} catch (Exception $e) {}
+
+$stmt = $pdo->query("SELECT * FROM products ORDER BY is_customizable DESC, created_at DESC");
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
@@ -210,31 +236,79 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <div class="header-actions">
             <h2>Productos de la Tienda</h2>
-            <div style="display: flex; gap: 1rem; align-items: center;">
-                <input type="text" id="searchProduct" class="form-control" placeholder="Buscar producto..." style="width: 250px; background: var(--bg-card); padding: 0.6rem 1rem;">
+            <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                <input type="text" id="searchProduct" class="form-control" placeholder="Buscar producto..." style="width: 220px; background: var(--bg-card); padding: 0.6rem 1rem;">
+                <select id="filterCategory" class="form-control" style="width: 180px; background: var(--bg-card); padding: 0.6rem 1rem;">
+                    <option value="all">Todas las categorías</option>
+                    <option value="ropa">👕 Ropa Personalizable</option>
+                    <option value="vasos">☕ Vasos y Mugs</option>
+                    <option value="rompecabezas">🧩 Rompecabezas</option>
+                    <option value="accesorios">✨ Accesorios Solidarios</option>
+                    <option value="general">📦 Otros / General</option>
+                </select>
                 <button class="btn-primary" onclick="openModal('add')"><i class="fas fa-plus"></i> Nuevo Producto</button>
             </div>
         </div>
 
         <div class="grid-products">
             <?php foreach($products as $prod): ?>
-                <div class="card">
-                    <img src="../<?= htmlspecialchars($prod['image']) ?>" alt="<?= htmlspecialchars($prod['name']) ?>">
-                    <div class="card-title"><?= htmlspecialchars($prod['name']) ?></div>
-                    <div>
-                        <?php if($prod['discount']): ?>
-                            <span class="card-discount">$<?= number_format($prod['price'], 2) ?></span>
-                            <span class="card-price">$<?= number_format($prod['discount'], 2) ?></span>
-                        <?php else: ?>
-                            <span class="card-price">$<?= number_format($prod['price'], 2) ?></span>
+                <?php 
+                    $cat = !empty($prod['category']) ? $prod['category'] : 'general';
+                    $isCust = !empty($prod['is_customizable']);
+                    $img = $prod['image'] ?? '';
+                    if (strpos($img, 'http') === 0) {
+                        $imgDisplay = $img;
+                    } else {
+                        $imgDisplay = '../' . ltrim($img, '/');
+                    }
+                ?>
+                <div class="card" data-category="<?= htmlspecialchars($cat) ?>">
+                    <div style="position: relative;">
+                        <img src="<?= htmlspecialchars($imgDisplay) ?>" alt="<?= htmlspecialchars($prod['name']) ?>">
+                        <?php if($isCust): ?>
+                            <span style="position: absolute; top: 10px; left: 10px; background: rgba(234, 90, 0, 0.9); color: white; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; backdrop-filter: blur(4px);">
+                                <i class="fas fa-magic"></i> Personalizable
+                            </span>
                         <?php endif; ?>
                     </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--primary); letter-spacing: 0.5px;">
+                            <?php 
+                                switch($cat) {
+                                    case 'ropa': echo '👕 Ropa'; break;
+                                    case 'vasos': echo '☕ Vasos / Mugs'; break;
+                                    case 'rompecabezas': echo '🧩 Rompecabezas'; break;
+                                    case 'accesorios': echo '✨ Accesorios'; break;
+                                    default: echo '📦 General'; break;
+                                }
+                            ?>
+                        </span>
+                    </div>
+
+                    <div class="card-title"><?= htmlspecialchars($prod['name']) ?></div>
+                    
+                    <?php if(!empty($prod['description'])): ?>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                            <?= htmlspecialchars($prod['description']) ?>
+                        </p>
+                    <?php endif; ?>
+
+                    <div>
+                        <?php if($prod['discount']): ?>
+                            <span class="card-discount">$<?= number_format($prod['price'], 0, ',', '.') ?> COP</span>
+                            <span class="card-price">$<?= number_format($prod['discount'], 0, ',', '.') ?> COP</span>
+                        <?php else: ?>
+                            <span class="card-price">$<?= number_format($prod['price'], 0, ',', '.') ?> COP</span>
+                        <?php endif; ?>
+                    </div>
+
                     <div class="card-actions">
-                        <button class="btn-primary" style="background: var(--secondary); color: white;" onclick="openModal('edit', <?= htmlspecialchars(json_encode($prod)) ?>)"><i class="fas fa-edit"></i></button>
+                        <button class="btn-primary" style="background: var(--secondary); color: white;" onclick="openModal('edit', <?= htmlspecialchars(json_encode($prod)) ?>)"><i class="fas fa-edit"></i> Editar</button>
                         <form method="POST" style="flex:1; display:flex;" onsubmit="return confirm('¿Seguro que quieres eliminar este producto?');">
                             <input type="hidden" name="action" value="delete">
                             <input type="hidden" name="id" value="<?= $prod['id'] ?>">
-                            <button type="submit" class="btn-primary btn-danger" style="width:100%;"><i class="fas fa-trash"></i></button>
+                            <button type="submit" class="btn-primary btn-danger" style="width:100%; justify-content: center;"><i class="fas fa-trash"></i></button>
                         </form>
                     </div>
                 </div>
@@ -251,7 +325,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <!-- Modal Form -->
     <div class="modal" id="productModal">
-        <div class="modal-content">
+        <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
             <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
             <h3 style="font-family: var(--font-heading); margin-bottom: 1.5rem; font-size: 1.5rem;" id="modalTitle">Agregar Producto</h3>
             
@@ -262,24 +336,48 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 
                 <div class="form-group">
                     <label>Nombre del Producto</label>
-                    <input type="text" name="name" id="prodName" class="form-control" required>
+                    <input type="text" name="name" id="prodName" class="form-control" required placeholder="Ej. Camiseta Solidaria Personalizable">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Categoría</label>
+                        <select name="category" id="prodCategory" class="form-control" required>
+                            <option value="ropa">👕 Ropa Personalizable</option>
+                            <option value="vasos">☕ Vasos y Mugs</option>
+                            <option value="rompecabezas">🧩 Rompecabezas</option>
+                            <option value="accesorios">✨ Accesorios Solidarios</option>
+                            <option value="general">📦 General / Otros</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="display: flex; align-items: flex-end;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding-bottom: 10px; font-weight: 600; color: var(--text-main);">
+                            <input type="checkbox" name="is_customizable" id="prodCustomizable" value="1" style="width: 18px; height: 18px; cursor: pointer;">
+                            <i class="fas fa-magic" style="color: var(--primary);"></i> ¿Es personalizable?
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Descripción del Producto</label>
+                    <textarea name="description" id="prodDescription" class="form-control" rows="2" placeholder="Detalles de material, tallas, acabado o cómo se personaliza..."></textarea>
                 </div>
                 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                     <div class="form-group">
-                        <label>Precio Normal ($)</label>
-                        <input type="number" step="0.01" name="price" id="prodPrice" class="form-control" required>
+                        <label>Precio Normal ($ COP)</label>
+                        <input type="number" step="100" name="price" id="prodPrice" class="form-control" required placeholder="Ej. 35000">
                     </div>
                     <div class="form-group">
-                        <label>Precio con Descuento ($) (Opcional)</label>
-                        <input type="number" step="0.01" name="discount" id="prodDiscount" class="form-control">
+                        <label>Precio Oferta ($ COP) (Opcional)</label>
+                        <input type="number" step="100" name="discount" id="prodDiscount" class="form-control" placeholder="Ej. 30000">
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label>Número de WhatsApp (Sin código de país)</label>
-                    <input type="text" name="whatsapp_link" id="prodWhatsapp" class="form-control" required placeholder="Ej. 3162522445">
-                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Ingresa tu número (se añadirá automáticamente +57). El sistema generará el enlace completo.</p>
+                    <label>Número de WhatsApp (Opcional - por defecto 3162522445)</label>
+                    <input type="text" name="whatsapp_link" id="prodWhatsapp" class="form-control" placeholder="Ej. 3162522445">
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Si lo dejas vacío o ingresas el número, el sistema generará el enlace directo de WhatsApp con mensaje contextual.</p>
                 </div>
                 
                 <div class="form-group">
@@ -288,7 +386,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;" id="imgHelp">Selecciona una imagen para el producto.</p>
                 </div>
                 
-                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Guardar Producto</button>
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem;">Guardar Producto</button>
             </form>
         </div>
     </div>
@@ -302,6 +400,9 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 document.getElementById('modalTitle').textContent = 'Editar Producto';
                 document.getElementById('productId').value = data.id;
                 document.getElementById('prodName').value = data.name;
+                document.getElementById('prodCategory').value = data.category || 'general';
+                document.getElementById('prodDescription').value = data.description || '';
+                document.getElementById('prodCustomizable').checked = (data.is_customizable == 1);
                 document.getElementById('prodPrice').value = data.price;
                 document.getElementById('prodDiscount').value = data.discount || '';
                 
@@ -310,7 +411,6 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 let waMatch = waLink.match(/wa\.me\/([0-9]+)/);
                 if (waMatch) {
                     let extractedNum = waMatch[1];
-                    // Si empieza por 57 y tiene 12 dígitos, le quitamos el 57 para mostrarlo limpio
                     if (extractedNum.length === 12 && extractedNum.startsWith('57')) {
                         extractedNum = extractedNum.substring(2);
                     }
@@ -326,9 +426,12 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 document.getElementById('modalTitle').textContent = 'Agregar Producto';
                 document.getElementById('productId').value = '';
                 document.getElementById('prodName').value = '';
+                document.getElementById('prodCategory').value = 'ropa';
+                document.getElementById('prodDescription').value = '';
+                document.getElementById('prodCustomizable').checked = true;
                 document.getElementById('prodPrice').value = '';
                 document.getElementById('prodDiscount').value = '';
-                document.getElementById('prodWhatsapp').value = '';
+                document.getElementById('prodWhatsapp').value = '3162522445';
                 document.getElementById('existingImage').value = '';
                 document.getElementById('imgHelp').textContent = 'Selecciona una imagen para el producto.';
                 document.getElementById('prodImage').required = true;
@@ -342,6 +445,34 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         window.addEventListener('load', () => {
             document.body.classList.remove('preload');
         });
+
+        // Filtrado por Búsqueda y Categoría
+        const searchInput = document.getElementById('searchProduct');
+        const filterCatSelect = document.getElementById('filterCategory');
+
+        function applyAdminFilters() {
+            const term = (searchInput ? searchInput.value.toLowerCase() : '');
+            const selectedCat = (filterCatSelect ? filterCatSelect.value : 'all');
+            const cards = document.querySelectorAll('.grid-products .card');
+
+            cards.forEach(card => {
+                const titleElement = card.querySelector('.card-title');
+                const title = titleElement ? titleElement.textContent.toLowerCase() : '';
+                const cardCat = card.getAttribute('data-category') || 'general';
+
+                const matchesSearch = title.includes(term);
+                const matchesCat = (selectedCat === 'all' || cardCat === selectedCat);
+
+                if (matchesSearch && matchesCat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        if (searchInput) searchInput.addEventListener('input', applyAdminFilters);
+        if (filterCatSelect) filterCatSelect.addEventListener('change', applyAdminFilters);
 
         // Dark Mode Logic
         const darkModeToggle = document.getElementById('darkModeToggle');
@@ -364,25 +495,6 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 icon.classList.add('fa-moon');
             }
         });
-        // Filtrado de Búsqueda
-        const searchInput = document.getElementById('searchProduct');
-        if(searchInput) {
-            searchInput.addEventListener('input', function() {
-                const term = this.value.toLowerCase();
-                const cards = document.querySelectorAll('.grid-products .card');
-                cards.forEach(card => {
-                    const titleElement = card.querySelector('.card-title');
-                    if(titleElement) {
-                        const title = titleElement.textContent.toLowerCase();
-                        if (title.includes(term)) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    }
-                });
-            });
-        }
     </script>
 </body>
 </html>
