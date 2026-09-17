@@ -139,7 +139,7 @@
                     <h1><?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_title', 'Centro de Desarrollo de Talentos')) ?></h1>
                     <p><?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_desc', 'Permite que asistan a clases de inglés, arte, música, danza y actividades de formación no formal.')) ?></p>
                     <div class="hero-buttons">
-                        <a href="<?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_btn1_url', '#donar')) ?>" class="btn btn-primary btn-large"><?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_btn1_text', 'Apoya el CDT')) ?></a>
+                        <a href="<?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_btn1_url', 'programas.php#cdt')) ?>" class="btn btn-primary btn-large"><?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_btn1_text', 'Apoya el CDT')) ?></a>
                     </div>
                 </div>
             </div>
