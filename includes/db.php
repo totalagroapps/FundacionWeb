@@ -91,6 +91,22 @@ function get_site_content($pdo, $key, $default = '') {
         }
     }
 
+    if ($key === 'prog_donde_p1') {
+        $guacas_desc = 'La Fundación ADN de Amor tiene su sede principal y finca ubicada en la vereda Guacas en Santa Rosa de Cabal, cerca al Mirador del Café, desde donde coordinamos y desarrollamos todas nuestras actividades.';
+        if (!$result || empty($result['content_value']) || strpos($result['content_value'], 'Guacas') === false) {
+            try {
+                $up = $pdo->prepare("INSERT INTO site_content (section_key, content_type, content_value, page_name) VALUES ('prog_donde_p1', 'text', ?, 'programas') ON DUPLICATE KEY UPDATE content_value = ?");
+                $up->execute([$guacas_desc, $guacas_desc]);
+            } catch (\Exception $e) {
+                try {
+                    $up = $pdo->prepare("UPDATE site_content SET content_value = ? WHERE section_key = 'prog_donde_p1'");
+                    $up->execute([$guacas_desc]);
+                } catch (\Exception $e2) {}
+            }
+            return $guacas_desc;
+        }
+    }
+
     if ($result && !empty($result['content_value']) && is_string($result['content_value'])) {
         if (stripos($result['content_value'], 'detodopelis') !== false || stripos($result['content_value'], 'pelis') !== false) {
             $cleaned = str_replace(

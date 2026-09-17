@@ -173,7 +173,12 @@
             <div class="split-layout">
                 <div class="split-content">
                     <h2><?= htmlspecialchars(get_site_content($pdo, 'prog_donde_title', 'Dónde Estamos')) ?></h2>
-                    <p><?= htmlspecialchars(get_site_content($pdo, 'prog_donde_p1', 'La Fundación ADN de Amor tiene su sede en Santa Rosa de Cabal, desde donde coordinamos y gestionamos todas nuestras actividades.')) ?></p>
+                    <p><?= htmlspecialchars(get_site_content($pdo, 'prog_donde_p1', 'La Fundación ADN de Amor tiene su sede principal y finca ubicada en la vereda Guacas en Santa Rosa de Cabal, cerca al Mirador del Café, desde donde coordinamos y desarrollamos todas nuestras actividades.')) ?></p>
+                    <p style="margin-top: -0.5rem; margin-bottom: 1.5rem;">
+                        <a href="https://maps.app.goo.gl/r8JanV3Fn8CeYPSt5" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                            <i class="fas fa-map-marked-alt"></i> Ver ubicación de la finca en Google Maps
+                        </a>
+                    </p>
                     <p><?= htmlspecialchars(get_site_content($pdo, 'prog_donde_p2', 'Nuestro trabajo impacta diferentes regiones de Colombia, llevando apoyo integral a niños, niñas, adolescentes, jóvenes y madres cabeza de familia en situación de vulnerabilidad:')) ?></p>
                     <ul class="feature-list" style="margin-top: 1.5rem;">
                         <li><i class="fas fa-map-marker-alt"></i> <strong><?= htmlspecialchars(get_site_content($pdo, 'prog_donde_li1_title', 'Eje Cafetero:')) ?></strong> <?= htmlspecialchars(get_site_content($pdo, 'prog_donde_li1_desc', 'Acompañamos a comunidades en distintas ciudades y veredas, ofreciendo programas de bienestar, programas de formación no formal, ofreciendo talleres y clases que fortalecen habilidades, talentos y capacidades en niños, niñas, adolescentes y jóvenes.')) ?></li>

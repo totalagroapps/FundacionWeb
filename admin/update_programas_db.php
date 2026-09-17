@@ -5,7 +5,7 @@ try {
     $new_content = [
         // Dónde Estamos
         ['prog_donde_title', 'text', 'Dónde Estamos', 'programas'],
-        ['prog_donde_p1', 'text', 'La Fundación ADN de Amor tiene su sede en Santa Rosa de Cabal, desde donde coordinamos y gestionamos todas nuestras actividades.', 'programas'],
+        ['prog_donde_p1', 'text', 'La Fundación ADN de Amor tiene su sede principal y finca ubicada en la vereda Guacas en Santa Rosa de Cabal, cerca al Mirador del Café, desde donde coordinamos y desarrollamos todas nuestras actividades.', 'programas'],
         ['prog_donde_p2', 'text', 'Nuestro trabajo impacta diferentes regiones de Colombia, llevando apoyo integral a niños, niñas, adolescentes, jóvenes y madres cabeza de familia en situación de vulnerabilidad:', 'programas'],
         ['prog_donde_li1_title', 'text', 'Eje Cafetero:', 'programas'],
         ['prog_donde_li1_desc', 'text', 'Acompañamos a comunidades en distintas ciudades y veredas, ofreciendo programas de bienestar, programas de formación no formal, ofreciendo talleres y clases que fortalecen habilidades, talentos y capacidades en niños, niñas, adolescentes y jóvenes.', 'programas'],
