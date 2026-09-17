@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memorias de Nuestra Labor | Fundación ADN de Amor</title>
     <meta name="description"
-        content="Memorias de Nuestra Labor. A lo largo de nuestro recorrido, hemos acompañado a niños y familias en distintas iniciativas que reflejan nuestro compromiso.">
+        content="Memorias de nuestra labor familiar previa a la constitución formal de la Fundación ADN de Amor. Más de 15 años sembrando amor, educación y esperanza en Chocó y el Eje Cafetero.">
 
-        <!-- Preconnect fuentes y assets externos -->
+    <!-- Preconnect fuentes y assets externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -100,62 +100,119 @@
     </header>
 
     <!-- Memorias Hero -->
-    <section class="section" style="padding-top: 150px; text-align: center;">
-        <div class="container" style="max-width: 900px;">
-            <h1 style="font-size: 3.5rem; color: var(--secondary); margin-bottom: 0.5rem;">
+    <section class="section" style="padding-top: 140px; padding-bottom: 40px; text-align: center;">
+        <div class="container" style="max-width: 960px;">
+            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(230, 57, 70, 0.08); padding: 8px 24px; border-radius: 50px; margin-bottom: 1.5rem; border: 1px solid rgba(230, 57, 70, 0.15);">
+                <i class="fas fa-heart" style="color: var(--primary); font-size: 0.95rem;"></i>
+                <span style="color: var(--primary); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Vocación y Legado Familiar</span>
+            </div>
+
+            <h1 style="font-size: 3.2rem; color: var(--secondary); margin-bottom: 0.5rem; line-height: 1.2;">
                 Memorias <span style="font-family: 'Great Vibes', cursive; font-weight: 400; color: var(--primary); font-size: 4.5rem;">de Nuestra Labor</span>
                 <i class="far fa-heart" style="color: var(--primary); font-size: 1.5rem; margin-left: 5px;"></i>
             </h1>
-            <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 3rem;">
-                <div style="height: 1px; width: 50px; background: rgba(230, 57, 70, 0.4);"></div>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 2.5rem;">
+                <div style="height: 1px; width: 60px; background: rgba(230, 57, 70, 0.4);"></div>
                 <i class="far fa-heart" style="color: var(--primary);"></i>
-                <div style="height: 1px; width: 50px; background: rgba(230, 57, 70, 0.4);"></div>
+                <div style="height: 1px; width: 60px; background: rgba(230, 57, 70, 0.4);"></div>
             </div>
             
-            <p style="font-size: 1.2rem; color: var(--text-dark); line-height: 1.8; font-weight: 500;">
-                A lo largo de nuestro recorrido, desde 2009, hemos acompañado a niños, niñas, adolescentes, jóvenes y madres cabeza de familia en distintas iniciativas que reflejan nuestro compromiso con su <strong>bienestar, apoyo educativo, formación no formal</strong> y <strong>desarrollo integral</strong>.
+            <p style="font-size: 1.3rem; color: var(--secondary); line-height: 1.6; font-weight: 700; margin-bottom: 1.8rem;">
+                Una historia de servicio, solidaridad y fe que nació en el seno de nuestra familia y que hoy da el paso hacia su constitución formal.
             </p>
+            
+            <div style="background: #ffffff; border-radius: 20px; padding: 2.5rem 2.2rem; box-shadow: var(--shadow); text-align: left; border-left: 5px solid var(--primary); margin-bottom: 2rem;">
+                <p style="font-size: 1.1rem; color: var(--text-dark); line-height: 1.8; margin-bottom: 1.2rem;">
+                    Aunque actualmente nos encontramos en el proceso de <strong>constituir formalmente la Fundación ADN de Amor</strong>, nuestra labor no comienza en un papel: <strong>nace del corazón y la siembra viva de nuestra familia</strong>. Inspirados en el ejemplo imborrable de amor al prójimo, fe y generosidad de nuestra madre y abuela, la señora <strong>Nidia López de Giraldo</strong>, durante más de 15 años hemos caminado de manera cercana con niños, niñas, jóvenes y familias en condición de vulnerabilidad en el Chocó y el Eje Cafetero.
+                </p>
+                <p style="font-size: 1.1rem; color: var(--text-dark); line-height: 1.8; margin-bottom: 0;">
+                    Mucho antes de contar con una estructura jurídica formal, pusimos a disposición nuestros propios recursos, tiempo, talentos y hogares para impartir <strong>talleres formativos de artes, música, inglés, apoyo escolar, entrega de alimentos, ropa y celebraciones navideñas</strong>. Estas memorias son el testimonio fotográfico y humano de esa siembra familiar desinteresada que hoy decidimos consolidar como <strong>Fundación ADN de Amor</strong> para multiplicar nuestro alcance, formalizar alianzas y transformar juntos muchas más historias de vida.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- De la Labor Familiar a la Fundación Formal -->
+    <section class="section" style="padding-top: 0; padding-bottom: 40px;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                
+                <!-- Columna 1 -->
+                <div style="background: #ffffff; border-radius: 18px; padding: 2rem; box-shadow: var(--shadow); display: flex; flex-direction: column; border-top: 4px solid var(--secondary);">
+                    <div style="width: 55px; height: 55px; border-radius: 12px; background: rgba(0, 16, 62, 0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem;">
+                        <i class="fas fa-heart" style="font-size: 1.5rem; color: var(--secondary);"></i>
+                    </div>
+                    <h4 style="font-size: 1.25rem; color: var(--secondary); margin-bottom: 0.8rem;">1. Legado de Doña Nidia</h4>
+                    <p style="font-size: 0.98rem; color: var(--text-dark); line-height: 1.7; margin: 0;">
+                        Pionera en llevar esperanza, brigadas y vivienda a Gingarabá (Chocó) y en centros carcelarios del Eje Cafetero (1980–2008), sembrando en sus hijos y nieta la vocación del servicio cristiano desinteresado.
+                    </p>
+                </div>
+
+                <!-- Columna 2 -->
+                <div style="background: #ffffff; border-radius: 18px; padding: 2rem; box-shadow: var(--shadow); display: flex; flex-direction: column; border-top: 4px solid var(--primary);">
+                    <div style="width: 55px; height: 55px; border-radius: 12px; background: rgba(230, 57, 70, 0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem;">
+                        <i class="fas fa-hands-helping" style="font-size: 1.5rem; color: var(--primary);"></i>
+                    </div>
+                    <h4 style="font-size: 1.25rem; color: var(--primary); margin-bottom: 0.8rem;">2. Más de 15 Años de Labor Familiar</h4>
+                    <p style="font-size: 0.98rem; color: var(--text-dark); line-height: 1.7; margin: 0;">
+                        Talleres formativos de música, inglés, artes plásticas, entrega periódica de mercados, brigadas solidarias y navidades comunitarias sostenidas con recursos propios y profundo compromiso.
+                    </p>
+                </div>
+
+                <!-- Columna 3 -->
+                <div style="background: #ffffff; border-radius: 18px; padding: 2rem; box-shadow: var(--shadow); display: flex; flex-direction: column; border-top: 4px solid #2a9d8f;">
+                    <div style="width: 55px; height: 55px; border-radius: 12px; background: rgba(42, 157, 143, 0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem;">
+                        <i class="fas fa-building-columns" style="font-size: 1.5rem; color: #2a9d8f;"></i>
+                    </div>
+                    <h4 style="font-size: 1.25rem; color: var(--secondary); margin-bottom: 0.8rem;">3. Constitución Formal y Futuro</h4>
+                    <p style="font-size: 0.98rem; color: var(--text-dark); line-height: 1.7; margin: 0;">
+                        Hoy formalizamos legalmente la Fundación ADN de Amor para consolidar el Centro de Desarrollo de Talentos (CDT en Vereda Guacas), formalizar convenios empresariales y recibir voluntarios y practicantes.
+                    </p>
+                </div>
+
+            </div>
         </div>
     </section>
 
     <!-- Actividades -->
-    <section class="section" style="padding-top: 0;">
+    <section class="section" style="padding-top: 20px; padding-bottom: 50px;">
         <div class="container">
-            <h3 style="text-align: center; color: var(--primary); font-size: 1.8rem; margin-bottom: 3rem;">Algunas de nuestras actividades incluyen:</h3>
+            <h3 style="text-align: center; color: var(--secondary); font-size: 2rem; margin-bottom: 0.8rem;">Ejes de Nuestra Labor Familiar</h3>
+            <p style="text-align: center; color: var(--text-dark); font-size: 1.05rem; max-width: 750px; margin: 0 auto 3rem auto;">
+                Iniciativas que hemos desarrollado directamente con las familias y que hoy integran los programas oficiales de la Fundación:
+            </p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
                 <!-- Card 1 -->
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
-                    <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(230, 57, 70, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid rgba(230, 57, 70, 0.3);">
-                        <i class="fas fa-book-open" style="font-size: 2.2rem; color: var(--secondary);"></i>
+                <div style="display: flex; gap: 1.5rem; align-items: flex-start; background: #fff; padding: 1.8rem; border-radius: 15px; box-shadow: var(--shadow);">
+                    <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(230, 57, 70, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid rgba(230, 57, 70, 0.3);">
+                        <i class="fas fa-palette" style="font-size: 1.8rem; color: var(--primary);"></i>
                     </div>
                     <div>
-                        <h4 style="color: var(--secondary); font-size: 1.3rem; margin-bottom: 0.8rem;">Clases y talleres</h4>
-                        <p style="color: var(--text-dark); font-size: 1.05rem;">Inglés, arte, música y danza para fortalecer talentos y habilidades creativas y artísticas.</p>
+                        <h4 style="color: var(--secondary); font-size: 1.25rem; margin-bottom: 0.6rem;">Formación en Talentos</h4>
+                        <p style="color: var(--text-dark); font-size: 1rem; line-height: 1.6; margin: 0;">Talleres prácticos de inglés, arte, música, danza y valores para fortalecer las habilidades cognitivas, expresivas y proyectos de vida en niños y adolescentes.</p>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
-                    <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(230, 57, 70, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid rgba(230, 57, 70, 0.3);">
-                        <i class="fas fa-home" style="font-size: 2.2rem; color: var(--secondary);"></i>
-                        <i class="fas fa-heart" style="position: absolute; font-size: 0.8rem; color: var(--primary); margin-top: 5px;"></i>
+                <div style="display: flex; gap: 1.5rem; align-items: flex-start; background: #fff; padding: 1.8rem; border-radius: 15px; box-shadow: var(--shadow);">
+                    <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(230, 57, 70, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid rgba(230, 57, 70, 0.3);">
+                        <i class="fas fa-hand-holding-heart" style="font-size: 1.8rem; color: var(--primary);"></i>
                     </div>
                     <div>
-                        <h4 style="color: var(--secondary); font-size: 1.3rem; margin-bottom: 0.8rem;">Programa Esperanza</h4>
-                        <p style="color: var(--text-dark); font-size: 1.05rem;">Apoyo a familias vulnerables mediante entrega de alimentos, ropa y acompañamiento educativo, celebraciones navideñas y otras actividades comunitarias.</p>
+                        <h4 style="color: var(--secondary); font-size: 1.25rem; margin-bottom: 0.6rem;">Programa Esperanza y Familia</h4>
+                        <p style="color: var(--text-dark); font-size: 1rem; line-height: 1.6; margin: 0;">Acompañamiento cercano a familias vulnerables y madres cabeza de hogar mediante entrega de alimentos, ropa, calzado y celebraciones navideñas comunitarias.</p>
                     </div>
                 </div>
 
                 <!-- Card 3 -->
-                <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
-                    <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(230, 57, 70, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid rgba(230, 57, 70, 0.3);">
-                        <i class="fas fa-users" style="font-size: 2.2rem; color: var(--secondary);"></i>
-                        <i class="fas fa-heart" style="position: absolute; font-size: 0.8rem; color: var(--primary); margin-bottom: 25px; margin-left: 20px;"></i>
+                <div style="display: flex; gap: 1.5rem; align-items: flex-start; background: #fff; padding: 1.8rem; border-radius: 15px; box-shadow: var(--shadow);">
+                    <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(230, 57, 70, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid rgba(230, 57, 70, 0.3);">
+                        <i class="fas fa-map-location-dot" style="font-size: 1.8rem; color: var(--primary);"></i>
                     </div>
                     <div>
-                        <h4 style="color: var(--secondary); font-size: 1.3rem; margin-bottom: 0.8rem;">Visitas y actividades comunitarias</h4>
-                        <p style="color: var(--text-dark); font-size: 1.05rem;">Hospitales, brigadas y eventos en distintas comunidades para brindar acompañamiento, alegría y esperanza.</p>
+                        <h4 style="color: var(--secondary); font-size: 1.25rem; margin-bottom: 0.6rem;">Presencia en Comunidades</h4>
+                        <p style="color: var(--text-dark); font-size: 1rem; line-height: 1.6; margin: 0;">Visitas y jornadas solidarias en sectores vulnerables de Pereira, Santa Rosa de Cabal y la histórica labor social y humanitaria en Gingarabá (Chocó).</p>
                     </div>
                 </div>
             </div>
@@ -163,79 +220,81 @@
     </section>
 
     <!-- Galería en Carruseles -->
-    <section class="section" style="padding-top: 0;">
+    <section class="section" style="padding-top: 0; padding-bottom: 50px;">
         <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
                 
-                <!-- Carrusel 1 -->
-                <div style="text-align: center; display: flex; flex-direction: column;">
-                    <div style="position: relative; display: flex; align-items: center; justify-content: center; border-radius: 15px; margin-bottom: 1.5rem;">
-                        <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: -300, behavior: 'smooth'})" style="position: absolute; left: -15px; z-index: 10; width: 35px; height: 35px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"><i class="fas fa-chevron-left"></i></button>
+                <!-- Carrusel 1: Talleres y Talentos -->
+                <div style="text-align: center; display: flex; flex-direction: column; background: #fff; padding: 1.5rem; border-radius: 20px; box-shadow: var(--shadow);">
+                    <div style="position: relative; display: flex; align-items: center; justify-content: center; border-radius: 15px; margin-bottom: 1.2rem;">
+                        <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: -320, behavior: 'smooth'})" style="position: absolute; left: -12px; z-index: 10; width: 38px; height: 38px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.25);"><i class="fas fa-chevron-left"></i></button>
                         
-                        <div class="carousel-container" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); width: 100%;">
-                            <img src="FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png" alt="Clases y talleres" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
-                            <img src="FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png" alt="Otras clases" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
-                            <img src="FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png" alt="Más clases" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                        <div class="carousel-container" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); width: 100%;">
+                            <img src="FOTOS BANNERS/CDT INGLES BANNER FINAL SANDRA.webp" alt="Clase de inglés" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                            <img src="FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.webp" alt="Taller de arte y creatividad" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                            <img src="FOTOS BANNERS/CDT MUSICA 1 SELECCIONADA.webp" alt="Taller de música" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                            <img src="FOTOS BANNERS/CENTRO DESARROLLO DE TALENTOS BANNER 1.webp" alt="Desarrollo de Talentos" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
                         </div>
 
-                        <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: 300, behavior: 'smooth'})" style="position: absolute; right: -15px; z-index: 10; width: 35px; height: 35px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"><i class="fas fa-chevron-right"></i></button>
+                        <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: 320, behavior: 'smooth'})" style="position: absolute; right: -12px; z-index: 10; width: 38px; height: 38px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.25);"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     
-                    <div class="carousel-dots" style="display: flex; justify-content: center; gap: 6px; margin-bottom: 10px;">
-                        <div class="dot" style="width: 8px; height: 8px; border-radius: 50%; background: var(--secondary); transition: background 0.3s;"></div>
-                        <div class="dot" style="width: 8px; height: 8px; border-radius: 50%; background: rgba(0,16,62,0.2); transition: background 0.3s;"></div>
-                        <div class="dot" style="width: 8px; height: 8px; border-radius: 50%; background: rgba(0,16,62,0.2); transition: background 0.3s;"></div>
+                    <div class="carousel-dots" style="display: flex; justify-content: center; gap: 8px; margin-bottom: 12px;">
+                        <div class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: var(--secondary); cursor: pointer; transition: background 0.3s;"></div>
+                        <div class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(0,16,62,0.2); cursor: pointer; transition: background 0.3s;"></div>
+                        <div class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(0,16,62,0.2); cursor: pointer; transition: background 0.3s;"></div>
+                        <div class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(0,16,62,0.2); cursor: pointer; transition: background 0.3s;"></div>
                     </div>
-                    <p style="color: var(--text-dark); font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 1.1rem; margin-top: auto;">
-                        <i class="fas fa-heart" style="color: var(--primary);"></i> En distintas ocasiones
+                    <p style="color: var(--secondary); font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 1.1rem; margin-top: auto; margin-bottom: 0;">
+                        <i class="fas fa-palette" style="color: var(--primary);"></i> Talleres y Formación de Talentos
                     </p>
                 </div>
 
-                <!-- Carrusel 2 -->
-                <div style="text-align: center; display: flex; flex-direction: column;">
-                    <div style="position: relative; display: flex; align-items: center; justify-content: center; border-radius: 15px; margin-bottom: 1.5rem;">
-                        <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: -300, behavior: 'smooth'})" style="position: absolute; left: -15px; z-index: 10; width: 35px; height: 35px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"><i class="fas fa-chevron-left"></i></button>
+                <!-- Carrusel 2: Navidades y Familias -->
+                <div style="text-align: center; display: flex; flex-direction: column; background: #fff; padding: 1.5rem; border-radius: 20px; box-shadow: var(--shadow);">
+                    <div style="position: relative; display: flex; align-items: center; justify-content: center; border-radius: 15px; margin-bottom: 1.2rem;">
+                        <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: -320, behavior: 'smooth'})" style="position: absolute; left: -12px; z-index: 10; width: 38px; height: 38px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.25);"><i class="fas fa-chevron-left"></i></button>
                         
-                        <div class="carousel-container" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); width: 100%;">
-                            <img src="FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png" alt="Programa Esperanza" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
-                            <img src="FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png" alt="Esperanza" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
-                            <img src="FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png" alt="Esperanza 2" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                        <div class="carousel-container" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); width: 100%;">
+                            <img src="FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.webp" alt="Jornadas Navideñas" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                            <img src="FOTOS BANNERS/foto prinicpal 2 niños banner final.webp" alt="Acompañamiento a la infancia" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                            <img src="FOTOS BANNERS/foto sandra guamos banner final mejor.webp" alt="Acompañamiento comunitario" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
                         </div>
 
-                        <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: 300, behavior: 'smooth'})" style="position: absolute; right: -15px; z-index: 10; width: 35px; height: 35px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"><i class="fas fa-chevron-right"></i></button>
+                        <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: 320, behavior: 'smooth'})" style="position: absolute; right: -12px; z-index: 10; width: 38px; height: 38px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.25);"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     
-                    <div class="carousel-dots" style="display: flex; justify-content: center; gap: 6px; margin-bottom: 10px;">
-                        <div class="dot" style="width: 8px; height: 8px; border-radius: 50%; background: var(--secondary); transition: background 0.3s;"></div>
-                        <div class="dot" style="width: 8px; height: 8px; border-radius: 50%; background: rgba(0,16,62,0.2); transition: background 0.3s;"></div>
-                        <div class="dot" style="width: 8px; height: 8px; border-radius: 50%; background: rgba(0,16,62,0.2); transition: background 0.3s;"></div>
+                    <div class="carousel-dots" style="display: flex; justify-content: center; gap: 8px; margin-bottom: 12px;">
+                        <div class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: var(--secondary); cursor: pointer; transition: background 0.3s;"></div>
+                        <div class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(0,16,62,0.2); cursor: pointer; transition: background 0.3s;"></div>
+                        <div class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(0,16,62,0.2); cursor: pointer; transition: background 0.3s;"></div>
                     </div>
-                    <p style="color: var(--text-dark); font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 1.1rem; margin-top: auto;">
-                        <i class="fas fa-heart" style="color: var(--primary);"></i> A lo largo de nuestras actividades
+                    <p style="color: var(--secondary); font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 1.1rem; margin-top: auto; margin-bottom: 0;">
+                        <i class="fas fa-gift" style="color: var(--primary);"></i> Jornadas Navideñas y Apoyo Familiar
                     </p>
                 </div>
 
-                <!-- Carrusel 3 -->
-                <div style="text-align: center; display: flex; flex-direction: column;">
-                    <div style="position: relative; display: flex; align-items: center; justify-content: center; border-radius: 15px; margin-bottom: 1.5rem;">
-                        <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: -300, behavior: 'smooth'})" style="position: absolute; left: -15px; z-index: 10; width: 35px; height: 35px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"><i class="fas fa-chevron-left"></i></button>
+                <!-- Carrusel 3: Chocó y Comunidades -->
+                <div style="text-align: center; display: flex; flex-direction: column; background: #fff; padding: 1.5rem; border-radius: 20px; box-shadow: var(--shadow);">
+                    <div style="position: relative; display: flex; align-items: center; justify-content: center; border-radius: 15px; margin-bottom: 1.2rem;">
+                        <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: -320, behavior: 'smooth'})" style="position: absolute; left: -12px; z-index: 10; width: 38px; height: 38px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.25);"><i class="fas fa-chevron-left"></i></button>
                         
-                        <div class="carousel-container" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); width: 100%;">
-                            <img src="FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png" alt="Visitas Comunitarias" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
-                            <img src="FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png" alt="Visitas 2" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
-                            <img src="FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png" alt="Visitas 3" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                        <div class="carousel-container" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); width: 100%;">
+                            <img src="FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.webp" alt="Misión Chocó Gingarabá" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                            <img src="FOTOS BANNERS/MISION CHOCO MEJOR BANNER OPCION DOS.webp" alt="Comunidad del Chocó" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                            <img src="FOTOS BANNERS/FOTO GRUPO JOVENES.webp" alt="Liderazgo y jóvenes" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
                         </div>
 
-                        <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: 300, behavior: 'smooth'})" style="position: absolute; right: -15px; z-index: 10; width: 35px; height: 35px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"><i class="fas fa-chevron-right"></i></button>
+                        <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: 320, behavior: 'smooth'})" style="position: absolute; right: -12px; z-index: 10; width: 38px; height: 38px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.25);"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     
-                    <div class="carousel-dots" style="display: flex; justify-content: center; gap: 6px; margin-bottom: 10px;">
-                        <div class="dot" style="width: 8px; height: 8px; border-radius: 50%; background: var(--secondary); transition: background 0.3s;"></div>
-                        <div class="dot" style="width: 8px; height: 8px; border-radius: 50%; background: rgba(0,16,62,0.2); transition: background 0.3s;"></div>
-                        <div class="dot" style="width: 8px; height: 8px; border-radius: 50%; background: rgba(0,16,62,0.2); transition: background 0.3s;"></div>
+                    <div class="carousel-dots" style="display: flex; justify-content: center; gap: 8px; margin-bottom: 12px;">
+                        <div class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: var(--secondary); cursor: pointer; transition: background 0.3s;"></div>
+                        <div class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(0,16,62,0.2); cursor: pointer; transition: background 0.3s;"></div>
+                        <div class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(0,16,62,0.2); cursor: pointer; transition: background 0.3s;"></div>
                     </div>
-                    <p style="color: var(--text-dark); font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 1.1rem; margin-top: auto;">
-                        <i class="fas fa-heart" style="color: var(--primary);"></i> En distintas ocasiones
+                    <p style="color: var(--secondary); font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 1.1rem; margin-top: auto; margin-bottom: 0;">
+                        <i class="fas fa-earth-americas" style="color: var(--primary);"></i> Misión Chocó y Labor Comunitaria
                     </p>
                 </div>
 
@@ -244,29 +303,36 @@
     </section>
 
     <!-- Banner Final -->
-    <section class="section" style="padding-top: 0; padding-bottom: 80px;">
+    <section class="section" style="padding-top: 10px; padding-bottom: 80px;">
         <div class="container">
-            <div style="background: rgba(230, 57, 70, 0.08); border-radius: 20px; padding: 2.5rem 3rem; display: flex; align-items: center; justify-content: space-between; gap: 3rem; flex-wrap: wrap;">
+            <div style="background: linear-gradient(135deg, rgba(230, 57, 70, 0.08) 0%, rgba(0, 16, 62, 0.05) 100%); border-radius: 24px; padding: 3rem; display: flex; align-items: center; justify-content: space-between; gap: 3rem; flex-wrap: wrap; border: 1px solid rgba(230, 57, 70, 0.15);">
                 
                 <div style="display: flex; align-items: center; gap: 2rem; flex: 1; min-width: 300px;">
                     <!-- Icono Corazon y Cruz -->
-                    <div style="position: relative; color: var(--secondary); flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
-                        <i class="far fa-heart" style="font-size: 5rem;"></i>
-                        <i class="fas fa-plus" style="position: absolute; font-size: 1.8rem; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+                    <div style="position: relative; color: var(--secondary); flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 90px; height: 90px; background: #fff; border-radius: 50%; box-shadow: 0 8px 20px rgba(0,0,0,0.08);">
+                        <i class="far fa-heart" style="font-size: 3.5rem; color: var(--primary);"></i>
+                        <i class="fas fa-plus" style="position: absolute; font-size: 1.4rem; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--secondary);"></i>
                     </div>
 
                     <!-- Texto -->
                     <div>
-                        <p style="color: var(--secondary); font-size: 1.15rem; line-height: 1.6; margin: 0; font-weight: 500;">
-                            Cada momento compartido nos motiva a seguir sembrando <strong>amor, fe y esperanza,</strong> contribuyendo al <strong>desarrollo integral</strong> y al bienestar de nuestras comunidades.
+                        <h4 style="color: var(--secondary); font-size: 1.35rem; margin-bottom: 0.5rem;">Una labor viva que sigue creciendo</h4>
+                        <p style="color: var(--text-dark); font-size: 1.05rem; line-height: 1.6; margin: 0; font-weight: 500;">
+                            Cada sonrisa compartida, cada niño abrazado y cada semilla sembrada en familia durante estos años nos impulsan a seguir adelante. Hoy, con la constitución formal de la <strong>Fundación ADN de Amor</strong>, renovamos nuestra fe y abrimos los brazos para caminar junto a ti.
                         </p>
                     </div>
                 </div>
 
-                <!-- Cursiva -->
-                <div style="flex-shrink: 0; text-align: center; position: relative;">
-                    <span style="font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--primary); line-height: 1;">¡Seguimos <br>caminando juntos!</span>
-                    <i class="far fa-heart" style="color: var(--primary); font-size: 1.2rem; position: absolute; bottom: 0; right: -20px;"></i>
+                <!-- Cursiva y Botones -->
+                <div style="flex-shrink: 0; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.2rem;">
+                    <div style="position: relative;">
+                        <span style="font-family: 'Great Vibes', cursive; font-size: 3.2rem; color: var(--primary); line-height: 1.1; display: block;">¡Seguimos <br>caminando juntos!</span>
+                        <i class="far fa-heart" style="color: var(--primary); font-size: 1.2rem; position: absolute; bottom: 5px; right: -15px;"></i>
+                    </div>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                        <a href="programas#donde-estamos" class="btn btn-outline" style="font-size: 0.88rem; padding: 8px 18px;">Dónde Estamos</a>
+                        <a href="/#donar" class="btn btn-primary" style="font-size: 0.88rem; padding: 8px 18px;">Apoya Nuestra Labor</a>
+                    </div>
                 </div>
 
             </div>
@@ -278,11 +344,23 @@
     <script src="main.js"></script>
     <script>
         document.querySelectorAll('.carousel-container').forEach(container => {
+            const dots = container.closest('div[style*="text-align: center"]').querySelectorAll('.dot');
+            
+            // Scroll listener to update active dot
             container.addEventListener('scroll', () => {
                 const index = Math.round(container.scrollLeft / container.clientWidth);
-                const dots = container.parentElement.nextElementSibling.querySelectorAll('.dot');
                 dots.forEach((dot, i) => {
                     dot.style.background = i === index ? 'var(--secondary)' : 'rgba(0,16,62,0.2)';
+                });
+            });
+
+            // Click listener on dots
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    container.scrollTo({
+                        left: i * container.clientWidth,
+                        behavior: 'smooth'
+                    });
                 });
             });
         });
