@@ -9,6 +9,10 @@
     <meta name="description"
         content="Memorias de Nuestra Labor. A lo largo de nuestro recorrido, hemos acompañado a niños y familias en distintas iniciativas que reflejan nuestro compromiso.">
 
+        <!-- Preconnect fuentes y assets externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="styles.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;600&family=Great+Vibes&display=swap"
@@ -32,7 +36,7 @@
     <!-- Navbar -->
     <header class="navbar">
         <div class="container nav-container">
-            <a href="https://entornos.detodopelis.co/panel/" class="logo">
+            <a href="index.php" class="logo">
                 <img src="LOGO Y VISUAL WEB BOTONES/logo ADN_de_Amor_color_rectangulo.png"
                     alt="Fundación ADN de Amor Logo">
             </a>
@@ -169,9 +173,9 @@
                         <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: -300, behavior: 'smooth'})" style="position: absolute; left: -15px; z-index: 10; width: 35px; height: 35px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"><i class="fas fa-chevron-left"></i></button>
                         
                         <div class="carousel-container" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); width: 100%;">
-                            <img src="FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png" alt="Clases y talleres" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;">
-                            <img src="FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png" alt="Otras clases" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;">
-                            <img src="FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png" alt="Más clases" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;">
+                            <img src="FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png" alt="Clases y talleres" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                            <img src="FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png" alt="Otras clases" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                            <img src="FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png" alt="Más clases" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
                         </div>
 
                         <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: 300, behavior: 'smooth'})" style="position: absolute; right: -15px; z-index: 10; width: 35px; height: 35px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"><i class="fas fa-chevron-right"></i></button>
@@ -193,9 +197,9 @@
                         <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: -300, behavior: 'smooth'})" style="position: absolute; left: -15px; z-index: 10; width: 35px; height: 35px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"><i class="fas fa-chevron-left"></i></button>
                         
                         <div class="carousel-container" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); width: 100%;">
-                            <img src="FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png" alt="Programa Esperanza" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;">
-                            <img src="FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png" alt="Esperanza" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;">
-                            <img src="FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png" alt="Esperanza 2" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;">
+                            <img src="FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png" alt="Programa Esperanza" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                            <img src="FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png" alt="Esperanza" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                            <img src="FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png" alt="Esperanza 2" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
                         </div>
 
                         <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: 300, behavior: 'smooth'})" style="position: absolute; right: -15px; z-index: 10; width: 35px; height: 35px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"><i class="fas fa-chevron-right"></i></button>
@@ -217,9 +221,9 @@
                         <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: -300, behavior: 'smooth'})" style="position: absolute; left: -15px; z-index: 10; width: 35px; height: 35px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"><i class="fas fa-chevron-left"></i></button>
                         
                         <div class="carousel-container" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); width: 100%;">
-                            <img src="FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png" alt="Visitas Comunitarias" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;">
-                            <img src="FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png" alt="Visitas 2" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;">
-                            <img src="FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png" alt="Visitas 3" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;">
+                            <img src="FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png" alt="Visitas Comunitarias" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                            <img src="FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png" alt="Visitas 2" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
+                            <img src="FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png" alt="Visitas 3" style="flex: 0 0 100%; width: 100%; height: 280px; object-fit: cover; scroll-snap-align: center;" loading="lazy" decoding="async">
                         </div>
 
                         <button onclick="this.parentElement.querySelector('.carousel-container').scrollBy({left: 300, behavior: 'smooth'})" style="position: absolute; right: -15px; z-index: 10; width: 35px; height: 35px; border-radius: 50%; background: var(--secondary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"><i class="fas fa-chevron-right"></i></button>

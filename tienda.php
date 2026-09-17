@@ -20,6 +20,10 @@ try {
     <meta name="description"
         content="Nuestra Tienda Solidaria estará activa muy pronto. Descubre productos con propósito que apoyan a niños y familias vulnerables.">
 
+        <!-- Preconnect fuentes y assets externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="styles.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;600&family=Great+Vibes&display=swap"
@@ -312,7 +316,7 @@ try {
                         ?>
                         <div class="product-card">
                             <div class="product-img-wrapper">
-                                <img class="product-img" src="<?php echo htmlspecialchars($image); ?>" alt="<?php echo htmlspecialchars($name); ?>">
+                                <img class="product-img" src="<?php echo htmlspecialchars($image); ? loading="lazy" decoding="async">" alt="<?php echo htmlspecialchars($name); ?>">
                                 <?php if ($discount): ?>
                                     <div class="badge-offer">Oferta</div>
                                 <?php endif; ?>

@@ -9,18 +9,22 @@
     
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://entornos.detodopelis.co/apadrinar.php">
+    <meta property="og:url" content="https://fundacionadndeamor.org/apadrinar.php">
     <meta property="og:title" content="Apadrina un Niño | Fundación ADN de Amor">
     <meta property="og:description" content="Apadrina a un niño, niña o adolescente. Con tu apoyo, abres caminos de esperanza y bienestar.">
-    <meta property="og:image" content="https://entornos.detodopelis.co/FOTOS%20BANNERS/foto%20principal%20ni%C3%B1os%20banner%20final.png">
+    <meta property="og:image" content="https://fundacionadndeamor.org/FOTOS%20BANNERS/foto%20principal%20ni%C3%B1os%20banner%20final.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://entornos.detodopelis.co/apadrinar.php">
+    <meta property="twitter:url" content="https://fundacionadndeamor.org/apadrinar.php">
     <meta property="twitter:title" content="Apadrina un Niño | Fundación ADN de Amor">
     <meta property="twitter:description" content="Apadrina a un niño, niña o adolescente. Con tu apoyo, abres caminos de esperanza y bienestar.">
-    <meta property="twitter:image" content="https://entornos.detodopelis.co/FOTOS%20BANNERS/foto%20principal%20ni%C3%B1os%20banner%20final.png">
+    <meta property="twitter:image" content="https://fundacionadndeamor.org/FOTOS%20BANNERS/foto%20principal%20ni%C3%B1os%20banner%20final.png">
 
+        <!-- Preconnect fuentes y assets externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -94,7 +98,7 @@
     <!-- Navbar -->
     <header class="navbar">
         <div class="container nav-container">
-            <a href="https://entornos.detodopelis.co/panel/" class="logo">
+            <a href="index.php" class="logo">
                 <img src="LOGO Y VISUAL WEB BOTONES/logo ADN_de_Amor_color_rectangulo.png" alt="Fundación ADN de Amor Logo">
             </a>
             <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
@@ -174,7 +178,7 @@
                 </div>
                 <div class="split-image">
                     <div class="organic-img-2">
-                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'apad_intro_img', 'FOTOS BANNERS/MAMA CON ANGELICA  DEFINITIVA BANNER.png')) ?>" alt="Niña sonriendo">
+                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'apad_intro_img', 'FOTOS BANNERS/MAMA CON ANGELICA  DEFINITIVA BANNER.png')) ? loading="lazy" decoding="async">" alt="Niña sonriendo">
                     </div>
                 </div>
             </div>
@@ -253,7 +257,7 @@
                 </div>
                 <div class="split-image">
                     <div class="organic-img">
-                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'apad_ben_img', 'FOTOS BANNERS/foto principal niños banner final.png')) ?>" alt="Niños felices">
+                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'apad_ben_img', 'FOTOS BANNERS/foto principal niños banner final.png')) ? loading="lazy" decoding="async">" alt="Niños felices">
                     </div>
                 </div>
             </div>

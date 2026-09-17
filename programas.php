@@ -10,22 +10,26 @@
 
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://entornos.detodopelis.co/programas.php">
+    <meta property="og:url" content="https://fundacionadndeamor.org/programas.php">
     <meta property="og:title" content="Nuestros Programas | Fundación ADN de Amor">
     <meta property="og:description"
         content="Conoce el Centro de Desarrollo de Talentos, Programa Esperanza y Misión Chocó.">
     <meta property="og:image"
-        content="https://entornos.detodopelis.co/FOTOS%20BANNERS/foto%20principal%20ni%C3%B1os%20banner%20final.png">
+        content="https://fundacionadndeamor.org/FOTOS%20BANNERS/foto%20principal%20ni%C3%B1os%20banner%20final.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://entornos.detodopelis.co/programas.php">
+    <meta property="twitter:url" content="https://fundacionadndeamor.org/programas.php">
     <meta property="twitter:title" content="Nuestros Programas | Fundación ADN de Amor">
     <meta property="twitter:description"
         content="Conoce el Centro de Desarrollo de Talentos, Programa Esperanza y Misión Chocó.">
     <meta property="twitter:image"
-        content="https://entornos.detodopelis.co/FOTOS%20BANNERS/foto%20principal%20ni%C3%B1os%20banner%20final.png">
+        content="https://fundacionadndeamor.org/FOTOS%20BANNERS/foto%20principal%20ni%C3%B1os%20banner%20final.png">
 
+        <!-- Preconnect fuentes y assets externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="styles.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;600&family=Great+Vibes&display=swap"
@@ -93,7 +97,7 @@
     <!-- Navbar -->
     <header class="navbar">
         <div class="container nav-container">
-            <a href="https://entornos.detodopelis.co/panel/" class="logo">
+            <a href="index.php" class="logo">
                 <img src="LOGO Y VISUAL WEB BOTONES/logo ADN_de_Amor_color_rectangulo.png"
                     alt="Fundación ADN de Amor Logo">
             </a>
@@ -177,7 +181,7 @@
                     </ul>
                 </div>
                 <div class="split-image organic-img">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_donde_img', 'FOTOS BANNERS/foto principal niños original tamaño mejorada luz.png')) ?>" alt="Sede y regiones">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_donde_img', 'FOTOS BANNERS/foto principal niños original tamaño mejorada luz.png')) ? loading="lazy" decoding="async">" alt="Sede y regiones">
                 </div>
             </div>
         </div>
@@ -201,7 +205,7 @@
                     <p style="margin-top: 1.5rem;"><?= htmlspecialchars(get_site_content($pdo, 'prog_que_p2', 'Cada acción se guía por principios cristianos de amor, fe, esperanza y servicio, buscando sembrar valores, brindar oportunidades y fortalecer comunidades humanas y solidarias.')) ?></p>
                 </div>
                 <div class="split-image organic-img-2">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_que_img', 'FOTOS BANNERS/CENTRO DESARROLLO DE TALENTOS BANNER 1.png')) ?>" alt="Labor de la Fundación">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_que_img', 'FOTOS BANNERS/CENTRO DESARROLLO DE TALENTOS BANNER 1.png')) ? loading="lazy" decoding="async">" alt="Labor de la Fundación">
                 </div>
             </div>
         </div>
@@ -257,13 +261,13 @@
 
             <div class="grid-3" style="margin-top: 3rem;">
                 <div class="program-card">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img1', 'FOTOS BANNERS/CDT INGLES BANNER FINAL SANDRA.png')) ?>" alt="Clases de Inglés">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img1', 'FOTOS BANNERS/CDT INGLES BANNER FINAL SANDRA.png')) ? loading="lazy" decoding="async">" alt="Clases de Inglés">
                 </div>
                 <div class="program-card">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img2', 'FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png')) ?>" alt="Clases de Arte">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img2', 'FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png')) ? loading="lazy" decoding="async">" alt="Clases de Arte">
                 </div>
                 <div class="program-card">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img3', 'FOTOS BANNERS/CDT MUSICA 1 SELECCIONADA.png')) ?>" alt="Música">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img3', 'FOTOS BANNERS/CDT MUSICA 1 SELECCIONADA.png')) ? loading="lazy" decoding="async">" alt="Música">
                 </div>
             </div>
 
@@ -300,7 +304,7 @@
                 </div>
                 <div class="split-image">
                     <div class="organic-img-2">
-                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_esp_img', 'FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png')) ?>" alt="Programa Esperanza y Navidades">
+                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_esp_img', 'FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png')) ? loading="lazy" decoding="async">" alt="Programa Esperanza y Navidades">
                     </div>
                 </div>
             </div>
@@ -327,7 +331,7 @@
                 </div>
                 <div class="split-image">
                     <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_choco_img', 'FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png')) ?>" alt="Misión Chocó"
+                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_choco_img', 'FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png')) ? loading="lazy" decoding="async">" alt="Misión Chocó"
                             style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                     </div>
                 </div>

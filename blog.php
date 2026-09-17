@@ -9,6 +9,10 @@
     <meta name="description"
         content="Nuestro Blog estará disponible muy pronto. Descubre historias inspiradoras y noticias sobre nuestra labor.">
 
+        <!-- Preconnect fuentes y assets externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="styles.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;600&family=Great+Vibes&display=swap"
@@ -32,7 +36,7 @@
     <!-- Navbar -->
     <header class="navbar">
         <div class="container nav-container">
-            <a href="https://entornos.detodopelis.co/panel/" class="logo">
+            <a href="index.php" class="logo">
                 <img src="LOGO Y VISUAL WEB BOTONES/logo ADN_de_Amor_color_rectangulo.png"
                     alt="Fundación ADN de Amor Logo">
             </a>

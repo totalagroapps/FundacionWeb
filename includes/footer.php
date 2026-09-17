@@ -3,7 +3,7 @@
         <div class="footer-container">
             <!-- Logo & Social -->
             <div class="footer-col-1">
-                <img src="LOGO Y VISUAL WEB BOTONES/logo ADN_de_Amor_color_rectangulo.png" class="footer-logo-white" alt="ADN de Amor">
+                <img src="LOGO Y VISUAL WEB BOTONES/logo ADN_de_Amor_color_rectangulo.png" class="footer-logo-white" alt="ADN de Amor" loading="lazy" decoding="async">
                 <div class="social-icons-left">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>

@@ -83,23 +83,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Preloader (5 seconds logic with cache detection)
-window.addEventListener('load', () => {
+// Preloader optimizado (desaparición inmediata y fluida sin esperas artificiales)
+const hidePreloader = () => {
     const preloader = document.getElementById('preloader');
-    if (preloader) {
-        // Verificar si es la primera vez que entra en esta sesión (las imágenes no están en caché)
-        const hasVisited = sessionStorage.getItem('site_loaded');
-        
-        if (hasVisited) {
-            // Ya visitó la web, las imágenes están en caché. Se oculta de inmediato.
+    if (preloader && !preloader.classList.contains('fade-out')) {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
             preloader.style.display = 'none';
-        } else {
-            // Primera visita: mostrar pantalla de carga por 5 segundos
-            setTimeout(() => {
-                preloader.classList.add('fade-out');
-                // Guardar en el navegador que ya cargó las imágenes
-                sessionStorage.setItem('site_loaded', 'true');
-            }, 5000);
-        }
+        }, 500);
     }
+};
+
+// Se oculta en cuanto el DOM esté listo o máximo tras el evento load
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(hidePreloader, 200);
 });
+window.addEventListener('load', hidePreloader);
+// Fallback de seguridad por si alguna red externa tarda
+setTimeout(hidePreloader, 1000);

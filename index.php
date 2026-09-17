@@ -11,21 +11,26 @@
 
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://entornos.detodopelis.co/">
+    <meta property="og:url" content="https://fundacionadndeamor.org/">
     <meta property="og:title" content="Fundación ADN de Amor | Oportunidades y Esperanza">
     <meta property="og:description"
         content="Apadrina, dona y colabora con la Fundación ADN de Amor para generar oportunidades, esperanza y bienestar para niños, niñas y adolescentes.">
     <meta property="og:image"
-        content="https://entornos.detodopelis.co/FOTOS%20BANNERS/foto%20principal%20ni%C3%B1os%20banner%20final.png">
+        content="https://fundacionadndeamor.org/FOTOS%20BANNERS/foto%20principal%20ni%C3%B1os%20banner%20final.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://entornos.detodopelis.co/">
+    <meta property="twitter:url" content="https://fundacionadndeamor.org/">
     <meta property="twitter:title" content="Fundación ADN de Amor | Oportunidades y Esperanza">
     <meta property="twitter:description"
         content="Apadrina, dona y colabora con la Fundación ADN de Amor para generar oportunidades, esperanza y bienestar para niños, niñas y adolescentes.">
     <meta property="twitter:image"
-        content="https://entornos.detodopelis.co/FOTOS%20BANNERS/foto%20principal%20ni%C3%B1os%20banner%20final.png">
+        content="https://fundacionadndeamor.org/FOTOS%20BANNERS/foto%20principal%20ni%C3%B1os%20banner%20final.png">
+
+    <!-- Preconnect fuentes y assets externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
     <link rel="stylesheet" href="styles.css">
     <link
@@ -166,7 +171,7 @@
             <div class="grid-3">
                 <div class="image-card organic-card card-blue" style="padding: 0; overflow: hidden;">
                     <img src="<?= htmlspecialchars(get_site_content($pdo, 'apadrinar_card1_img', 'FOTOS BANNERS/foto prinicpal 2 niños banner final.png')) ?>" alt="A Largo Plazo"
-                        style="width: 100%; height: 200px; object-fit: cover;">
+                        loading="lazy" decoding="async" style="width: 100%; height: 200px; object-fit: cover;">
                     <div style="padding: 1rem 3rem 3.5rem 3rem;">
                         <h3 style="margin-top: 1rem;"><?= htmlspecialchars(get_site_content($pdo, 'apadrinar_card1_title', 'A Largo Plazo')) ?></h3>
                         <p style="font-size: 0.95rem;"><?= htmlspecialchars(get_site_content($pdo, 'apadrinar_card1_desc', 'Crea un vínculo constante con el apadrinado y su familia, apoyando su desarrollo integral.')) ?></p>
@@ -174,7 +179,7 @@
                 </div>
                 <div class="image-card organic-card card-orange" style="padding: 0; overflow: hidden;">
                     <img src="<?= htmlspecialchars(get_site_content($pdo, 'apadrinar_card2_img', 'FOTOS BANNERS/CDT MUSICA 1 SELECCIONADA.png')) ?>" alt="Desarrollo de Talentos"
-                        style="width: 100%; height: 200px; object-fit: cover;">
+                        loading="lazy" decoding="async" style="width: 100%; height: 200px; object-fit: cover;">
                     <div style="padding: 1rem 3rem 3.5rem 3rem;">
                         <h3 style="margin-top: 1rem;"><?= htmlspecialchars(get_site_content($pdo, 'apadrinar_card2_title', 'Desarrollo de Talentos')) ?></h3>
                         <p style="font-size: 0.95rem;"><?= htmlspecialchars(get_site_content($pdo, 'apadrinar_card2_desc', 'Permite que asistan al CDT para clases de inglés, arte, música, danza y formación.')) ?></p>
@@ -182,7 +187,7 @@
                 </div>
                 <div class="image-card organic-card card-green" style="padding: 0; overflow: hidden;">
                     <img src="<?= htmlspecialchars(get_site_content($pdo, 'apadrinar_card3_img', 'FOTOS BANNERS/MAMA CON ANGELICA  DEFINITIVA BANNER.png')) ?>" alt="Construye un Vínculo"
-                        style="width: 100%; height: 200px; object-fit: cover;">
+                        loading="lazy" decoding="async" style="width: 100%; height: 200px; object-fit: cover;">
                     <div style="padding: 1rem 3rem 3.5rem 3rem;">
                         <h3 style="margin-top: 1rem;"><?= htmlspecialchars(get_site_content($pdo, 'apadrinar_card3_title', 'Construye un Vínculo')) ?></h3>
                         <p style="font-size: 0.95rem;"><?= htmlspecialchars(get_site_content($pdo, 'apadrinar_card3_desc', 'Sigue su proceso, recibe fotos y mantén contacto a través de cartas o mensajes.')) ?></p>
@@ -201,7 +206,7 @@
         <div class="container">
             <div class="split-layout">
                 <div class="split-image organic-img">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'donar_img', 'FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png')) ?>" alt="Dona por una causa">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'donar_img', 'FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png')) ?>" alt="Dona por una causa" loading="lazy" decoding="async">
                 </div>
                 <div class="split-content">
                     <h2><?= htmlspecialchars(get_site_content($pdo, 'donar_title', 'Dona por una Causa')) ?></h2>
@@ -255,7 +260,7 @@
                         class="btn btn-primary btn-large mt-4"><?= htmlspecialchars(get_site_content($pdo, 'empresas_btn_text', 'Conviértete en Aliado')) ?></a>
                 </div>
                 <div class="split-image organic-img-2">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'empresas_img', 'FOTOS BANNERS/foto leo chicos mejorada ia.png')) ?>" alt="Niños felices">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'empresas_img', 'FOTOS BANNERS/foto leo chicos mejorada ia.png')) ?>" alt="Niños felices" loading="lazy" decoding="async">
                 </div>
             </div>
         </div>
@@ -281,7 +286,7 @@
         <div class="container">
             <div class="split-layout reverse">
                 <div class="split-image organic-img-2">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'tienda_img', 'FOTOS BANNERS/tienda_solidaria.png')) ?>" alt="Productos de la Tienda Solidaria">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'tienda_img', 'FOTOS BANNERS/tienda_solidaria.png')) ?>" alt="Productos de la Tienda Solidaria" loading="lazy" decoding="async">
                 </div>
                 <div class="split-content">
                     <h2><?= htmlspecialchars(get_site_content($pdo, 'tienda_title', 'Tienda Solidaria')) ?></h2>

@@ -3,7 +3,7 @@ session_start();
 require '../includes/db.php';
 
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header('Location: https://entornos.detodopelis.co/panel/');
+    header('Location: login.php');
     exit;
 }
 
