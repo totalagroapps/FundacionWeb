@@ -139,7 +139,7 @@
                     </div>
                 </div>
             </div>
-            <div class="slide" style="background-image: url('<?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_img', 'FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png')) ?>');">
+            <div class="slide" style="background-image: url('<?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_img', 'FOTOS BANNERS/CDT_arte_nina_pintura.png')) ?>');">
                 <div class="hero-overlay"></div>
                 <div class="hero-content container">
                     <h2><?= htmlspecialchars(get_site_content($pdo, 'hero_slide2_title', 'Centro de Desarrollo de Talentos')) ?></h2>
@@ -184,7 +184,7 @@
                     </div>
                 </div>
                 <div class="image-card organic-card card-orange" style="padding: 0; overflow: hidden;">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'apadrinar_card2_img', 'FOTOS BANNERS/CDT MUSICA 1 SELECCIONADA.png')) ?>" alt="Desarrollo de Talentos"
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'apadrinar_card2_img', 'FOTOS BANNERS/CDT_musica_nino_guitarra.png')) ?>" alt="Desarrollo de Talentos"
                         loading="lazy" decoding="async" style="width: 100%; height: 200px; object-fit: cover;">
                     <div style="padding: 1rem 3rem 3.5rem 3rem;">
                         <h3 style="margin-top: 1rem;"><?= htmlspecialchars(get_site_content($pdo, 'apadrinar_card2_title', 'Desarrollo de Talentos')) ?></h3>

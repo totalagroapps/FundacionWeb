@@ -302,7 +302,7 @@ try {
                     <p style="margin-top: 1.5rem;"><?= htmlspecialchars(get_site_content($pdo, 'prog_que_p2', 'Cada acción se guía por principios cristianos de amor, fe, esperanza y servicio, buscando sembrar valores, brindar oportunidades y fortalecer comunidades humanas y solidarias.')) ?></p>
                 </div>
                 <div class="split-image organic-img-2">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_que_img', 'FOTOS BANNERS/CENTRO DESARROLLO DE TALENTOS BANNER 1.png')) ?>" loading="lazy" decoding="async" alt="Labor de la Fundación">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_que_img', 'FOTOS BANNERS/CDT_talentos_completo_ninos.png')) ?>" loading="lazy" decoding="async" alt="Labor de la Fundación">
                 </div>
             </div>
         </div>
@@ -532,7 +532,7 @@ try {
                         <div class="cdt-slide">
                             <div class="cdt-slide-card">
                                 <div class="cdt-slide-img-box">
-                                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img1', 'FOTOS BANNERS/CDT INGLES BANNER FINAL SANDRA.png')) ?>" loading="lazy" decoding="async" alt="Clases de Inglés">
+                                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img1', 'FOTOS BANNERS/CDT_ingles_clase_real.png')) ?>" loading="lazy" decoding="async" alt="Clases de Inglés">
                                 </div>
                                 <div class="cdt-slide-caption">
                                     <span class="cdt-slide-tag"><i class="fas fa-language"></i> Idiomas</span>
@@ -546,7 +546,7 @@ try {
                         <div class="cdt-slide">
                             <div class="cdt-slide-card">
                                 <div class="cdt-slide-img-box">
-                                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img2', 'FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png')) ?>" loading="lazy" decoding="async" alt="Clases de Arte y Pintura">
+                                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img2', 'FOTOS BANNERS/CDT_arte_nina_pintura.png')) ?>" loading="lazy" decoding="async" alt="Clases de Arte y Pintura">
                                 </div>
                                 <div class="cdt-slide-caption">
                                     <span class="cdt-slide-tag"><i class="fas fa-palette"></i> Arte y Creatividad</span>
@@ -560,7 +560,7 @@ try {
                         <div class="cdt-slide">
                             <div class="cdt-slide-card">
                                 <div class="cdt-slide-img-box">
-                                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img3', 'FOTOS BANNERS/CDT MUSICA 1 SELECCIONADA.png')) ?>" loading="lazy" decoding="async" alt="Clases de Música y Canto">
+                                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img3', 'FOTOS BANNERS/CDT_musica_nino_guitarra.png')) ?>" loading="lazy" decoding="async" alt="Clases de Música y Canto">
                                 </div>
                                 <div class="cdt-slide-caption">
                                     <span class="cdt-slide-tag"><i class="fas fa-music"></i> Música y Ritmo</span>
@@ -574,7 +574,7 @@ try {
                         <div class="cdt-slide">
                             <div class="cdt-slide-card">
                                 <div class="cdt-slide-img-box">
-                                    <img src="FOTOS BANNERS/CENTRO DESARROLLO DE TALENTOS BANNER 1.png" loading="lazy" decoding="async" alt="Formación Integral CDT">
+                                    <img src="FOTOS BANNERS/CDT_talentos_completo_ninos.png" loading="lazy" decoding="async" alt="Formación Integral CDT">
                                 </div>
                                 <div class="cdt-slide-caption">
                                     <span class="cdt-slide-tag"><i class="fas fa-star"></i> Desarrollo Integral</span>
@@ -683,7 +683,7 @@ try {
                 </div>
                 <div class="split-image">
                     <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_choco_img', 'FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png')) ?>" loading="lazy" decoding="async" alt="Misión Chocó"
+                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_choco_img', 'FOTOS BANNERS/mision_choco_ninos_limpio.png')) ?>" loading="lazy" decoding="async" alt="Misión Chocó"
                             style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                     </div>
                 </div>

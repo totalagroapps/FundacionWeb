@@ -28,7 +28,7 @@ try {
         ['prog_que_li5_title', 'text', 'Redes de cooperación:', 'programas'],
         ['prog_que_li5_desc', 'text', 'Colaboración con aliados, voluntarios y organizaciones para ampliar el alcance y las oportunidades.', 'programas'],
         ['prog_que_p2', 'text', 'Cada acción se guía por principios cristianos de amor, fe, esperanza y servicio, buscando sembrar valores, brindar oportunidades y fortalecer comunidades humanas y solidarias.', 'programas'],
-        ['prog_que_img', 'image', 'FOTOS BANNERS/CENTRO DESARROLLO DE TALENTOS BANNER 1.png', 'programas'],
+        ['prog_que_img', 'image', 'FOTOS BANNERS/CDT_talentos_completo_ninos.png', 'programas'],
         
         // CDT
         ['prog_cdt_title', 'text', 'Centro de Desarrollo de Talentos', 'programas'],
@@ -50,9 +50,9 @@ try {
         ['prog_cdt_card7_title', 'text', 'Idiomas', 'programas'],
         ['prog_cdt_card7_desc', 'text', 'Enseñamos inglés de manera práctica y comunicativa, ampliando oportunidades educativas y laborales.', 'programas'],
         
-        ['prog_cdt_img1', 'image', 'FOTOS BANNERS/CDT INGLES BANNER FINAL SANDRA.png', 'programas'],
-        ['prog_cdt_img2', 'image', 'FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png', 'programas'],
-        ['prog_cdt_img3', 'image', 'FOTOS BANNERS/CDT MUSICA 1 SELECCIONADA.png', 'programas'],
+        ['prog_cdt_img1', 'image', 'FOTOS BANNERS/CDT_ingles_clase_real.png', 'programas'],
+        ['prog_cdt_img2', 'image', 'FOTOS BANNERS/CDT_arte_nina_pintura.png', 'programas'],
+        ['prog_cdt_img3', 'image', 'FOTOS BANNERS/CDT_musica_nino_guitarra.png', 'programas'],
         
         ['prog_cdt_bottom_title', 'text', 'Oportunidades de participación', 'programas'],
         ['prog_cdt_bottom_p1', 'text', 'Existen espacios para que voluntarios se unan como monitores, tutores o acompañantes de cada programa, así como la posibilidad de apadrinar a un niño o joven, apoyando su proceso de desarrollo y fortalecimiento de talentos. Más detalles sobre cómo participar se encuentran en la sección "Cómo sumarte" de nuestra web.', 'programas'],
@@ -86,7 +86,7 @@ try {
         ['prog_choco_li3', 'text', 'Entrega de ayuda humanitaria constante.', 'programas'],
         ['prog_choco_btn_text', 'text', 'Apadrina a una niña del Chocó', 'programas'],
         ['prog_choco_btn_url', 'text', 'apadrinar.php', 'programas'],
-        ['prog_choco_img', 'image', 'FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png', 'programas']
+        ['prog_choco_img', 'image', 'FOTOS BANNERS/mision_choco_ninos_limpio.png', 'programas']
     ];
 
     foreach ($new_content as $item) {

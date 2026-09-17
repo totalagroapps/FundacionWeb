@@ -135,6 +135,47 @@ function get_site_content($pdo, $key, $default = '') {
             }
             return 'practicas';
         }
+    // Reemplazo automático de banners publicitarios con texto por fotografías limpias de los niños
+    $clean_image_replacements = [
+        'apadrinar_card2_img' => 'FOTOS BANNERS/CDT_musica_nino_guitarra.png',
+        'hero_slide2_img'     => 'FOTOS BANNERS/CDT_arte_nina_pintura.png',
+        'prog_que_img'        => 'FOTOS BANNERS/CDT_talentos_completo_ninos.png',
+        'prog_cdt_img1'       => 'FOTOS BANNERS/CDT_ingles_clase_real.png',
+        'prog_cdt_img2'       => 'FOTOS BANNERS/CDT_arte_nina_pintura.png',
+        'prog_cdt_img3'       => 'FOTOS BANNERS/CDT_musica_nino_guitarra.png',
+        'prog_choco_img'      => 'FOTOS BANNERS/mision_choco_ninos_limpio.png',
+        'nos_mision_creemos_img' => 'FOTOS BANNERS/CDT_ingles_clase_real.png',
+    ];
+
+    if (isset($clean_image_replacements[$key])) {
+        $clean_path = $clean_image_replacements[$key];
+        $is_old_banner = false;
+        $old_flyers = [
+            'CDT ARTE FINAL PINTACARITAS',
+            'CDT MUSICA 1 SELECCIONADA',
+            'CDT INGLES BANNER FINAL SANDRA',
+            'CENTRO DESARROLLO DE TALENTOS BANNER 1',
+            'MISION CHOCO BANNER OPCION MEJOR 1',
+            'MISION CHOCO MEJOR BANNER OPCION DOS'
+        ];
+        foreach ($old_flyers as $old_name) {
+            if (stripos($current, $old_name) !== false) {
+                $is_old_banner = true;
+                break;
+            }
+        }
+        if (empty($current) || $is_old_banner) {
+            try {
+                $up = $pdo->prepare("INSERT INTO site_content (section_key, content_type, content_value) VALUES (?, 'image', ?) ON DUPLICATE KEY UPDATE content_value = ?");
+                $up->execute([$key, $clean_path, $clean_path]);
+            } catch (\Exception $e) {
+                try {
+                    $up = $pdo->prepare("UPDATE site_content SET content_value = ? WHERE section_key = ?");
+                    $up->execute([$clean_path, $key]);
+                } catch (\Exception $e2) {}
+            }
+            return $clean_path;
+        }
     }
 
     if ($result && !empty($result['content_value']) && is_string($result['content_value'])) {

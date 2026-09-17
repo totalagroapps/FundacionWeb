@@ -34,7 +34,7 @@ $contents = [
     ['nos_mision_creemos_desc1', 'Creemos en el poder transformador del amor, la fe y el servicio. Creemos que cada niño, niña, adolescente y joven tiene talentos, propósito y un valor único.', 'text'],
     ['nos_mision_creemos_desc2', 'Creemos en acompañar a las comunidades con dignidad, esperanza y solidaridad, reflejando el amor de Dios a través de acciones que generen impacto real en la vida de las personas.', 'text'],
     ['nos_mision_creemos_desc3', 'Soñamos con generaciones fortalecidas en valores, con oportunidades para crecer, servir y transformar positivamente su entorno.', 'text'],
-    ['nos_mision_creemos_img', 'FOTOS BANNERS/CDT INGLES BANNER FINAL SANDRA.png', 'image'],
+    ['nos_mision_creemos_img', 'FOTOS BANNERS/CDT_ingles_clase_real.png', 'image'],
 
     // Nuestra Historia
     ['nos_historia_title', 'Nuestra Historia', 'text'],

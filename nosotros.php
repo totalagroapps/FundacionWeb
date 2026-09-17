@@ -199,7 +199,7 @@ require 'includes/db.php';
                     <p><?= htmlspecialchars(get_site_content($pdo, 'nos_mision_creemos_desc3', 'Soñamos con generaciones fortalecidas en valores, con oportunidades para crecer, servir y transformar positivamente su entorno.')) ?></p>
                 </div>
                 <div class="split-image organic-img">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'nos_mision_creemos_img', 'FOTOS BANNERS/CDT INGLES BANNER FINAL SANDRA.png')) ?>" loading="lazy" decoding="async" alt="En lo que creemos">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'nos_mision_creemos_img', 'FOTOS BANNERS/CDT_ingles_clase_real.png')) ?>" loading="lazy" decoding="async" alt="En lo que creemos">
                 </div>
             </div>
         </div>

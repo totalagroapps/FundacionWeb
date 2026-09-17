@@ -6,7 +6,7 @@ $new_content = [
     ['apadrinar_card1_img', 'image', 'FOTOS BANNERS/foto prinicpal 2 niños banner final.png'],
     ['apadrinar_card1_title', 'text', 'A Largo Plazo'],
     ['apadrinar_card1_desc', 'text', 'Crea un vínculo constante con el apadrinado y su familia, apoyando su desarrollo integral.'],
-    ['apadrinar_card2_img', 'image', 'FOTOS BANNERS/CDT MUSICA 1 SELECCIONADA.png'],
+    ['apadrinar_card2_img', 'image', 'FOTOS BANNERS/CDT_musica_nino_guitarra.png'],
     ['apadrinar_card2_title', 'text', 'Desarrollo de Talentos'],
     ['apadrinar_card2_desc', 'text', 'Permite que asistan al CDT para clases de inglés, arte, música, danza y formación.'],
     ['apadrinar_card3_img', 'image', 'FOTOS BANNERS/MAMA CON ANGELICA  DEFINITIVA BANNER.png'],
