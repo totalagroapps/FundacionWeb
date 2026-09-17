@@ -265,16 +265,271 @@
                 </div>
             </div>
 
-            <div class="grid-3" style="margin-top: 3rem;">
-                <div class="program-card">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img1', 'FOTOS BANNERS/CDT INGLES BANNER FINAL SANDRA.png')) ?>" loading="lazy" decoding="async" alt="Clases de Inglés">
+            <!-- Galería Carrusel de Clases y Actividades del CDT -->
+            <style>
+                .cdt-carousel-wrapper {
+                    margin-top: 3.5rem;
+                    position: relative;
+                }
+                .cdt-carousel-box {
+                    position: relative;
+                    padding: 0 52px;
+                    max-width: 1100px;
+                    margin: 0 auto;
+                }
+                .cdt-carousel-track {
+                    display: flex;
+                    gap: 1.5rem;
+                    overflow-x: auto;
+                    scroll-snap-type: x mandatory;
+                    scrollbar-width: none;
+                    -ms-overflow-style: none;
+                    scroll-behavior: smooth;
+                    padding: 12px 4px 20px 4px;
+                }
+                .cdt-carousel-track::-webkit-scrollbar {
+                    display: none;
+                }
+                .cdt-slide {
+                    flex: 0 0 100%;
+                    scroll-snap-align: start;
+                    box-sizing: border-box;
+                }
+                @media (min-width: 640px) {
+                    .cdt-slide {
+                        flex: 0 0 calc(50% - 0.75rem);
+                    }
+                }
+                @media (min-width: 1024px) {
+                    .cdt-slide {
+                        flex: 0 0 calc(33.333% - 1rem);
+                    }
+                }
+                .cdt-slide-card {
+                    background: #ffffff;
+                    border-radius: 16px;
+                    overflow: hidden;
+                    box-shadow: 0 6px 20px rgba(0, 16, 62, 0.07);
+                    border: 1px solid rgba(0, 16, 62, 0.08);
+                    transition: all 0.3s ease;
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                }
+                .cdt-slide-card:hover {
+                    transform: translateY(-6px);
+                    box-shadow: 0 14px 30px rgba(0, 16, 62, 0.14);
+                    border-color: rgba(234, 90, 0, 0.3);
+                }
+                .cdt-slide-img-box {
+                    position: relative;
+                    overflow: hidden;
+                    height: 230px;
+                    background: #f1f5f9;
+                }
+                .cdt-slide-card img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                    transition: transform 0.5s ease;
+                }
+                .cdt-slide-card:hover img {
+                    transform: scale(1.06);
+                }
+                .cdt-slide-caption {
+                    padding: 1.4rem;
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    background: #ffffff;
+                }
+                .cdt-slide-tag {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    background: rgba(234, 90, 0, 0.1);
+                    color: var(--primary);
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    padding: 4px 12px;
+                    border-radius: 20px;
+                    margin-bottom: 0.7rem;
+                    align-self: flex-start;
+                }
+                .cdt-slide-caption h4 {
+                    font-size: 1.15rem;
+                    color: var(--secondary);
+                    margin-bottom: 0.5rem;
+                    font-weight: 700;
+                    line-height: 1.35;
+                }
+                .cdt-slide-caption p {
+                    font-size: 0.9rem;
+                    color: #64748b;
+                    line-height: 1.55;
+                    margin: 0;
+                }
+                .cdt-nav-btn {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 44px;
+                    height: 44px;
+                    border-radius: 50%;
+                    background: #ffffff;
+                    color: var(--secondary);
+                    border: 1px solid rgba(0, 16, 62, 0.12);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.15rem;
+                    cursor: pointer;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+                    z-index: 10;
+                    transition: all 0.25s ease;
+                }
+                .cdt-nav-btn:hover {
+                    background: var(--primary);
+                    color: #ffffff;
+                    border-color: var(--primary);
+                    transform: translateY(-50%) scale(1.1);
+                    box-shadow: 0 6px 20px rgba(234, 90, 0, 0.4);
+                }
+                .cdt-prev { left: 0; }
+                .cdt-next { right: 0; }
+                .cdt-carousel-dots {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 8px;
+                    margin-top: 1.2rem;
+                }
+                .cdt-dot {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: rgba(0, 16, 62, 0.2);
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    border: none;
+                    padding: 0;
+                }
+                .cdt-dot.active {
+                    background: var(--primary);
+                    width: 26px;
+                    border-radius: 10px;
+                }
+                @media (max-width: 680px) {
+                    .cdt-carousel-box { padding: 0; }
+                    .cdt-nav-btn { display: none; }
+                }
+            </style>
+
+            <div class="cdt-carousel-wrapper">
+                <div class="cdt-carousel-box">
+                    <!-- Botón Anterior -->
+                    <button type="button" class="cdt-nav-btn cdt-prev" aria-label="Foto anterior del CDT" onclick="scrollCdtCarousel(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+
+                    <!-- Contenedor del Carrusel -->
+                    <div class="cdt-carousel-track" id="cdtCarouselTrack">
+                        <!-- Slide 1: Inglés -->
+                        <div class="cdt-slide">
+                            <div class="cdt-slide-card">
+                                <div class="cdt-slide-img-box">
+                                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img1', 'FOTOS BANNERS/CDT INGLES BANNER FINAL SANDRA.png')) ?>" loading="lazy" decoding="async" alt="Clases de Inglés">
+                                </div>
+                                <div class="cdt-slide-caption">
+                                    <span class="cdt-slide-tag"><i class="fas fa-language"></i> Idiomas</span>
+                                    <h4>Clases de Inglés y Liderazgo</h4>
+                                    <p>Formación práctica y conversacional orientada a ampliar oportunidades educativas y laborales para los jóvenes.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: Arte -->
+                        <div class="cdt-slide">
+                            <div class="cdt-slide-card">
+                                <div class="cdt-slide-img-box">
+                                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img2', 'FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png')) ?>" loading="lazy" decoding="async" alt="Clases de Arte y Pintura">
+                                </div>
+                                <div class="cdt-slide-caption">
+                                    <span class="cdt-slide-tag"><i class="fas fa-palette"></i> Arte y Creatividad</span>
+                                    <h4>Pintura, Manualidades y Expresión</h4>
+                                    <p>Espacios donde niños y niñas exploran su sensibilidad artística, imaginación y alegría a través del color.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: Música -->
+                        <div class="cdt-slide">
+                            <div class="cdt-slide-card">
+                                <div class="cdt-slide-img-box">
+                                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img3', 'FOTOS BANNERS/CDT MUSICA 1 SELECCIONADA.png')) ?>" loading="lazy" decoding="async" alt="Clases de Música y Canto">
+                                </div>
+                                <div class="cdt-slide-caption">
+                                    <span class="cdt-slide-tag"><i class="fas fa-music"></i> Música y Ritmo</span>
+                                    <h4>Música, Canto e Instrumentación</h4>
+                                    <p>Desarrollo de disciplina, oído musical y propósito personal mediante la interpretación instrumental y vocal.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4: Centro de Desarrollo de Talentos -->
+                        <div class="cdt-slide">
+                            <div class="cdt-slide-card">
+                                <div class="cdt-slide-img-box">
+                                    <img src="FOTOS BANNERS/CENTRO DESARROLLO DE TALENTOS BANNER 1.png" loading="lazy" decoding="async" alt="Formación Integral CDT">
+                                </div>
+                                <div class="cdt-slide-caption">
+                                    <span class="cdt-slide-tag"><i class="fas fa-star"></i> Desarrollo Integral</span>
+                                    <h4>Formación en Valores y Propósito</h4>
+                                    <p>Acompañamiento integral que impulsa autoestima, resiliencia y proyectos de vida desde principios cristianos.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5: Juventud y Liderazgo -->
+                        <div class="cdt-slide">
+                            <div class="cdt-slide-card">
+                                <div class="cdt-slide-img-box">
+                                    <img src="FOTOS BANNERS/foto leo chicos mejorada ia.png" loading="lazy" decoding="async" alt="Talleres Juveniles y Liderazgo">
+                                </div>
+                                <div class="cdt-slide-caption">
+                                    <span class="cdt-slide-tag"><i class="fas fa-users"></i> Juventud y Convivencia</span>
+                                    <h4>Talleres de Emprendimiento y Liderazgo</h4>
+                                    <p>Fortaleciendo la colaboración, habilidades sociales y metas claras para adolescentes y jóvenes.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 6: Actividades en Finca Guacas -->
+                        <div class="cdt-slide">
+                            <div class="cdt-slide-card">
+                                <div class="cdt-slide-img-box">
+                                    <img src="FOTOS BANNERS/foto sandra guamos banner final mejor.png" loading="lazy" decoding="async" alt="Actividades al aire libre">
+                                </div>
+                                <div class="cdt-slide-caption">
+                                    <span class="cdt-slide-tag"><i class="fas fa-heart"></i> Aprendizaje Experiencial</span>
+                                    <h4>Actividades al Aire Libre en Guacas</h4>
+                                    <p>Entornos naturales protectores en Santa Rosa de Cabal donde se aprende viviendo experiencias significativas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botón Siguiente -->
+                    <button type="button" class="cdt-nav-btn cdt-next" aria-label="Foto siguiente del CDT" onclick="scrollCdtCarousel(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
-                <div class="program-card">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img2', 'FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png')) ?>" loading="lazy" decoding="async" alt="Clases de Arte">
-                </div>
-                <div class="program-card">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img3', 'FOTOS BANNERS/CDT MUSICA 1 SELECCIONADA.png')) ?>" loading="lazy" decoding="async" alt="Música">
-                </div>
+
+                <!-- Paginador de puntos (Dots) -->
+                <div class="cdt-carousel-dots" id="cdtCarouselDots"></div>
             </div>
 
             <div class="split-layout" style="margin-top: 4rem; background: rgba(234, 90, 0, 0.05); padding: 2rem; border-radius: 20px;">
@@ -359,6 +614,88 @@
 
     <?php include 'includes/footer.php'; ?>
     <script src="main.js"></script>
+    <script>
+        (function() {
+            const track = document.getElementById('cdtCarouselTrack');
+            const dotsContainer = document.getElementById('cdtCarouselDots');
+            if (!track || !dotsContainer) return;
+
+            const slides = track.querySelectorAll('.cdt-slide');
+            let autoPlayInterval = null;
+
+            // Generar los indicadores de puntos (dots)
+            slides.forEach((_, idx) => {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'cdt-dot' + (idx === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Ver diapositiva ' + (idx + 1));
+                dot.addEventListener('click', () => {
+                    goToSlide(idx);
+                });
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = dotsContainer.querySelectorAll('.cdt-dot');
+
+            function getSlideWidth() {
+                const slide = track.querySelector('.cdt-slide');
+                if (!slide) return 320;
+                const gap = parseInt(window.getComputedStyle(track).gap) || 24;
+                return slide.offsetWidth + gap;
+            }
+
+            function updateActiveDot() {
+                const slideWidth = getSlideWidth();
+                const scrollPos = track.scrollLeft;
+                const activeIndex = Math.min(Math.round(scrollPos / slideWidth), dots.length - 1);
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === activeIndex);
+                });
+            }
+
+            window.scrollCdtCarousel = function(direction) {
+                const slideWidth = getSlideWidth();
+                track.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+            };
+
+            function goToSlide(index) {
+                const slideWidth = getSlideWidth();
+                track.scrollTo({ left: index * slideWidth, behavior: 'smooth' });
+            }
+
+            track.addEventListener('scroll', () => {
+                requestAnimationFrame(updateActiveDot);
+            }, { passive: true });
+
+            function startAutoplay() {
+                stopAutoplay();
+                autoPlayInterval = setInterval(() => {
+                    const slideWidth = getSlideWidth();
+                    const maxScroll = track.scrollWidth - track.clientWidth;
+                    if (track.scrollLeft >= maxScroll - 15) {
+                        track.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        track.scrollBy({ left: slideWidth, behavior: 'smooth' });
+                    }
+                }, 4500);
+            }
+
+            function stopAutoplay() {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                    autoPlayInterval = null;
+                }
+            }
+
+            const box = track.closest('.cdt-carousel-box') || track;
+            box.addEventListener('mouseenter', stopAutoplay);
+            box.addEventListener('mouseleave', startAutoplay);
+            track.addEventListener('touchstart', stopAutoplay, { passive: true });
+            track.addEventListener('touchend', startAutoplay, { passive: true });
+
+            startAutoplay();
+        })();
+    </script>
 </body>
 
 </html>
