@@ -61,6 +61,21 @@ function get_site_content($pdo, $key, $default = '') {
         }
     }
 
+    if ($key === 'hero_slide1_btn1_url') {
+        if (!$result || empty($result['content_value']) || $result['content_value'] === '#apadrinar') {
+            try {
+                $up = $pdo->prepare("INSERT INTO site_content (section_key, content_type, content_value, page_name) VALUES ('hero_slide1_btn1_url', 'text', 'apadrinar.php', 'inicio') ON DUPLICATE KEY UPDATE content_value = 'apadrinar.php'");
+                $up->execute();
+            } catch (\Exception $e) {
+                try {
+                    $up = $pdo->prepare("UPDATE site_content SET content_value = 'apadrinar.php' WHERE section_key = 'hero_slide1_btn1_url'");
+                    $up->execute();
+                } catch (\Exception $e2) {}
+            }
+            return 'apadrinar.php';
+        }
+    }
+
     if ($result && !empty($result['content_value']) && is_string($result['content_value'])) {
         if (stripos($result['content_value'], 'detodopelis') !== false || stripos($result['content_value'], 'pelis') !== false) {
             $cleaned = str_replace(

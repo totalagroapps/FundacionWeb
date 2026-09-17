@@ -128,7 +128,7 @@
                     <h1><?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_title', 'Abre Caminos de Esperanza')) ?></h1>
                     <p><?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_desc', 'Cada apadrinamiento contribuye al desarrollo de un niño y su familia, generando oportunidades de crecimiento y bienestar.')) ?></p>
                     <div class="hero-buttons">
-                        <a href="<?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_btn1_url', '#apadrinar')) ?>" class="btn btn-primary btn-large"><?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_btn1_text', 'Apadrina Hoy')) ?></a>
+                        <a href="<?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_btn1_url', 'apadrinar.php')) ?>" class="btn btn-primary btn-large"><?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_btn1_text', 'Apadrina Hoy')) ?></a>
                         <a href="<?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_btn2_url', '#donar')) ?>" class="btn btn-outline btn-large"><?= htmlspecialchars(get_site_content($pdo, 'hero_slide1_btn2_text', 'Dona por una Causa')) ?></a>
                     </div>
                 </div>
