@@ -149,6 +149,7 @@ function get_site_content($pdo, $key, $default = '') {
 
     if (isset($clean_image_replacements[$key])) {
         $clean_path = $clean_image_replacements[$key];
+        $current = (is_array($result) && isset($result['content_value'])) ? (string)$result['content_value'] : '';
         $is_old_banner = false;
         $old_flyers = [
             'CDT ARTE FINAL PINTACARITAS',
@@ -159,7 +160,7 @@ function get_site_content($pdo, $key, $default = '') {
             'MISION CHOCO MEJOR BANNER OPCION DOS'
         ];
         foreach ($old_flyers as $old_name) {
-            if (stripos($current, $old_name) !== false) {
+            if ($current !== '' && stripos($current, $old_name) !== false) {
                 $is_old_banner = true;
                 break;
             }
