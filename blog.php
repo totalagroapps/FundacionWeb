@@ -1,0 +1,122 @@
+<?php require_once 'includes/db.php'; ?>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Fundación ADN de Amor</title>
+    <meta name="description"
+        content="Nuestro Blog estará disponible muy pronto. Descubre historias inspiradoras y noticias sobre nuestra labor.">
+
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;600&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="loader-content">
+            <img src="LOGO Y VISUAL WEB BOTONES/logo ADN_de_Amor_color_rectangulo.png" alt="Fundación ADN de Amor"
+                class="loader-logo">
+            <div class="loader-bar-container">
+                <div class="loader-bar"></div>
+            </div>
+            <p class="loader-text">Abriendo caminos de esperanza...</p>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="https://entornos.detodopelis.co/panel/" class="logo">
+                <img src="LOGO Y VISUAL WEB BOTONES/logo ADN_de_Amor_color_rectangulo.png"
+                    alt="Fundación ADN de Amor Logo">
+            </a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            <nav class="nav-links">
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        <i class="fas fa-user-friends nav-icon"></i>
+                        <span class="nav-text">Quiénes Somos <i class="fas fa-chevron-down dropdown-icon"></i></span>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="nosotros.php">¿Quiénes Somos?</a>
+                        <a href="nosotros.php#mision">Nuestra Misión y Creencias</a>
+                        <a href="nosotros.php#historia">Nuestra Historia</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        <i class="fas fa-hands-holding nav-icon"></i>
+                        <span class="nav-text">Qué Hacemos <i class="fas fa-chevron-down dropdown-icon"></i></span>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="programas.php#donde-estamos">Dónde Estamos</a>
+                        <a href="programas.php#que-hacemos">¿Qué Hacemos?</a>
+                        <a href="programas.php#cdt">Centro de Desarrollo de Talentos</a>
+                        <a href="programas.php#esperanza">Programa Esperanza</a>
+                        <a href="programas.php#choco">Misión Chocó</a>
+                        <a href="programas.php#linea">Línea de Ayuda ADN</a>
+                        <a href="memorias.php">Memorias de Nuestra Labor</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        <i class="fas fa-hand-holding-heart nav-icon"></i>
+                        <span class="nav-text">Qué Puedes Hacer <i class="fas fa-chevron-down dropdown-icon"></i></span>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="apadrinar.php">Apadrina un Niño</a>
+                        <a href="index.php#donar">Dona por una Causa</a>
+                        <a href="index.php#empresas">Empresas Socialmente Responsables</a>
+                        <a href="index.php#empresas">Colaboradores y Prácticas</a>
+                        <a href="index.php#voluntariado">Ser Voluntario</a>
+                    </div>
+                </div>
+
+                <a href="tienda.php" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
+                    <i class="fas fa-shopping-bag nav-icon"></i>
+                    <span class="nav-text">Tienda Solidaria</span>
+                </a>
+                
+                <a href="blog.php" style="font-weight: 600; color: var(--text-dark); text-decoration: none;">
+                    <i class="fas fa-newspaper nav-icon"></i>
+                    <span class="nav-text">Blog</span>
+                </a>
+
+                <a href="index.php#contacto" class="btn btn-primary">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Coming Soon Section -->
+    <section class="section bg-light" style="min-height: 80vh; display: flex; align-items: center; justify-content: center; padding-top: 120px;">
+        <div class="container">
+            <div class="modern-card text-center" style="max-width: 700px; margin: 0 auto;">
+                <div style="font-size: 4rem; color: var(--primary); margin-bottom: 1.5rem;">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <h1 style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 1rem;">Próximamente</h1>
+                <h3 style="color: var(--text-dark); margin-bottom: 1.5rem; font-weight: 500;">Nuestro Blog de Noticias estará disponible muy pronto.</h3>
+                <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 2rem;">Estamos preparando un espacio especial donde compartiremos noticias, testimonios, historias inspiradoras e información importante sobre nuestras actividades, brigadas y programas. ¡Mantente atento para conocer más sobre cómo juntos estamos transformando vidas!</p>
+                
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="index.php" class="btn btn-outline" style="border-color: var(--secondary); color: var(--secondary);">Volver al Inicio</a>
+                    <a href="index.php#contacto" class="btn btn-primary">Contáctanos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <?php include 'includes/footer.php'; ?>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

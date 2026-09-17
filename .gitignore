@@ -1,0 +1,20 @@
+﻿# Logs y temporales del servidor
+error_log
+*/error_log
+*.log
+
+# Archivos de sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Archivos comprimidos y respaldos
+*.zip
+*.tar.gz
+*.rar
+*.bak
+*.tmp
+
+# Archivos de entorno
+.env
+.env.*
