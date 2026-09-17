@@ -2,9 +2,9 @@
 // includes/db.php
 
 $host = 'localhost';
-$db   = 'detodop8_fundacion';
-$user = 'detodop8_usu_fundacion';
-$pass = 'oqOSmo@J2]2k';
+$db   = 'u975680109_db';
+$user = 'u975680109_user';
+$pass = 'F6Fy2=69xWwB.~!';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
