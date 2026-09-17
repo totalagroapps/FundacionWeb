@@ -263,6 +263,9 @@ foreach ($pages as $p => $sections) {
                 <a href="productos.php" class="page-tab" style="text-decoration:none; color: var(--text-muted); border-left: 1px solid rgba(255,255,255,0.1); margin-left: 10px; padding-left: 15px;">
                     <i class="fas fa-store"></i> Gestionar Tienda
                 </a>
+                <a href="mensajes.php" class="page-tab" style="text-decoration:none; color: var(--text-muted);">
+                    <i class="fas fa-inbox"></i> Formularios Recibidos
+                </a>
             </div>
         </div>
         <div class="user-actions">

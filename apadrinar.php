@@ -272,45 +272,65 @@
                 <p>Contáctanos para recibir información y descubrir como puedes crear un vínculo de apoyo y acompañamiento.</p>
             </div>
             
-            <form class="contact-form modern-card" onsubmit="event.preventDefault(); alert('¡Gracias por tu interés en apadrinar! Nos pondremos en contacto contigo muy pronto para continuar el proceso.');">
+            <form class="contact-form modern-card" id="form-apadrinar" action="send_form.php" method="POST">
+                <input type="hidden" name="form_type" value="apadrinar">
+                <!-- Honeypot anti-spam invisible para humanos -->
+                <div style="display:none !important; position:absolute; left:-9999px;">
+                    <input type="text" name="website" tabindex="-1" autocomplete="off">
+                </div>
+
+                <?php if (isset($_GET['status']) && $_GET['status'] === 'success'): ?>
+                    <div class="form-alert" style="display:block; margin-bottom: 1.5rem; padding: 12px 16px; border-radius: 8px; font-size: 0.95rem; background: #e6f4ea; color: #137333; border: 1px solid #ceead6;">
+                        <i class="fas fa-check-circle" style="margin-right: 8px;"></i> <?= htmlspecialchars($_GET['msg'] ?? '¡Solicitud enviada con éxito a nuestro equipo!') ?>
+                    </div>
+                <?php elseif (isset($_GET['status']) && $_GET['status'] === 'error'): ?>
+                    <div class="form-alert" style="display:block; margin-bottom: 1.5rem; padding: 12px 16px; border-radius: 8px; font-size: 0.95rem; background: #fce8e6; color: #c5221f; border: 1px solid #fad2cf;">
+                        <i class="fas fa-exclamation-circle" style="margin-right: 8px;"></i> <?= htmlspecialchars($_GET['msg'] ?? 'Error al enviar la solicitud.') ?>
+                    </div>
+                <?php else: ?>
+                    <div class="form-alert" style="display:none; margin-bottom: 1.5rem; padding: 12px 16px; border-radius: 8px; font-size: 0.95rem;"></div>
+                <?php endif; ?>
+
                 <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                     <div class="form-group">
                         <label>Nombre y Apellidos</label>
-                        <input type="text" placeholder="Ej. Juan Pérez" required class="form-control">
+                        <input type="text" name="name" placeholder="Ej. Juan Pérez" required class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Correo Electrónico</label>
-                        <input type="email" placeholder="ejemplo@correo.com" required class="form-control">
+                        <input type="email" name="email" placeholder="ejemplo@correo.com" required class="form-control">
                     </div>
                 </div>
                 
                 <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                     <div class="form-group">
                         <label>Teléfono / WhatsApp</label>
-                        <input type="tel" placeholder="+57 316 252 2445" required class="form-control">
+                        <input type="tel" name="phone" placeholder="+57 316 252 2445" required class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Localidad / País</label>
-                        <input type="text" placeholder="Ej. Bogotá, Colombia" required class="form-control">
+                        <input type="text" name="location" placeholder="Ej. Bogotá, Colombia" required class="form-control">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>¿Como deseas apadrinar?</label>
-                    <select class="form-control" required style="cursor: pointer;">
+                    <label>¿Cómo deseas apadrinar?</label>
+                    <select name="modality" class="form-control" required style="cursor: pointer;">
                         <option value="">Selecciona una opción...</option>
-                        <option value="largo-plazo">Apadrinamiento a Largo Plazo</option>
-                        <option value="cdt">Para el Centro de Desarrollo de Talentos (CDT)</option>
-                        <option value="asesoria">Aún no estoy seguro, quiero que me asesoren</option>
+                        <option value="Apadrinamiento a Largo Plazo">Apadrinamiento a Largo Plazo</option>
+                        <option value="Para el Centro de Desarrollo de Talentos (CDT)">Para el Centro de Desarrollo de Talentos (CDT)</option>
+                        <option value="Aún no estoy seguro, quiero asesoría">Aún no estoy seguro, quiero que me asesoren</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label>Mensaje Opcional (Cuéntanos un poco sobre ti y tu motivación para apadrinar)</label>
-                    <textarea placeholder="Tu mensaje aquí..." class="form-control" rows="4"></textarea>
+                    <textarea name="message" placeholder="Tu mensaje aquí..." class="form-control" rows="4"></textarea>
                 </div>
                 
-                <button type="submit" class="btn btn-primary btn-large btn-block" style="font-size: 1.1rem; padding: 1.2rem;">Enviar Solicitud de Apadrinamiento <i class="fas fa-heart"></i></button>
+                <button type="submit" class="btn btn-primary btn-large btn-block" style="font-size: 1.1rem; padding: 1.2rem;">
+                    <span>Enviar Solicitud de Apadrinamiento</span> <i class="fas fa-heart" style="margin-left: 8px;"></i>
+                </button>
             </form>
         </div>
     </section>

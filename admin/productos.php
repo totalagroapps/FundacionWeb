@@ -189,6 +189,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <a href="dashboard.php#programas" class="page-tab">Qué Hacemos</a>
                 <a href="dashboard.php#apadrinar" class="page-tab">Qué Puedes Hacer</a>
                 <a href="productos.php" class="page-tab active" style="border-left: 1px solid var(--border-light); margin-left: 10px; padding-left: 15px;"><i class="fas fa-store"></i> Gestionar Tienda</a>
+                <a href="mensajes.php" class="page-tab"><i class="fas fa-inbox"></i> Formularios Recibidos</a>
             </div>
         </div>
         <div class="user-actions">

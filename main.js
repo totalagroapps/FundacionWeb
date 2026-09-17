@@ -81,6 +81,70 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Manejo asíncrono y elegante de envíos de formularios de contacto
+    document.querySelectorAll('.contact-form').forEach(form => {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const alertBox = this.querySelector('.form-alert');
+            const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+            
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            }
+            if (alertBox) {
+                alertBox.style.display = 'none';
+            }
+
+            try {
+                const formData = new FormData(this);
+                const response = await fetch(this.getAttribute('action') || 'send_form.php', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    if (alertBox) {
+                        alertBox.style.display = 'block';
+                        alertBox.style.background = '#e6f4ea';
+                        alertBox.style.color = '#137333';
+                        alertBox.style.border = '1px solid #ceead6';
+                        alertBox.innerHTML = '<i class="fas fa-check-circle" style="margin-right: 8px;"></i>' + data.message;
+                        alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    } else {
+                        alert(data.message);
+                    }
+                    this.reset();
+                } else {
+                    throw new Error(data.message || 'Error al procesar el formulario.');
+                }
+            } catch (err) {
+                if (alertBox) {
+                    alertBox.style.display = 'block';
+                    alertBox.style.background = '#fce8e6';
+                    alertBox.style.color = '#c5221f';
+                    alertBox.style.border = '1px solid #fad2cf';
+                    alertBox.innerHTML = '<i class="fas fa-exclamation-circle" style="margin-right: 8px;"></i>' + (err.message || 'Ocurrió un error al enviar el mensaje. Por favor intenta de nuevo.');
+                    alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    alert('Ocurrió un error al enviar el mensaje. Por favor contáctanos por WhatsApp.');
+                }
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHtml;
+                }
+            }
+        });
+    });
 });
 
 // Preloader optimizado (desaparición inmediata y fluida sin esperas artificiales)

@@ -316,24 +316,46 @@
                     </ul>
                 </div>
                 <div class="split-image" style="flex: 1.5;">
-                    <form class="contact-form modern-card"
-                        onsubmit="event.preventDefault(); alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');">
+                    <form class="contact-form modern-card" id="form-contacto" action="send_form.php" method="POST">
+                        <input type="hidden" name="form_type" value="contacto">
+                        <!-- Honeypot anti-spam invisible para humanos -->
+                        <div style="display:none !important; position:absolute; left:-9999px;">
+                            <input type="text" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+
                         <h3>Envíanos un mensaje</h3>
+
+                        <?php if (isset($_GET['status']) && $_GET['status'] === 'success'): ?>
+                            <div class="form-alert" style="display:block; margin-bottom: 1rem; padding: 12px 16px; border-radius: 8px; font-size: 0.95rem; background: #e6f4ea; color: #137333; border: 1px solid #ceead6;">
+                                <i class="fas fa-check-circle" style="margin-right: 8px;"></i> <?= htmlspecialchars($_GET['msg'] ?? '¡Mensaje enviado con éxito a nuestro equipo!') ?>
+                            </div>
+                        <?php elseif (isset($_GET['status']) && $_GET['status'] === 'error'): ?>
+                            <div class="form-alert" style="display:block; margin-bottom: 1rem; padding: 12px 16px; border-radius: 8px; font-size: 0.95rem; background: #fce8e6; color: #c5221f; border: 1px solid #fad2cf;">
+                                <i class="fas fa-exclamation-circle" style="margin-right: 8px;"></i> <?= htmlspecialchars($_GET['msg'] ?? 'Error al enviar el mensaje.') ?>
+                            </div>
+                        <?php else: ?>
+                            <div class="form-alert" style="display:none; margin-bottom: 1rem; padding: 12px 16px; border-radius: 8px; font-size: 0.95rem;"></div>
+                        <?php endif; ?>
+
                         <div class="form-group">
                             <label>Nombre Completo</label>
-                            <input type="text" placeholder="Ej. Juan Pérez" required class="form-control">
+                            <input type="text" name="name" placeholder="Ej. Juan Pérez" required class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Correo Electrónico</label>
-                            <input type="email" placeholder="ejemplo@correo.com" required class="form-control">
+                            <input type="email" name="email" placeholder="ejemplo@correo.com" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono / WhatsApp (Opcional)</label>
+                            <input type="tel" name="phone" placeholder="+57 316 252 2445" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Tu Mensaje</label>
-                            <textarea placeholder="¿En qué te podemos ayudar?" required class="form-control"
-                                rows="4"></textarea>
+                            <textarea name="message" placeholder="¿En qué te podemos ayudar?" required class="form-control" rows="4"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-large btn-block">Enviar Mensaje <i
-                                class="fas fa-paper-plane"></i></button>
+                        <button type="submit" class="btn btn-primary btn-large btn-block">
+                            <span>Enviar Mensaje</span> <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
+                        </button>
                     </form>
                 </div>
             </div>
