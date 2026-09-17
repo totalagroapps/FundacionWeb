@@ -10,6 +10,10 @@
         content="Memorias de nuestra labor familiar previa a la constitución formal de la Fundación ADN de Amor. Más de 15 años sembrando amor, educación y esperanza en Chocó y el Eje Cafetero.">
     <link rel="canonical" href="https://fundacionadndeamor.org/memorias">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="LOGO%20Y%20VISUAL%20WEB%20BOTONES/logo%20ADN_de_Amor_color_cuadrado.png">
+    <link rel="apple-touch-icon" href="LOGO%20Y%20VISUAL%20WEB%20BOTONES/logo%20ADN_de_Amor_color_cuadrado.png">
+
     <!-- Preconnect fuentes y assets externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

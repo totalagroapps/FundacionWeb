@@ -8,6 +8,10 @@
     <meta name="description" content="Suma a tu empresa a la transformación social. Alianzas estratégicas, voluntariado corporativo y responsabilidad social empresarial con la Fundación ADN de Amor.">
     <link rel="canonical" href="https://fundacionadndeamor.org/empresas">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="LOGO%20Y%20VISUAL%20WEB%20BOTONES/logo%20ADN_de_Amor_color_cuadrado.png">
+    <link rel="apple-touch-icon" href="LOGO%20Y%20VISUAL%20WEB%20BOTONES/logo%20ADN_de_Amor_color_cuadrado.png">
+
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fundacionadndeamor.org/empresas">
@@ -352,11 +356,11 @@
                 <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                     <div class="form-group">
                         <label>Nombre de la Empresa u Organización *</label>
-                        <input type="text" name="company" placeholder="Ej. Argos, Bancolombia, Pyme Local" required class="form-control">
+                        <input type="text" name="company" placeholder="Ej. Argos, Bancolombia, Pyme Local" required autocomplete="organization" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Nombre del Representante o Contacto *</label>
-                        <input type="text" name="name" placeholder="Ej. Carolina Gómez" required class="form-control">
+                        <input type="text" name="name" placeholder="Ej. Carolina Gómez" required autocomplete="name" class="form-control">
                     </div>
                 </div>
                 
@@ -367,18 +371,18 @@
                     </div>
                     <div class="form-group">
                         <label>Correo Electrónico Corporativo *</label>
-                        <input type="email" name="email" placeholder="contacto@tuempresa.com" required class="form-control">
+                        <input type="email" name="email" placeholder="contacto@tuempresa.com" required autocomplete="email" class="form-control">
                     </div>
                 </div>
 
                 <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                     <div class="form-group">
                         <label>Teléfono o WhatsApp de Contacto *</label>
-                        <input type="tel" name="phone" placeholder="+57 316 252 2445" required class="form-control">
+                        <input type="tel" name="phone" placeholder="+57 316 252 2445" required autocomplete="tel" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Ciudad y País *</label>
-                        <input type="text" name="location" placeholder="Ej. Pereira, Bogotá, Medellín, Colombia" required class="form-control">
+                        <input type="text" name="location" placeholder="Ej. Pereira, Bogotá, Medellín, Colombia" required autocomplete="address-level2" class="form-control">
                     </div>
                 </div>
 
@@ -398,6 +402,13 @@
                 <div class="form-group">
                     <label>Propuesta o Comentarios (Cuéntanos sobre tu empresa y qué esperan lograr juntos)</label>
                     <textarea name="message" placeholder="Escribe aquí los detalles de la colaboración, número aproximado de participantes, o inquietudes..." class="form-control" rows="4"></textarea>
+                </div>
+
+                <div class="form-group" style="margin-top: 1rem; margin-bottom: 1.25rem;">
+                    <label style="font-size: 0.85rem; color: #64748b; display: flex; align-items: flex-start; gap: 8px; cursor: pointer; line-height: 1.4;">
+                        <input type="checkbox" name="habeas_data" value="1" required checked style="margin-top: 2px; accent-color: var(--primary);">
+                        <span>Autorizo el tratamiento de datos institucionales y de contacto conforme a la <a href="privacidad" target="_blank" style="color: var(--primary); text-decoration: underline;">Política de Privacidad</a> (Ley 1581 de 2012).</span>
+                    </label>
                 </div>
                 
                 <button type="submit" class="btn btn-primary btn-large btn-block" style="font-size: 1.1rem; padding: 1.2rem; cursor: pointer;">

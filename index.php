@@ -10,6 +10,10 @@
         content="Apadrina, dona y colabora con la Fundación ADN de Amor para generar oportunidades, esperanza y bienestar para niños, niñas y adolescentes en situación de vulnerabilidad.">
     <link rel="canonical" href="https://fundacionadndeamor.org/">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="LOGO%20Y%20VISUAL%20WEB%20BOTONES/logo%20ADN_de_Amor_color_cuadrado.png">
+    <link rel="apple-touch-icon" href="LOGO%20Y%20VISUAL%20WEB%20BOTONES/logo%20ADN_de_Amor_color_cuadrado.png">
+
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fundacionadndeamor.org/">
@@ -239,6 +243,10 @@
                             <span><?= htmlspecialchars(get_site_content($pdo, 'donar_btn_text', 'Más Información')) ?></span>
                         </a>
                     </div>
+                    <div style="margin-top: 1.25rem; font-size: 0.88rem; color: #64748b; background: rgba(0, 16, 62, 0.03); border: 1px dashed rgba(0, 16, 62, 0.15); border-radius: 8px; padding: 10px 14px;">
+                        <i class="fas fa-university" style="color: var(--primary); margin-right: 6px;"></i> 
+                        <strong>¿Prefieres transferencia bancaria o Nequi / Daviplata?</strong> Escríbenos a WhatsApp o a <a href="mailto:info@fundacionadndeamor.org" style="color: var(--primary); text-decoration: underline;">info@fundacionadndeamor.org</a> para coordinar tu aporte institucional y certificación de donación.
+                    </div>
                 </div>
             </div>
         </div>
@@ -359,20 +367,26 @@
                         <?php endif; ?>
 
                         <div class="form-group">
-                            <label>Nombre Completo</label>
-                            <input type="text" name="name" placeholder="Ej. Juan Pérez" required class="form-control">
+                            <label>Nombre Completo *</label>
+                            <input type="text" name="name" placeholder="Ej. Juan Pérez" required autocomplete="name" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Correo Electrónico</label>
-                            <input type="email" name="email" placeholder="ejemplo@correo.com" required class="form-control">
+                            <label>Correo Electrónico *</label>
+                            <input type="email" name="email" placeholder="ejemplo@correo.com" required autocomplete="email" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Teléfono / WhatsApp (Opcional)</label>
-                            <input type="tel" name="phone" placeholder="+57 316 252 2445" class="form-control">
+                            <input type="tel" name="phone" placeholder="+57 316 252 2445" autocomplete="tel" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Tu Mensaje</label>
+                            <label>Tu Mensaje *</label>
                             <textarea name="message" placeholder="¿En qué te podemos ayudar?" required class="form-control" rows="4"></textarea>
+                        </div>
+                        <div class="form-group" style="margin-top: 1rem; margin-bottom: 1.25rem;">
+                            <label style="font-size: 0.85rem; color: #64748b; display: flex; align-items: flex-start; gap: 8px; cursor: pointer; line-height: 1.4;">
+                                <input type="checkbox" name="habeas_data" value="1" required checked style="margin-top: 2px; accent-color: var(--primary);">
+                                <span>Autorizo el tratamiento de mis datos personales conforme a la <a href="privacidad" target="_blank" style="color: var(--primary); text-decoration: underline;">Política de Privacidad</a> (Ley 1581 de 2012).</span>
+                            </label>
                         </div>
                         <button type="submit" class="btn btn-primary btn-large btn-block">
                             <span>Enviar Mensaje</span> <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>

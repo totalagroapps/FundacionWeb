@@ -12,6 +12,10 @@ require 'includes/db.php';
         content="Conoce a la Fundación ADN de Amor, nuestra misión, historia y cómo trabajamos para generar oportunidades y esperanza.">
     <link rel="canonical" href="https://fundacionadndeamor.org/nosotros">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="LOGO%20Y%20VISUAL%20WEB%20BOTONES/logo%20ADN_de_Amor_color_cuadrado.png">
+    <link rel="apple-touch-icon" href="LOGO%20Y%20VISUAL%20WEB%20BOTONES/logo%20ADN_de_Amor_color_cuadrado.png">
+
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fundacionadndeamor.org/nosotros">

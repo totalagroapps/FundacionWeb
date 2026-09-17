@@ -8,6 +8,10 @@
     <meta name="description" content="Apadrina a un niño, niña o adolescente. Con tu apoyo, abres caminos de esperanza y bienestar.">
     <link rel="canonical" href="https://fundacionadndeamor.org/apadrinar">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="LOGO%20Y%20VISUAL%20WEB%20BOTONES/logo%20ADN_de_Amor_color_cuadrado.png">
+    <link rel="apple-touch-icon" href="LOGO%20Y%20VISUAL%20WEB%20BOTONES/logo%20ADN_de_Amor_color_cuadrado.png">
+
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fundacionadndeamor.org/apadrinar">
@@ -297,22 +301,22 @@
                 <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                     <div class="form-group">
                         <label>Nombre y Apellidos</label>
-                        <input type="text" name="name" placeholder="Ej. Juan Pérez" required class="form-control">
+                        <input type="text" name="name" placeholder="Ej. Juan Pérez" required autocomplete="name" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Correo Electrónico</label>
-                        <input type="email" name="email" placeholder="ejemplo@correo.com" required class="form-control">
+                        <input type="email" name="email" placeholder="ejemplo@correo.com" required autocomplete="email" class="form-control">
                     </div>
                 </div>
                 
                 <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                     <div class="form-group">
                         <label>Teléfono / WhatsApp</label>
-                        <input type="tel" name="phone" placeholder="+57 316 252 2445" required class="form-control">
+                        <input type="tel" name="phone" placeholder="+57 316 252 2445" required autocomplete="tel" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Localidad / País</label>
-                        <input type="text" name="location" placeholder="Ej. Bogotá, Colombia" required class="form-control">
+                        <input type="text" name="location" placeholder="Ej. Bogotá, Colombia" required autocomplete="address-level2" class="form-control">
                     </div>
                 </div>
 
@@ -331,6 +335,13 @@
                     <textarea name="message" placeholder="Tu mensaje aquí..." class="form-control" rows="4"></textarea>
                 </div>
                 
+                <div class="form-group" style="margin-top: 1rem; margin-bottom: 1.25rem;">
+                    <label style="font-size: 0.85rem; color: #64748b; display: flex; align-items: flex-start; gap: 8px; cursor: pointer; line-height: 1.4;">
+                        <input type="checkbox" name="habeas_data" value="1" required checked style="margin-top: 2px; accent-color: var(--primary);">
+                        <span>Autorizo el tratamiento de mis datos personales conforme a la <a href="privacidad" target="_blank" style="color: var(--primary); text-decoration: underline;">Política de Privacidad</a> (Ley 1581 de 2012).</span>
+                    </label>
+                </div>
+
                 <button type="submit" class="btn btn-primary btn-large btn-block" style="font-size: 1.1rem; padding: 1.2rem;">
                     <span>Enviar Solicitud de Apadrinamiento</span> <i class="fas fa-heart" style="margin-left: 8px;"></i>
                 </button>

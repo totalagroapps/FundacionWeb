@@ -8,6 +8,10 @@
     <meta name="description" content="Únete como voluntario a la Fundación ADN de Amor. Aporta tu tiempo, talento y amor para acompañar a niños, jóvenes y familias en Colombia.">
     <link rel="canonical" href="https://fundacionadndeamor.org/voluntariado">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="LOGO%20Y%20VISUAL%20WEB%20BOTONES/logo%20ADN_de_Amor_color_cuadrado.png">
+    <link rel="apple-touch-icon" href="LOGO%20Y%20VISUAL%20WEB%20BOTONES/logo%20ADN_de_Amor_color_cuadrado.png">
+
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fundacionadndeamor.org/voluntariado">
@@ -400,11 +404,11 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="nombre">Nombre y Apellidos <span class="req">*</span></label>
-                            <input type="text" id="nombre" name="name" required placeholder="Ej. Juan Pérez Gómez">
+                            <input type="text" id="nombre" name="name" required autocomplete="name" placeholder="Ej. Juan Pérez Gómez">
                         </div>
                         <div class="form-group">
                             <label for="email">Correo Electrónico <span class="req">*</span></label>
-                            <input type="email" id="email" name="email" required placeholder="tuemail@ejemplo.com">
+                            <input type="email" id="email" name="email" required autocomplete="email" placeholder="tuemail@ejemplo.com">
                         </div>
                     </div>
 
@@ -412,11 +416,11 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="telefono">Teléfono o WhatsApp <span class="req">*</span></label>
-                            <input type="tel" id="telefono" name="phone" required placeholder="Ej. 316 252 2445">
+                            <input type="tel" id="telefono" name="phone" required autocomplete="tel" placeholder="Ej. 316 252 2445">
                         </div>
                         <div class="form-group">
                             <label for="ciudad">Ciudad o Localidad de Residencia <span class="req">*</span></label>
-                            <input type="text" id="ciudad" name="city" required placeholder="Ej. Santa Rosa de Cabal / Pereira / Otra">
+                            <input type="text" id="ciudad" name="city" required autocomplete="address-level2" placeholder="Ej. Santa Rosa de Cabal / Pereira / Otra">
                         </div>
                     </div>
 
@@ -512,6 +516,13 @@
                     <div class="form-group">
                         <label for="message">Mensaje Opcional o Comentarios Adicionales</label>
                         <textarea id="message" name="message" rows="3" placeholder="Si deseas contarnos algo más sobre tus expectativas o disponibilidad, escríbelo aquí..."></textarea>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 1.5rem; margin-bottom: 1rem;">
+                        <label style="font-size: 0.88rem; color: #64748b; display: flex; align-items: flex-start; gap: 10px; cursor: pointer; line-height: 1.4;">
+                            <input type="checkbox" name="habeas_data" value="1" required checked style="margin-top: 2px; accent-color: var(--primary);">
+                            <span>Autorizo el tratamiento de mis datos personales conforme a la <a href="privacidad" target="_blank" style="color: var(--primary); text-decoration: underline;">Política de Privacidad</a> (Ley 1581 de 2012).</span>
+                        </label>
                     </div>
 
                     <div style="margin-top: 2rem; text-align: center;">

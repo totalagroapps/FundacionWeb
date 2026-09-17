@@ -1,3 +1,6 @@
+# --- PÁGINA DE ERROR 404 PERSONALIZADA ---
+ErrorDocument 404 /404.php
+
 # --- COMPRESIÓN GZIP / DEFLATE ---
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css

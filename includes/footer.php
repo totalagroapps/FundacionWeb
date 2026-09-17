@@ -5,9 +5,9 @@
             <div class="footer-col-1">
                 <img src="LOGO Y VISUAL WEB BOTONES/logo ADN_de_Amor_color_rectangulo.png" class="footer-logo-white" alt="ADN de Amor" loading="lazy" decoding="async">
                 <div class="social-icons-left">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://wa.me/573162522445?text=Hola,%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20Fundaci%C3%B3n" target="_blank" rel="noopener noreferrer" title="WhatsApp Oficial"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://maps.app.goo.gl/xvSyBJBfQMuL4wGF7" target="_blank" rel="noopener noreferrer" title="Ubicación en Google Maps"><i class="fas fa-map-marked-alt"></i></a>
+                    <a href="mailto:info@fundacionadndeamor.org" title="Correo Electrónico"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
 
@@ -27,12 +27,11 @@
 
             <!-- Síguenos -->
             <div class="footer-col-3">
-                <h3>Síguenos</h3>
+                <h3>Atención Directa</h3>
                 <div class="social-icons-center">
-                    <a href="https://wa.me/573162522445" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://wa.me/573162522445" target="_blank" rel="noopener noreferrer" title="WhatsApp Atención"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://maps.app.goo.gl/xvSyBJBfQMuL4wGF7" target="_blank" rel="noopener noreferrer" title="Google Maps"><i class="fas fa-map-marker-alt"></i></a>
+                    <a href="mailto:info@fundacionadndeamor.org" title="Escríbenos por Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
 
@@ -44,6 +43,20 @@
                 <svg viewBox="0 0 100 100" width="80" height="80">
                     <path d="M50,85 C50,85 10,55 10,30 C10,15 25,10 35,20 C45,30 50,40 50,40 C50,40 55,30 65,20 C75,10 90,15 90,30 C90,55 50,85 50,85 Z" fill="none" stroke="#E63946" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 1.5rem 2rem 0.5rem 2rem; max-width: 1200px; margin: 2rem auto 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem; color: rgba(255, 255, 255, 0.7);">
+            <div>
+                &copy; <?= date('Y') ?> Fundación ADN de Amor. Todos los derechos reservados.
+            </div>
+            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="privacidad" style="color: rgba(255, 255, 255, 0.85); text-decoration: underline;">
+                    <i class="fas fa-shield-alt" style="margin-right: 4px; color: var(--primary);"></i> Política de Tratamiento de Datos (Ley 1581)
+                </a>
+                <a href="programas#donde-estamos" style="color: rgba(255, 255, 255, 0.85); text-decoration: none;">
+                    <i class="fas fa-map-marker-alt" style="margin-right: 4px; color: var(--primary);"></i> Vereda Guacas, Santa Rosa de Cabal
+                </a>
             </div>
         </div>
     </footer>

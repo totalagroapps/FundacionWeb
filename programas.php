@@ -94,6 +94,10 @@ try {
     <meta name="description" content="Conoce el Centro de Desarrollo de Talentos, Programa Esperanza y Misión Chocó.">
     <link rel="canonical" href="https://fundacionadndeamor.org/programas">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="LOGO%20Y%20VISUAL%20WEB%20BOTONES/logo%20ADN_de_Amor_color_cuadrado.png">
+    <link rel="apple-touch-icon" href="LOGO%20Y%20VISUAL%20WEB%20BOTONES/logo%20ADN_de_Amor_color_cuadrado.png">
+
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fundacionadndeamor.org/programas">
