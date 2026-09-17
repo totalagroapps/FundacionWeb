@@ -20,6 +20,10 @@ try {
         $pdo->exec("ALTER TABLE products ADD COLUMN is_customizable TINYINT(1) DEFAULT 0");
     }
 
+    // Actualizar enlaces antiguos para que todos apunten al número oficial 573162522445
+    $pdo->exec("UPDATE products SET whatsapp_link = REPLACE(whatsapp_link, '573000000000', '573162522445') WHERE whatsapp_link LIKE '%573000000000%'");
+    $pdo->exec("UPDATE products SET whatsapp_link = REPLACE(whatsapp_link, '573219602652', '573162522445') WHERE whatsapp_link LIKE '%573219602652%'");
+
     // 2. Verificar si existen rompecabezas o productos personalizables; si no, inicializar
     $checkPuzzles = $pdo->query("SELECT COUNT(*) FROM products WHERE category = 'rompecabezas'")->fetchColumn();
     if ($checkPuzzles == 0 && file_exists(__DIR__ . '/admin/setup_tienda_personalizada.php')) {
@@ -695,15 +699,25 @@ if (empty($products)) {
                             }
                         }
 
-                        $wa_link = $prod['whatsapp_link'] ?? '';
-                        if (empty($wa_link)) {
-                            $msg = $is_customizable 
-                                ? "Hola Fundación ADN de Amor, me interesa personalizar el producto: {$name}. ¿Cómo les envío mi foto o diseño?"
-                                : "Hola Fundación ADN de Amor, me gustaría adquirir el producto: {$name}.";
-                            $wa_link = "https://wa.me/573162522445?text=" . urlencode($msg);
-                        } elseif (strpos($wa_link, 'http') === false) {
-                            $wa_link = 'https://' . $wa_link;
+                        $target_wa = '573162522445';
+                        $db_link = $prod['whatsapp_link'] ?? '';
+
+                        // Extraer o generar el mensaje contextual
+                        $msg = '';
+                        if (!empty($db_link) && preg_match('/text=(.*)$/i', $db_link, $matches)) {
+                            $msg = urldecode($matches[1]);
                         }
+
+                        if (empty($msg) || stripos($msg, 'interesa') !== false || stripos($msg, 'quiero') === false) {
+                            if ($is_customizable) {
+                                $msg = "¡Hola Fundación ADN de Amor! Lo quiero: me gustaría personalizar el producto \"{$name}\". ¿Cómo les envío mi foto o diseño?";
+                            } else {
+                                $msg = "¡Hola Fundación ADN de Amor! Lo quiero: me interesa adquirir el producto \"{$name}\".";
+                            }
+                        }
+
+                        // Enlace directo al WhatsApp oficial proporcionado: +57 316 252 2445
+                        $wa_link = "https://wa.me/{$target_wa}?text=" . urlencode($msg);
                         
                         // Placeholder si la imagen estuviese vacía
                         if (empty($image)) {
@@ -752,8 +766,8 @@ if (empty($products)) {
                                 <?php endif; ?>
                             </div>
                             
-                            <a href="<?php echo htmlspecialchars($wa_link); ?>" target="_blank" rel="noopener noreferrer" class="btn-buy <?php echo $is_customizable ? 'btn-custom-action' : ''; ?>">
-                                <i class="fab fa-whatsapp"></i> <?php echo $is_customizable ? 'Personalizar por WhatsApp' : 'Pedir por WhatsApp'; ?>
+                            <a href="<?php echo htmlspecialchars($wa_link); ?>" target="_blank" rel="noopener noreferrer" class="btn-buy">
+                                <i class="fab fa-whatsapp"></i> Lo quiero
                             </a>
                         </div>
                     </div>
