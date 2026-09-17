@@ -60,6 +60,21 @@ function get_site_content($pdo, $key, $default = '') {
             return 'info@fundacionadndeamor.org';
         }
     }
+
+    if ($result && !empty($result['content_value']) && is_string($result['content_value'])) {
+        if (stripos($result['content_value'], 'detodopelis') !== false || stripos($result['content_value'], 'pelis') !== false) {
+            $cleaned = str_replace(
+                ['https://entornos.detodopelis.co/panel/', 'https://entornos.detodopelis.co/', 'http://entornos.detodopelis.co/panel/', 'http://entornos.detodopelis.co/', 'entornos.detodopelis.co', 'detodopelis.co'],
+                ['index.php', 'index.php', 'index.php', 'index.php', 'fundacionadndeamor.org', 'fundacionadndeamor.org'],
+                $result['content_value']
+            );
+            try {
+                $up = $pdo->prepare("UPDATE site_content SET content_value = ? WHERE section_key = ?");
+                $up->execute([$cleaned, $key]);
+            } catch (\Exception $e) {}
+            return $cleaned;
+        }
+    }
     
     return $result ? $result['content_value'] : $default;
 }
