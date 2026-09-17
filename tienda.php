@@ -573,7 +573,7 @@ if (empty($products)) {
                         <a href="/#donar">Dona por una Causa</a>
                         <a href="empresas">Empresas y Aliados</a>
                         <a href="practicas">Prácticas Profesionales</a>
-                        <a href="/#voluntariado">Ser Voluntario</a>
+                        <a href="voluntariado">Ser Voluntario</a>
                     </div>
                 </div>
 

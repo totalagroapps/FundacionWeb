@@ -30,11 +30,16 @@ try {
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;");
 
     $cols = $pdo->query("SHOW COLUMNS FROM contact_messages")->fetchAll(PDO::FETCH_COLUMN);
+    if (!in_array('profile_type', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN profile_type varchar(100) NULL AFTER form_type"); }
     if (!in_array('company', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN company varchar(255) NULL AFTER modality"); }
     if (!in_array('position', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN position varchar(255) NULL AFTER company"); }
     if (!in_array('university', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN university varchar(255) NULL AFTER position"); }
     if (!in_array('career', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN career varchar(255) NULL AFTER university"); }
     if (!in_array('availability', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN availability varchar(100) NULL AFTER career"); }
+    if (!in_array('interest_reason', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN interest_reason text NULL AFTER message"); }
+    if (!in_array('collaboration_areas', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN collaboration_areas text NULL AFTER interest_reason"); }
+    if (!in_array('previous_volunteer', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN previous_volunteer varchar(50) NULL AFTER collaboration_areas"); }
+    if (!in_array('previous_volunteer_details', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN previous_volunteer_details text NULL AFTER previous_volunteer"); }
 } catch (\Exception $e) {}
 
 // Procesar acciones (eliminar o cambiar estado)
@@ -66,6 +71,8 @@ $params = [];
 
 if ($filter === 'contacto') {
     $sql .= " WHERE form_type = 'contacto'";
+} elseif ($filter === 'voluntariado') {
+    $sql .= " WHERE form_type = 'voluntariado'";
 } elseif ($filter === 'apadrinar') {
     $sql .= " WHERE form_type = 'apadrinar'";
 } elseif ($filter === 'empresa') {
@@ -242,6 +249,8 @@ $count_nuevos = $pdo->query("SELECT COUNT(*) FROM contact_messages WHERE status 
         body.dark-mode .badge-empresa { background: rgba(56, 189, 248, 0.2); color: #38bdf8; }
         .badge-practicas { background: rgba(16, 185, 129, 0.15); color: #059669; }
         body.dark-mode .badge-practicas { background: rgba(52, 211, 153, 0.2); color: #34d399; }
+        .badge-voluntario { background: rgba(245, 158, 11, 0.15); color: #d97706; }
+        body.dark-mode .badge-voluntario { background: rgba(245, 158, 11, 0.25); color: #fbbf24; }
 
         .card-body {
             background: var(--bg-body);
@@ -327,6 +336,7 @@ $count_nuevos = $pdo->query("SELECT COUNT(*) FROM contact_messages WHERE status 
             <a href="mensajes.php?filter=all" class="filter-btn <?= $filter === 'all' ? 'active' : '' ?>">Todos (<?= $count_all ?>)</a>
             <a href="mensajes.php?filter=nuevo" class="filter-btn <?= $filter === 'nuevo' ? 'active' : '' ?>">Nuevos (<?= $count_nuevos ?>)</a>
             <a href="mensajes.php?filter=contacto" class="filter-btn <?= $filter === 'contacto' ? 'active' : '' ?>">Contacto</a>
+            <a href="mensajes.php?filter=voluntariado" class="filter-btn <?= $filter === 'voluntariado' ? 'active' : '' ?>">Voluntariado</a>
             <a href="mensajes.php?filter=apadrinar" class="filter-btn <?= $filter === 'apadrinar' ? 'active' : '' ?>">Apadrinamiento</a>
             <a href="mensajes.php?filter=empresa" class="filter-btn <?= $filter === 'empresa' ? 'active' : '' ?>">Empresas</a>
             <a href="mensajes.php?filter=practicas" class="filter-btn <?= $filter === 'practicas' ? 'active' : '' ?>">Prácticas</a>
@@ -336,7 +346,7 @@ $count_nuevos = $pdo->query("SELECT COUNT(*) FROM contact_messages WHERE status 
             <div class="empty-state">
                 <i class="fas fa-envelope-open-text"></i>
                 <h3>No hay mensajes en esta categoría</h3>
-                <p style="color: var(--text-muted); margin-top: 0.5rem;">Cuando los usuarios completen los formularios web en el inicio o en la sección de apadrinar, aparecerán aquí y llegarán a info@fundacionadndeamor.org.</p>
+                <p style="color: var(--text-muted); margin-top: 0.5rem;">Cuando los usuarios completen los formularios web en el inicio, voluntariado, prácticas, empresas o apadrinar, aparecerán aquí y llegarán a info@fundacionadndeamor.org.</p>
             </div>
         <?php else: ?>
             <div class="messages-list">
@@ -365,7 +375,9 @@ $count_nuevos = $pdo->query("SELECT COUNT(*) FROM contact_messages WHERE status 
                                 <?php if ($msg['form_type'] === 'empresa'): ?>
                                     <span class="badge badge-empresa"><i class="fas fa-building"></i> Alianza Empresa</span>
                                 <?php elseif ($msg['form_type'] === 'practicas'): ?>
-                                    <span class="badge badge-practicas"><i class="fas fa-graduation-cap"></i> Prácticas</span>
+                                    <span class="badge badge-practicas"><i class="fas fa-graduation-cap"></i> <?= (!empty($msg['profile_type']) && $msg['profile_type'] === 'Profesional') ? 'Colaborador Pro' : 'Prácticas' ?></span>
+                                <?php elseif ($msg['form_type'] === 'voluntariado'): ?>
+                                    <span class="badge badge-voluntario"><i class="fas fa-hands-helping"></i> Voluntariado</span>
                                 <?php elseif ($msg['form_type'] === 'apadrinar'): ?>
                                     <span class="badge badge-apadrinar"><i class="fas fa-heart"></i> Apadrinamiento</span>
                                 <?php else: ?>
@@ -373,6 +385,13 @@ $count_nuevos = $pdo->query("SELECT COUNT(*) FROM contact_messages WHERE status 
                                 <?php endif; ?>
                             </div>
                         </div>
+
+                        <?php if (!empty($msg['profile_type'])): ?>
+                            <div style="margin-bottom: 0.35rem; font-size: 0.95rem;">
+                                <strong><i class="fas fa-user-tag" style="color: var(--text-muted); margin-right: 4px;"></i> Perfil:</strong> 
+                                <span style="font-weight: 600; color: var(--secondary);"><?= htmlspecialchars($msg['profile_type']) ?></span>
+                            </div>
+                        <?php endif; ?>
 
                         <?php if (!empty($msg['company'])): ?>
                             <div style="margin-bottom: 0.35rem; font-size: 0.95rem;">
@@ -394,6 +413,27 @@ $count_nuevos = $pdo->query("SELECT COUNT(*) FROM contact_messages WHERE status 
                             </div>
                         <?php endif; ?>
 
+                        <?php if (!empty($msg['interest_reason'])): ?>
+                            <div style="margin-bottom: 0.35rem; font-size: 0.9rem;">
+                                <strong><i class="fas fa-heart" style="color: var(--primary); margin-right: 4px;"></i> ¿Por qué voluntario?:</strong> 
+                                <span><?= htmlspecialchars($msg['interest_reason']) ?></span>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($msg['collaboration_areas'])): ?>
+                            <div style="margin-bottom: 0.35rem; font-size: 0.9rem;">
+                                <strong><i class="fas fa-hands" style="color: #059669; margin-right: 4px;"></i> Áreas de Colaboración:</strong> 
+                                <span style="color: #059669; font-weight: 600;"><?= htmlspecialchars($msg['collaboration_areas']) ?></span>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($msg['previous_volunteer'])): ?>
+                            <div style="margin-bottom: 0.35rem; font-size: 0.9rem;">
+                                <strong><i class="fas fa-history" style="color: var(--text-muted); margin-right: 4px;"></i> ¿Voluntario antes?:</strong> 
+                                <span><?= htmlspecialchars($msg['previous_volunteer']) ?><?= !empty($msg['previous_volunteer_details']) ? ' (' . htmlspecialchars($msg['previous_volunteer_details']) . ')' : '' ?></span>
+                            </div>
+                        <?php endif; ?>
+
                         <?php if (!empty($msg['availability'])): ?>
                             <div style="margin-bottom: 0.35rem; font-size: 0.9rem;">
                                 <strong><i class="far fa-calendar-check" style="color: #059669; margin-right: 4px;"></i> Disponibilidad:</strong> 
@@ -403,7 +443,7 @@ $count_nuevos = $pdo->query("SELECT COUNT(*) FROM contact_messages WHERE status 
 
                         <?php if (!empty($msg['modality'])): ?>
                             <div style="margin-bottom: 0.5rem; font-size: 0.9rem;">
-                                <strong><?= $msg['form_type'] === 'empresa' ? 'Tipo de Alianza:' : ($msg['form_type'] === 'practicas' ? 'Área de Interés:' : 'Modalidad:') ?></strong> 
+                                <strong><?= $msg['form_type'] === 'empresa' ? 'Tipo de Alianza:' : ($msg['form_type'] === 'practicas' ? 'Área de Interés:' : ($msg['form_type'] === 'voluntariado' ? 'Modalidad:' : 'Modalidad:')) ?></strong> 
                                 <span style="color: var(--primary); font-weight: 600;"><?= htmlspecialchars($msg['modality']) ?></span>
                             </div>
                         <?php endif; ?>

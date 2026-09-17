@@ -100,7 +100,7 @@
                         <a href="#donar">Dona por una Causa</a>
                         <a href="empresas">Empresas y Aliados</a>
                         <a href="practicas">Prácticas Profesionales</a>
-                        <a href="#voluntariado">Ser Voluntario</a>
+                        <a href="voluntariado">Ser Voluntario</a>
                     </div>
                 </div>
 
@@ -205,20 +205,39 @@
     <!-- Donar Section -->
     <section id="donar" class="section donar-section bg-light">
         <div class="container">
-            <div class="split-layout">
+            <div class="split-layout" style="align-items: center;">
                 <div class="split-image organic-img">
                     <img src="<?= htmlspecialchars(get_site_content($pdo, 'donar_img', 'FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png')) ?>" alt="Dona por una causa" loading="lazy" decoding="async">
                 </div>
                 <div class="split-content">
                     <h2><?= htmlspecialchars(get_site_content($pdo, 'donar_title', 'Dona por una Causa')) ?></h2>
-                    <p><?= htmlspecialchars(get_site_content($pdo, 'donar_desc', 'Cada aporte que haces a la Fundación ADN de Amor contribuye a crear oportunidades, esperanza y bienestar en situación de vulnerabilidad.')) ?></p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> <?= htmlspecialchars(get_site_content($pdo, 'donar_li1', 'Centro de Desarrollo de Talentos: Clases de inglés, arte, música y danza.')) ?></li>
-                        <li><i class="fas fa-check-circle"></i> <?= htmlspecialchars(get_site_content($pdo, 'donar_li2', 'Programa Esperanza: Alimentos, ropa y acompañamiento educativo.')) ?></li>
-                        <li><i class="fas fa-check-circle"></i> <?= htmlspecialchars(get_site_content($pdo, 'donar_li3', 'Proyectos comunitarios: Brigadas de salud y construcción de viviendas.')) ?></li>
-                    </ul>
+                    <p><?= htmlspecialchars(get_site_content($pdo, 'donar_desc', 'Cada aporte que haces a la Fundación ADN de Amor contribuye a crear oportunidades, esperanza y bienestar en familias en situación de vulnerabilidad.')) ?></p>
+                    
+                    <div class="causes-list" style="margin: 1.5rem 0; display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="background: #ffffff; padding: 1rem 1.25rem; border-radius: 10px; border-left: 4px solid var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                            <h4 style="margin: 0 0 0.3rem 0; color: var(--secondary); font-size: 1.05rem;"><i class="fas fa-graduation-cap" style="color: var(--primary); margin-right: 8px;"></i> Centro de Desarrollo de Talentos (CDT)</h4>
+                            <p style="margin: 0; font-size: 0.9rem; color: #64748b;">Clases gratuitas de inglés, artes plásticas, música, danza, deportes y formación para niños y jóvenes.</p>
+                        </div>
+                        <div style="background: #ffffff; padding: 1rem 1.25rem; border-radius: 10px; border-left: 4px solid #059669; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                            <h4 style="margin: 0 0 0.3rem 0; color: var(--secondary); font-size: 1.05rem;"><i class="fas fa-heart" style="color: #059669; margin-right: 8px;"></i> Programa Esperanza</h4>
+                            <p style="margin: 0; font-size: 0.9rem; color: #64748b;">Kits escolares, paquetes alimentarios, calzado, ropa y apoyo psicosocial a familias vulnerables.</p>
+                        </div>
+                        <div style="background: #ffffff; padding: 1rem 1.25rem; border-radius: 10px; border-left: 4px solid #005085; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                            <h4 style="margin: 0 0 0.3rem 0; color: var(--secondary); font-size: 1.05rem;"><i class="fas fa-hands-helping" style="color: #005085; margin-right: 8px;"></i> Proyectos Comunitarios y Misión Chocó</h4>
+                            <p style="margin: 0; font-size: 0.9rem; color: #64748b;">Brigadas integrales de salud, mejoramiento de vivienda rural e intervenciones humanitarias directas.</p>
+                        </div>
+                    </div>
+
                     <p><strong><?= htmlspecialchars(get_site_content($pdo, 'donar_footer_text', 'Tu aporte genera un efecto multiplicador. ¡Tú puedes marcar la diferencia!')) ?></strong></p>
-                    <a href="<?= htmlspecialchars(get_site_content($pdo, 'donar_btn_url', '#contacto')) ?>" class="btn btn-primary mt-3"><?= htmlspecialchars(get_site_content($pdo, 'donar_btn_text', 'Dona Hoy')) ?></a>
+                    
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                        <a href="https://wa.me/573162522445?text=Hola%2C%20deseo%20hacer%20una%20donaci%C3%B3n%20para%20apoyar%20a%20la%20Fundaci%C3%B3n%20ADN%20de%20Amor" target="_blank" rel="noopener noreferrer" class="btn btn-large" style="background: linear-gradient(135deg, #E63946 0%, #00103E 100%); color: #ffffff; border: none; box-shadow: 0 4px 15px rgba(0, 16, 62, 0.25); display: inline-flex; align-items: center; gap: 8px;">
+                            <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> <span>Donar vía WhatsApp</span>
+                        </a>
+                        <a href="<?= htmlspecialchars(get_site_content($pdo, 'donar_btn_url', '#contacto')) ?>" class="btn btn-outline" style="border-color: var(--secondary); color: var(--secondary);">
+                            <span><?= htmlspecialchars(get_site_content($pdo, 'donar_btn_text', 'Más Información')) ?></span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -276,7 +295,7 @@
             <p class="max-w-800 mx-auto mb-4"><?= htmlspecialchars(get_site_content($pdo, 'voluntariado_desc2', 'Ser voluntario en ADN de Amor es construir vínculos, vivir experiencias significativas y contribuir al desarrollo integral...')) ?></p>
 
             <div class="hero-buttons justify-center">
-                <a href="<?= htmlspecialchars(get_site_content($pdo, 'voluntariado_btn1_url', '#contacto')) ?>" class="btn btn-primary btn-large"><?= htmlspecialchars(get_site_content($pdo, 'voluntariado_btn1_text', 'Únete como Voluntario')) ?></a>
+                <a href="<?= htmlspecialchars(get_site_content($pdo, 'voluntariado_btn1_url', 'voluntariado')) ?>" class="btn btn-primary btn-large"><?= htmlspecialchars(get_site_content($pdo, 'voluntariado_btn1_text', 'Únete como Voluntario')) ?></a>
                 <a href="<?= htmlspecialchars(get_site_content($pdo, 'voluntariado_btn2_url', 'practicas')) ?>" class="btn btn-outline-white btn-large"><?= htmlspecialchars(get_site_content($pdo, 'voluntariado_btn2_text', 'Prácticas Profesionales')) ?></a>
             </div>
         </div>

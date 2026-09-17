@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prácticas Profesionales y Voluntariado Universitario | Fundación ADN de Amor</title>
-    <meta name="description" content="Realiza tus prácticas profesionales o voluntariado universitario en la Fundación ADN de Amor. Desarrolla tus talentos y transforma vidas en Colombia.">
+    <title>Prácticas y Colaboradores Profesionales | Fundación ADN de Amor</title>
+    <meta name="description" content="Realiza tus prácticas profesionales o colabora como profesional pro bono en la Fundación ADN de Amor. Desarrolla tus talentos y transforma vidas en Colombia.">
     
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fundacionadndeamor.org/practicas">
-    <meta property="og:title" content="Prácticas Profesionales y Voluntariado Universitario | Fundación ADN de Amor">
-    <meta property="og:description" content="Realiza tus prácticas profesionales o voluntariado universitario en la Fundación ADN de Amor. Desarrolla tus talentos y transforma vidas en Colombia.">
+    <meta property="og:title" content="Prácticas y Colaboradores Profesionales | Fundación ADN de Amor">
+    <meta property="og:description" content="Realiza tus prácticas profesionales o colabora como profesional pro bono en la Fundación ADN de Amor. Desarrolla tus talentos y transforma vidas en Colombia.">
     <meta property="og:image" content="https://fundacionadndeamor.org/FOTOS%20BANNERS/FOTO%20GRUPO%20JOVENES.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://fundacionadndeamor.org/practicas">
-    <meta property="twitter:title" content="Prácticas Profesionales y Voluntariado Universitario | Fundación ADN de Amor">
-    <meta property="twitter:description" content="Realiza tus prácticas profesionales o voluntariado universitario en la Fundación ADN de Amor. Desarrolla tus talentos y transforma vidas en Colombia.">
+    <meta property="twitter:title" content="Prácticas y Colaboradores Profesionales | Fundación ADN de Amor">
+    <meta property="twitter:description" content="Realiza tus prácticas profesionales o colabora como profesional pro bono en la Fundación ADN de Amor. Desarrolla tus talentos y transforma vidas en Colombia.">
     <meta property="twitter:image" content="https://fundacionadndeamor.org/FOTOS%20BANNERS/FOTO%20GRUPO%20JOVENES.png">
 
     <!-- Preconnect fuentes y assets externos -->
@@ -212,7 +212,7 @@
                         <a href="/#donar">Dona por una Causa</a>
                         <a href="empresas">Empresas y Aliados</a>
                         <a href="practicas">Prácticas Profesionales</a>
-                        <a href="/#voluntariado">Ser Voluntario</a>
+                        <a href="voluntariado">Ser Voluntario</a>
                     </div>
                 </div>
 
@@ -234,8 +234,8 @@
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="container" style="position: relative; z-index: 2;">
-            <h1>Prácticas Profesionales y Voluntariado Universitario</h1>
-            <p>Pon tu vocación, talento y conocimiento al servicio de la infancia y las familias más vulnerables. Vive una experiencia práctica que enriquecerá tu currículum y transformará vidas.</p>
+            <h1>Prácticas y Colaboradores Profesionales</h1>
+            <p>Pon tu vocación, talento y conocimiento al servicio de la infancia y las familias más vulnerables. Ya seas estudiante en busca de prácticas profesionales o profesional graduado que desea aportar su experiencia pro bono, hay un lugar para ti en nuestro equipo.</p>
             <a href="#contacto-practicas" class="btn btn-primary btn-large" style="box-shadow: 0 4px 15px rgba(234, 90, 0, 0.4);">
                 <span>Postula tu Perfil Ahora</span> <i class="fas fa-arrow-down" style="margin-left: 8px;"></i>
             </a>
@@ -247,8 +247,8 @@
         <div class="container">
             <div class="section-header text-center">
                 <span class="badge" style="background: rgba(234, 90, 0, 0.1); color: var(--primary); padding: 6px 16px; border-radius: 20px; font-weight: 600; font-size: 0.9rem; text-transform: uppercase;">Campos de Acción</span>
-                <h2 style="margin-top: 0.8rem;">¿En qué áreas puedes realizar tus prácticas?</h2>
-                <p style="max-width: 750px; margin: 0 auto; color: #64748b;">Buscamos estudiantes comprometidos, entusiastas y con vocación social en diversas disciplinas académicas.</p>
+                <h2 style="margin-top: 0.8rem;">¿En qué áreas puedes realizar tus prácticas o colaborar?</h2>
+                <p style="max-width: 750px; margin: 0 auto; color: #64748b;">Buscamos estudiantes comprometidos y profesionales graduados con vocación social en diversas disciplinas.</p>
             </div>
 
             <div class="areas-grid">
@@ -289,7 +289,7 @@
             <div class="why-us-box">
                 <div class="split-layout" style="align-items: center;">
                     <div class="split-content">
-                        <h3 style="font-size: 1.8rem; color: var(--secondary); margin-bottom: 1rem; font-weight: 700;">¿Por qué realizar tus prácticas con nosotros?</h3>
+                        <h3 style="font-size: 1.8rem; color: var(--secondary); margin-bottom: 1rem; font-weight: 700;">¿Por qué colaborar o hacer tus prácticas con nosotros?</h3>
                         <p style="color: #4a5568; line-height: 1.6;">En la Fundación ADN de Amor valoramos tu talento y te brindamos un entorno donde tus ideas se convierten en proyectos reales de transformación:</p>
                         
                         <ul class="why-us-list">
@@ -307,7 +307,7 @@
                             </li>
                             <li>
                                 <i class="fas fa-smile-beam"></i>
-                                <span><strong>Impacto Social Verdadero:</strong> Tu esfuerzo diario cambia directamente la realidad y el futuro de cientos de niños y jóvenes.</span>
+                                <span><strong>Impacto Social Verdadero:</strong> Tu esfuerzo diario cambia directamente la realidad y el futuro de cientos de niños y familias.</span>
                             </li>
                         </ul>
                     </div>
@@ -321,12 +321,12 @@
         </div>
     </section>
 
-    <!-- Formulario de Contacto Especializado para Prácticas -->
+    <!-- Formulario de Contacto Especializado para Prácticas y Colaboradores -->
     <section id="contacto-practicas" class="section bg-light">
         <div class="container" style="max-width: 820px; margin: 0 auto;">
             <div class="section-header text-center">
-                <h2>Postula tu Perfil para Prácticas Profesionales</h2>
-                <p>Completa el formulario y nos comunicaremos contigo para iniciar el proceso de selección y coordinar los detalles con tu institución educativa.</p>
+                <h2>Postula tu Perfil Profesional o de Prácticas</h2>
+                <p>Completa el formulario y nos comunicaremos contigo para coordinar una entrevista y evaluar juntos las posibilidades de vinculación.</p>
             </div>
             
             <form class="contact-form modern-card" id="form-practicas" action="send_form.php" method="POST">
@@ -347,6 +347,20 @@
                 <?php else: ?>
                     <div class="form-alert" style="display:none; margin-bottom: 1.5rem; padding: 12px 16px; border-radius: 8px; font-size: 0.95rem;"></div>
                 <?php endif; ?>
+
+                <div class="form-group" style="background: #ffffff; padding: 16px; border-radius: 10px; border: 1px solid rgba(0, 16, 62, 0.1); margin-bottom: 1.5rem;">
+                    <label style="font-weight: 700; color: var(--secondary); margin-bottom: 8px; display: block;">Tipo de Postulación *</label>
+                    <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                        <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; font-weight: 600; color: var(--secondary);">
+                            <input type="radio" name="profile_type" value="Estudiante" checked onchange="toggleProfileFields(this.value)">
+                            <span>🎓 Estudiante Universitario (Prácticas Profesionales)</span>
+                        </label>
+                        <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; font-weight: 600; color: var(--secondary);">
+                            <input type="radio" name="profile_type" value="Profesional" onchange="toggleProfileFields(this.value)">
+                            <span>💼 Profesional Graduado (Colaborador / Asesoría Pro Bono)</span>
+                        </label>
+                    </div>
+                </div>
 
                 <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                     <div class="form-group">
@@ -372,12 +386,12 @@
 
                 <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                     <div class="form-group">
-                        <label>Universidad o Institución Educativa *</label>
-                        <input type="text" name="university" placeholder="Ej. UTP, Libre, Areandina, UNAD, SENA" required class="form-control">
+                        <label id="label-university">Universidad o Institución Educativa *</label>
+                        <input type="text" id="input-university" name="university" placeholder="Ej. UTP, Libre, Areandina, UNAD, SENA" required class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Carrera o Programa Académico *</label>
-                        <input type="text" name="career" placeholder="Ej. Psicología, Artes Plásticas, Licenciatura" required class="form-control">
+                        <label id="label-career">Carrera o Programa Académico *</label>
+                        <input type="text" id="input-career" name="career" placeholder="Ej. Psicología, Artes Plásticas, Licenciatura" required class="form-control">
                     </div>
                 </div>
 
@@ -402,22 +416,22 @@
                         <label>Disponibilidad de Tiempo *</label>
                         <select name="availability" class="form-control" required style="cursor: pointer;">
                             <option value="">Selecciona tu disponibilidad...</option>
-                            <option value="Tiempo Completo">Tiempo Completo (Práctica Oficial)</option>
+                            <option value="Tiempo Completo">Tiempo Completo</option>
                             <option value="Medio Tiempo">Medio Tiempo (Mañanas o Tardes)</option>
                             <option value="Fines de Semana">Fines de Semana (Sábados/Domingos)</option>
                             <option value="Modalidad Virtual/Híbrida">Modalidad Virtual o Híbrida</option>
-                            <option value="Voluntariado Flexible">Horas Libres / Voluntariado Flexible</option>
+                            <option value="Voluntariado Flexible">Horas Libres / Asesoría Flexible</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Carta de Motivación / Cuéntanos sobre ti (Semestre actual, requerimientos de tu universidad y por qué te gustaría vincularte)</label>
-                    <textarea name="message" placeholder="Escribe aquí tu motivación, semestre, fecha de inicio requerida o cualquier detalle relevante..." class="form-control" rows="4"></textarea>
+                    <label>Carta de Motivación / Cuéntanos sobre ti (Semestre o experiencia, áreas donde deseas aportar y expectativas)</label>
+                    <textarea name="message" placeholder="Escribe aquí tu motivación, áreas de especialidad o cualquier detalle relevante..." class="form-control" rows="4"></textarea>
                 </div>
                 
                 <button type="submit" class="btn btn-primary btn-large btn-block" style="font-size: 1.1rem; padding: 1.2rem; cursor: pointer;">
-                    <span>Postularme a Prácticas Profesionales</span> <i class="fas fa-graduation-cap" style="margin-left: 8px;"></i>
+                    <span>Enviar Postulación</span> <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
                 </button>
             </form>
         </div>
@@ -425,5 +439,31 @@
 
     <?php include 'includes/footer.php'; ?>
     <script src="main.js"></script>
+    <script>
+        function toggleProfileFields(profileType) {
+            const labelUniversity = document.getElementById('label-university');
+            const inputUniversity = document.getElementById('input-university');
+            const labelCareer = document.getElementById('label-career');
+            const inputCareer = document.getElementById('input-career');
+
+            if (profileType === 'Profesional') {
+                labelUniversity.textContent = 'Universidad o Institución de Egreso';
+                inputUniversity.placeholder = 'Ej. UTP, Libre, Areandina (opcional)';
+                inputUniversity.required = false;
+
+                labelCareer.textContent = 'Profesión o Especialidad *';
+                inputCareer.placeholder = 'Ej. Psicología, Contaduría, Ingeniería';
+                inputCareer.required = true;
+            } else {
+                labelUniversity.textContent = 'Universidad o Institución Educativa *';
+                inputUniversity.placeholder = 'Ej. UTP, Libre, Areandina, UNAD, SENA';
+                inputUniversity.required = true;
+
+                labelCareer.textContent = 'Carrera o Programa Académico *';
+                inputCareer.placeholder = 'Ej. Psicología, Artes Plásticas, Licenciatura';
+                inputCareer.required = true;
+            }
+        }
+    </script>
 </body>
 </html>

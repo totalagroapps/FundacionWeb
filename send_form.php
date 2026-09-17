@@ -26,11 +26,16 @@ try {
 
     // Verificar y agregar columnas en caso de tablas preexistentes
     $cols = $pdo->query("SHOW COLUMNS FROM contact_messages")->fetchAll(PDO::FETCH_COLUMN);
+    if (!in_array('profile_type', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN profile_type varchar(100) NULL AFTER form_type"); }
     if (!in_array('company', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN company varchar(255) NULL AFTER modality"); }
     if (!in_array('position', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN position varchar(255) NULL AFTER company"); }
     if (!in_array('university', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN university varchar(255) NULL AFTER position"); }
     if (!in_array('career', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN career varchar(255) NULL AFTER university"); }
     if (!in_array('availability', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN availability varchar(100) NULL AFTER career"); }
+    if (!in_array('interest_reason', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN interest_reason text NULL AFTER message"); }
+    if (!in_array('collaboration_areas', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN collaboration_areas text NULL AFTER interest_reason"); }
+    if (!in_array('previous_volunteer', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN previous_volunteer varchar(10) NULL AFTER collaboration_areas"); }
+    if (!in_array('previous_volunteer_details', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN previous_volunteer_details text NULL AFTER previous_volunteer"); }
 } catch (\Exception $e) {
     // Si falla la verificación se continúa con el envío
 }
@@ -55,6 +60,9 @@ function respond($success, $message, $form_type = 'contacto', $is_ajax = false) 
         } elseif ($form_type === 'practicas') {
             $anchor = 'contacto-practicas';
             $page = '/practicas';
+        } elseif ($form_type === 'voluntariado') {
+            $anchor = 'contacto-voluntariado';
+            $page = '/voluntariado';
         }
         $status = $success ? 'success' : 'error';
         $msg_param = urlencode($message);
@@ -68,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // 1. Detección Anti-spam (Honeypot)
-$honeypot = trim($_POST['website'] ?? $_POST['business_url'] ?? '');
+$honeypot = trim($_POST['website'] ?? $_POST['business_url'] ?? $_POST['website_url_check'] ?? '');
 if (!empty($honeypot)) {
     // Es un bot automatizado: respondemos éxito simulado sin procesar
     respond(true, '¡Gracias por comunicarte con la Fundación ADN de Amor!', 'contacto', $is_ajax);
@@ -76,7 +84,7 @@ if (!empty($honeypot)) {
 
 // 2. Extracción y saneamiento de datos
 $raw_type = $_POST['form_type'] ?? 'contacto';
-if (in_array($raw_type, ['apadrinar', 'empresa', 'practicas'])) {
+if (in_array($raw_type, ['apadrinar', 'empresa', 'practicas', 'voluntariado'])) {
     $form_type = $raw_type;
 } else {
     $form_type = 'contacto';
@@ -85,15 +93,23 @@ if (in_array($raw_type, ['apadrinar', 'empresa', 'practicas'])) {
 $name = trim(strip_tags($_POST['name'] ?? ''));
 $email = trim(filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL));
 $phone = trim(strip_tags($_POST['phone'] ?? ''));
-$location = trim(strip_tags($_POST['location'] ?? ''));
+$location = trim(strip_tags($_POST['city'] ?? $_POST['location'] ?? ''));
 $modality = trim(strip_tags($_POST['modality'] ?? ''));
 $company = trim(strip_tags($_POST['company'] ?? ''));
 $position = trim(strip_tags($_POST['position'] ?? ''));
 $university = trim(strip_tags($_POST['university'] ?? ''));
 $career = trim(strip_tags($_POST['career'] ?? ''));
 $availability = trim(strip_tags($_POST['availability'] ?? ''));
+$profile_type = trim(strip_tags($_POST['profile_type'] ?? ''));
 $message = trim(strip_tags($_POST['message'] ?? ''));
 $ip = $_SERVER['REMOTE_ADDR'] ?? '';
+
+// Campos específicos para voluntariado
+$interest_reason = trim(strip_tags($_POST['interest_reason'] ?? ''));
+$raw_areas = $_POST['collaboration_areas'] ?? [];
+$collaboration_areas = is_array($raw_areas) ? implode(', ', array_map('strip_tags', $raw_areas)) : trim(strip_tags($raw_areas));
+$previous_volunteer = trim(strip_tags($_POST['previous_volunteer'] ?? ''));
+$previous_volunteer_details = trim(strip_tags($_POST['previous_volunteer_details'] ?? ''));
 
 // 3. Validaciones según el formulario
 if (empty($name)) {
@@ -108,12 +124,25 @@ if ($form_type === 'empresa' && empty($company)) {
     respond(false, 'Por favor, ingresa el nombre de tu empresa u organización.', $form_type, $is_ajax);
 }
 
-if ($form_type === 'practicas' && empty($university)) {
-    respond(false, 'Por favor, ingresa el nombre de tu universidad o institución.', $form_type, $is_ajax);
+if ($form_type === 'practicas') {
+    if ($profile_type !== 'Profesional' && empty($university)) {
+        respond(false, 'Por favor, ingresa el nombre de tu universidad o institución.', $form_type, $is_ajax);
+    }
+    if ($profile_type !== 'Profesional' && empty($career)) {
+        respond(false, 'Por favor, ingresa el nombre de tu carrera o programa académico.', $form_type, $is_ajax);
+    }
 }
 
-if ($form_type === 'practicas' && empty($career)) {
-    respond(false, 'Por favor, ingresa el nombre de tu carrera o programa académico.', $form_type, $is_ajax);
+if ($form_type === 'voluntariado') {
+    if (empty($interest_reason)) {
+        respond(false, 'Por favor, indícanos por qué te interesa ser voluntario con nosotros.', $form_type, $is_ajax);
+    }
+    if (empty($collaboration_areas)) {
+        respond(false, 'Por favor, selecciona al menos un área en la que crees que puedes colaborar.', $form_type, $is_ajax);
+    }
+    if (empty($previous_volunteer)) {
+        respond(false, 'Por favor, indica si has sido voluntario anteriormente.', $form_type, $is_ajax);
+    }
 }
 
 if ($form_type === 'contacto' && empty($message)) {
@@ -122,8 +151,8 @@ if ($form_type === 'contacto' && empty($message)) {
 
 // 4. Guardar registro en la base de datos
 try {
-    $stmt = $pdo->prepare("INSERT INTO contact_messages (form_type, name, email, phone, location, modality, company, position, university, career, availability, message, ip_address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->execute([$form_type, $name, $email, $phone, $location, $modality, $company, $position, $university, $career, $availability, $message, $ip]);
+    $stmt = $pdo->prepare("INSERT INTO contact_messages (form_type, profile_type, name, email, phone, location, modality, company, position, university, career, availability, message, interest_reason, collaboration_areas, previous_volunteer, previous_volunteer_details, ip_address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$form_type, $profile_type, $name, $email, $phone, $location, $modality, $company, $position, $university, $career, $availability, $message, $interest_reason, $collaboration_areas, $previous_volunteer, $previous_volunteer_details, $ip]);
 } catch (\Exception $e) {
     error_log("Error al guardar mensaje en BD: " . $e->getMessage());
 }
@@ -144,9 +173,19 @@ if ($form_type === 'empresa') {
     $badge_title = "Alianza Empresarial";
     $type_description = "Una empresa o entidad aliada ha enviado una solicitud de colaboración institucional desde la página web.";
 } elseif ($form_type === 'practicas') {
-    $subject = "🎓 Nueva Solicitud de Prácticas Profesionales: {$name}" . (!empty($career) ? " ({$career})" : "");
-    $badge_title = "Prácticas Profesionales";
-    $type_description = "Un estudiante o voluntario universitario ha postulado su perfil para realizar prácticas profesionales.";
+    if ($profile_type === 'Profesional') {
+        $subject = "💼 Nueva Postulación de Colaborador Profesional: {$name}";
+        $badge_title = "Colaborador Profesional / Pro Bono";
+        $type_description = "Un profesional graduado ha enviado su postulación para colaborar y brindar asesoría con la Fundación.";
+    } else {
+        $subject = "🎓 Nueva Solicitud de Prácticas Profesionales: {$name}" . (!empty($career) ? " ({$career})" : "");
+        $badge_title = "Prácticas Profesionales";
+        $type_description = "Un estudiante o voluntario universitario ha postulado su perfil para realizar prácticas profesionales.";
+    }
+} elseif ($form_type === 'voluntariado') {
+    $subject = "🤝 Nueva Postulación de Voluntariado: {$name}" . (!empty($location) ? " ({$location})" : "");
+    $badge_title = "Voluntariado ADN de Amor";
+    $type_description = "Una persona interesada ha completado el formulario de voluntariado para sumarse a la labor de la Fundación.";
 } elseif ($form_type === 'apadrinar') {
     $subject = "❤️ Nueva Solicitud de Apadrinamiento: {$name}";
     $badge_title = "Solicitud de Apadrinamiento";
@@ -209,6 +248,14 @@ if (!empty($company)) {
                 </tr>';
 }
 
+if (!empty($profile_type)) {
+    $html_body .= '
+                <tr>
+                    <td class="label">Tipo de Perfil:</td>
+                    <td class="value"><strong>' . htmlspecialchars($profile_type) . '</strong></td>
+                </tr>';
+}
+
 if (!empty($position)) {
     $html_body .= '
                 <tr>
@@ -230,6 +277,34 @@ if (!empty($career)) {
                 <tr>
                     <td class="label">Carrera / Programa:</td>
                     <td class="value">' . htmlspecialchars($career) . '</td>
+                </tr>';
+}
+
+if (!empty($interest_reason)) {
+    $html_body .= '
+                <tr>
+                    <td class="label">¿Por qué le interesa ser voluntario?:</td>
+                    <td class="value">' . nl2br(htmlspecialchars($interest_reason)) . '</td>
+                </tr>';
+}
+
+if (!empty($collaboration_areas)) {
+    $html_body .= '
+                <tr>
+                    <td class="label">Áreas de Colaboración:</td>
+                    <td class="value"><span style="color: #00103E; font-weight: 600;">' . htmlspecialchars($collaboration_areas) . '</span></td>
+                </tr>';
+}
+
+if (!empty($previous_volunteer)) {
+    $pv_text = htmlspecialchars($previous_volunteer);
+    if (!empty($previous_volunteer_details)) {
+        $pv_text .= ' - ' . htmlspecialchars($previous_volunteer_details);
+    }
+    $html_body .= '
+                <tr>
+                    <td class="label">¿Voluntario anteriormente?:</td>
+                    <td class="value">' . $pv_text . '</td>
                 </tr>';
 }
 
@@ -275,6 +350,8 @@ if (!empty($modality)) {
         $modality_label = 'Tipo de Alianza / Apoyo:';
     } elseif ($form_type === 'practicas') {
         $modality_label = 'Área de Interés:';
+    } elseif ($form_type === 'voluntariado') {
+        $modality_label = 'Modalidad de Voluntariado:';
     }
     $html_body .= '
                 <tr>
@@ -296,6 +373,8 @@ if (!empty($message)) {
         $message_heading = 'Propuesta / Mensaje de la Empresa:';
     } elseif ($form_type === 'practicas') {
         $message_heading = 'Carta de Motivación / Mensaje:';
+    } elseif ($form_type === 'voluntariado') {
+        $message_heading = 'Mensaje adicional:';
     }
     $html_body .= '
             <p style="font-weight: 600; color: #00103E; margin-bottom: 8px;">' . $message_heading . '</p>
@@ -335,7 +414,9 @@ $msg_success = '¡Muchas gracias! Tu mensaje ha sido enviado correctamente a nue
 if ($form_type === 'empresa') {
     $msg_success = '¡Muchas gracias por su interés en aliarse con la Fundación ADN de Amor! Hemos recibido su propuesta en info@fundacionadndeamor.org y nos pondremos en contacto con su organización muy pronto.';
 } elseif ($form_type === 'practicas') {
-    $msg_success = '¡Muchas gracias por postularte para realizar tus prácticas profesionales con nosotros! Tu solicitud ha sido recibida en info@fundacionadndeamor.org y revisaremos tu perfil.';
+    $msg_success = '¡Muchas gracias por postularte para colaborar con nosotros! Tu solicitud ha sido recibida en info@fundacionadndeamor.org y revisaremos tu perfil con nuestro equipo.';
+} elseif ($form_type === 'voluntariado') {
+    $msg_success = '¡Muchas gracias por tu vocación y deseo de servir! Tu postulación como voluntario ha sido recibida en info@fundacionadndeamor.org y nos pondremos en contacto contigo muy pronto.';
 }
 
 if ($mail_sent) {
