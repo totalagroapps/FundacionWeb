@@ -58,6 +58,7 @@
 
   # 0. Forzar HTTPS en todo el sitio (301 SEO + seguridad)
   RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # 1. Redirigir /index o /index.php a la raíz / (301 SEO)
