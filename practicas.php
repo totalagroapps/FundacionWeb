@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=<?= @filemtime(__DIR__ . '/styles.css') ?>">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -438,7 +438,7 @@
     </section>
 
     <?php include 'includes/footer.php'; ?>
-    <script src="main.js"></script>
+    <script src="main.js?v=<?= @filemtime(__DIR__ . '/main.js') ?>"></script>
     <script>
         function toggleProfileFields(profileType) {
             const labelUniversity = document.getElementById('label-university');
