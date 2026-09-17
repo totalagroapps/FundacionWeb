@@ -107,6 +107,36 @@ function get_site_content($pdo, $key, $default = '') {
         }
     }
 
+    if ($key === 'empresas_btn_url') {
+        if (!$result || empty($result['content_value']) || strpos($result['content_value'], 'adepo') !== false) {
+            try {
+                $up = $pdo->prepare("INSERT INTO site_content (section_key, content_type, content_value, page_name) VALUES ('empresas_btn_url', 'text', 'empresas', 'inicio') ON DUPLICATE KEY UPDATE content_value = 'empresas'");
+                $up->execute();
+            } catch (\Exception $e) {
+                try {
+                    $up = $pdo->prepare("UPDATE site_content SET content_value = 'empresas' WHERE section_key = 'empresas_btn_url'");
+                    $up->execute();
+                } catch (\Exception $e2) {}
+            }
+            return 'empresas';
+        }
+    }
+
+    if ($key === 'voluntariado_btn2_url') {
+        if (!$result || empty($result['content_value']) || strpos($result['content_value'], 'adepo') !== false) {
+            try {
+                $up = $pdo->prepare("INSERT INTO site_content (section_key, content_type, content_value, page_name) VALUES ('voluntariado_btn2_url', 'text', 'practicas', 'inicio') ON DUPLICATE KEY UPDATE content_value = 'practicas'");
+                $up->execute();
+            } catch (\Exception $e) {
+                try {
+                    $up = $pdo->prepare("UPDATE site_content SET content_value = 'practicas' WHERE section_key = 'voluntariado_btn2_url'");
+                    $up->execute();
+                } catch (\Exception $e2) {}
+            }
+            return 'practicas';
+        }
+    }
+
     if ($result && !empty($result['content_value']) && is_string($result['content_value'])) {
         $val = $result['content_value'];
         if (stripos($val, 'detodopelis') !== false || stripos($val, 'pelis') !== false) {

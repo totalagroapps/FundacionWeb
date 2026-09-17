@@ -97,8 +97,8 @@
                     <div class="dropdown-content">
                         <a href="apadrinar">Apadrina un Niño</a>
                         <a href="#donar">Dona por una Causa</a>
-                        <a href="#empresas">Empresas Socialmente Responsables</a>
-                        <a href="#empresas">Colaboradores y Prácticas</a>
+                        <a href="empresas">Empresas y Aliados</a>
+                        <a href="practicas">Prácticas Profesionales</a>
                         <a href="#voluntariado">Ser Voluntario</a>
                     </div>
                 </div>
@@ -256,7 +256,7 @@
                             <p style="font-size: 0.9rem;"><?= htmlspecialchars(get_site_content($pdo, 'empresas_card4_desc', 'Desarrollo de proyectos conjuntos de gran impacto.')) ?></p>
                         </div>
                     </div>
-                    <a href="<?= htmlspecialchars(get_site_content($pdo, 'empresas_btn_url', 'https://adepo.eu/hello-world')) ?>" target="_blank"
+                    <a href="<?= htmlspecialchars(get_site_content($pdo, 'empresas_btn_url', 'empresas')) ?>"
                         class="btn btn-primary btn-large mt-4"><?= htmlspecialchars(get_site_content($pdo, 'empresas_btn_text', 'Conviértete en Aliado')) ?></a>
                 </div>
                 <div class="split-image organic-img-2">
@@ -276,7 +276,7 @@
 
             <div class="hero-buttons justify-center">
                 <a href="<?= htmlspecialchars(get_site_content($pdo, 'voluntariado_btn1_url', '#contacto')) ?>" class="btn btn-primary btn-large"><?= htmlspecialchars(get_site_content($pdo, 'voluntariado_btn1_text', 'Únete como Voluntario')) ?></a>
-                <a href="<?= htmlspecialchars(get_site_content($pdo, 'voluntariado_btn2_url', 'https://adepo.eu/form-pro')) ?>" target="_blank" class="btn btn-outline-white btn-large"><?= htmlspecialchars(get_site_content($pdo, 'voluntariado_btn2_text', 'Prácticas Profesionales')) ?></a>
+                <a href="<?= htmlspecialchars(get_site_content($pdo, 'voluntariado_btn2_url', 'practicas')) ?>" class="btn btn-outline-white btn-large"><?= htmlspecialchars(get_site_content($pdo, 'voluntariado_btn2_text', 'Prácticas Profesionales')) ?></a>
             </div>
         </div>
     </section>

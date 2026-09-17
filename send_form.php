@@ -2,7 +2,7 @@
 // send_form.php - Procesador universal de formularios para Fundación ADN de Amor
 require_once 'includes/db.php';
 
-// Asegurar que la tabla de mensajes exista en la base de datos
+// Asegurar que la tabla de mensajes exista en la base de datos con todos los campos necesarios
 try {
     $pdo->exec("CREATE TABLE IF NOT EXISTS `contact_messages` (
         `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -12,12 +12,25 @@ try {
         `phone` varchar(100) DEFAULT NULL,
         `location` varchar(255) DEFAULT NULL,
         `modality` varchar(100) DEFAULT NULL,
+        `company` varchar(255) DEFAULT NULL,
+        `position` varchar(255) DEFAULT NULL,
+        `university` varchar(255) DEFAULT NULL,
+        `career` varchar(255) DEFAULT NULL,
+        `availability` varchar(100) DEFAULT NULL,
         `message` text DEFAULT NULL,
         `ip_address` varchar(45) DEFAULT NULL,
         `status` varchar(20) NOT NULL DEFAULT 'nuevo',
         `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (`id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;");
+
+    // Verificar y agregar columnas en caso de tablas preexistentes
+    $cols = $pdo->query("SHOW COLUMNS FROM contact_messages")->fetchAll(PDO::FETCH_COLUMN);
+    if (!in_array('company', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN company varchar(255) NULL AFTER modality"); }
+    if (!in_array('position', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN position varchar(255) NULL AFTER company"); }
+    if (!in_array('university', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN university varchar(255) NULL AFTER position"); }
+    if (!in_array('career', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN career varchar(255) NULL AFTER university"); }
+    if (!in_array('availability', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN availability varchar(100) NULL AFTER career"); }
 } catch (\Exception $e) {
     // Si falla la verificación se continúa con el envío
 }
@@ -31,8 +44,18 @@ function respond($success, $message, $form_type = 'contacto', $is_ajax = false) 
         echo json_encode(['success' => $success, 'message' => $message]);
         exit;
     } else {
-        $anchor = ($form_type === 'apadrinar') ? 'contacto-apadrinar' : 'contacto';
-        $page = ($form_type === 'apadrinar') ? '/apadrinar' : '/';
+        $anchor = 'contacto';
+        $page = '/';
+        if ($form_type === 'apadrinar') {
+            $anchor = 'contacto-apadrinar';
+            $page = '/apadrinar';
+        } elseif ($form_type === 'empresa') {
+            $anchor = 'contacto-empresa';
+            $page = '/empresas';
+        } elseif ($form_type === 'practicas') {
+            $anchor = 'contacto-practicas';
+            $page = '/practicas';
+        }
         $status = $success ? 'success' : 'error';
         $msg_param = urlencode($message);
         header("Location: {$page}?status={$status}&msg={$msg_param}#{$anchor}");
@@ -52,16 +75,27 @@ if (!empty($honeypot)) {
 }
 
 // 2. Extracción y saneamiento de datos
-$form_type = (isset($_POST['form_type']) && $_POST['form_type'] === 'apadrinar') ? 'apadrinar' : 'contacto';
+$raw_type = $_POST['form_type'] ?? 'contacto';
+if (in_array($raw_type, ['apadrinar', 'empresa', 'practicas'])) {
+    $form_type = $raw_type;
+} else {
+    $form_type = 'contacto';
+}
+
 $name = trim(strip_tags($_POST['name'] ?? ''));
 $email = trim(filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL));
 $phone = trim(strip_tags($_POST['phone'] ?? ''));
 $location = trim(strip_tags($_POST['location'] ?? ''));
 $modality = trim(strip_tags($_POST['modality'] ?? ''));
+$company = trim(strip_tags($_POST['company'] ?? ''));
+$position = trim(strip_tags($_POST['position'] ?? ''));
+$university = trim(strip_tags($_POST['university'] ?? ''));
+$career = trim(strip_tags($_POST['career'] ?? ''));
+$availability = trim(strip_tags($_POST['availability'] ?? ''));
 $message = trim(strip_tags($_POST['message'] ?? ''));
 $ip = $_SERVER['REMOTE_ADDR'] ?? '';
 
-// 3. Validaciones
+// 3. Validaciones según el formulario
 if (empty($name)) {
     respond(false, 'Por favor, ingresa tu nombre completo.', $form_type, $is_ajax);
 }
@@ -70,14 +104,26 @@ if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     respond(false, 'Por favor, ingresa un correo electrónico válido.', $form_type, $is_ajax);
 }
 
+if ($form_type === 'empresa' && empty($company)) {
+    respond(false, 'Por favor, ingresa el nombre de tu empresa u organización.', $form_type, $is_ajax);
+}
+
+if ($form_type === 'practicas' && empty($university)) {
+    respond(false, 'Por favor, ingresa el nombre de tu universidad o institución.', $form_type, $is_ajax);
+}
+
+if ($form_type === 'practicas' && empty($career)) {
+    respond(false, 'Por favor, ingresa el nombre de tu carrera o programa académico.', $form_type, $is_ajax);
+}
+
 if ($form_type === 'contacto' && empty($message)) {
     respond(false, 'Por favor, escribe un mensaje.', $form_type, $is_ajax);
 }
 
 // 4. Guardar registro en la base de datos
 try {
-    $stmt = $pdo->prepare("INSERT INTO contact_messages (form_type, name, email, phone, location, modality, message, ip_address) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->execute([$form_type, $name, $email, $phone, $location, $modality, $message, $ip]);
+    $stmt = $pdo->prepare("INSERT INTO contact_messages (form_type, name, email, phone, location, modality, company, position, university, career, availability, message, ip_address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$form_type, $name, $email, $phone, $location, $modality, $company, $position, $university, $career, $availability, $message, $ip]);
 } catch (\Exception $e) {
     error_log("Error al guardar mensaje en BD: " . $e->getMessage());
 }
@@ -93,7 +139,15 @@ $fecha_envio = date('d/m/Y h:i A');
 $clean_phone = preg_replace('/[^0-9]/', '', $phone);
 $wa_url = !empty($clean_phone) ? "https://wa.me/{$clean_phone}" : '';
 
-if ($form_type === 'apadrinar') {
+if ($form_type === 'empresa') {
+    $subject = "🏢 Nueva Propuesta de Alianza Empresarial: " . (!empty($company) ? "{$company} - " : "") . "{$name}";
+    $badge_title = "Alianza Empresarial";
+    $type_description = "Una empresa o entidad aliada ha enviado una solicitud de colaboración institucional desde la página web.";
+} elseif ($form_type === 'practicas') {
+    $subject = "🎓 Nueva Solicitud de Prácticas Profesionales: {$name}" . (!empty($career) ? " ({$career})" : "");
+    $badge_title = "Prácticas Profesionales";
+    $type_description = "Un estudiante o voluntario universitario ha postulado su perfil para realizar prácticas profesionales.";
+} elseif ($form_type === 'apadrinar') {
     $subject = "❤️ Nueva Solicitud de Apadrinamiento: {$name}";
     $badge_title = "Solicitud de Apadrinamiento";
     $type_description = "Un usuario ha completado el formulario de apadrinamiento en la web.";
@@ -103,7 +157,7 @@ if ($form_type === 'apadrinar') {
     $type_description = "Un usuario ha enviado un mensaje desde el formulario de contacto principal.";
 }
 
-// Plantilla HTML Responsive con los colores corporativos
+// Plantilla HTML Responsive con los colores corporativos (#00103E y #EA5A00)
 $html_body = '
 <!DOCTYPE html>
 <html lang="es">
@@ -122,8 +176,8 @@ $html_body = '
         .intro { font-size: 15px; color: #4a5568; margin-bottom: 25px; line-height: 1.5; }
         .table-data { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
         .table-data td { padding: 12px 10px; border-bottom: 1px solid #edf2f7; vertical-align: top; font-size: 14px; }
-        .label { width: 35%; font-weight: 600; color: #00103E; }
-        .value { width: 65%; color: #2d3748; }
+        .label { width: 38%; font-weight: 600; color: #00103E; }
+        .value { width: 62%; color: #2d3748; }
         .value a { color: #EA5A00; text-decoration: none; font-weight: 500; }
         .message-box { background: #f8fafc; border-left: 4px solid #EA5A00; padding: 16px; border-radius: 6px; font-style: normal; color: #1a202c; line-height: 1.6; font-size: 14px; }
         .actions { text-align: center; margin-top: 30px; }
@@ -143,9 +197,51 @@ $html_body = '
 
             <table class="table-data">
                 <tr>
-                    <td class="label">Nombre:</td>
+                    <td class="label">' . ($form_type === 'empresa' ? 'Persona de Contacto:' : 'Nombre:') . '</td>
                     <td class="value"><strong>' . htmlspecialchars($name) . '</strong></td>
-                </tr>
+                </tr>';
+
+if (!empty($company)) {
+    $html_body .= '
+                <tr>
+                    <td class="label">Empresa / Organización:</td>
+                    <td class="value"><strong>' . htmlspecialchars($company) . '</strong></td>
+                </tr>';
+}
+
+if (!empty($position)) {
+    $html_body .= '
+                <tr>
+                    <td class="label">Cargo o Rol:</td>
+                    <td class="value">' . htmlspecialchars($position) . '</td>
+                </tr>';
+}
+
+if (!empty($university)) {
+    $html_body .= '
+                <tr>
+                    <td class="label">Universidad / Institución:</td>
+                    <td class="value"><strong>' . htmlspecialchars($university) . '</strong></td>
+                </tr>';
+}
+
+if (!empty($career)) {
+    $html_body .= '
+                <tr>
+                    <td class="label">Carrera / Programa:</td>
+                    <td class="value">' . htmlspecialchars($career) . '</td>
+                </tr>';
+}
+
+if (!empty($availability)) {
+    $html_body .= '
+                <tr>
+                    <td class="label">Disponibilidad de Tiempo:</td>
+                    <td class="value"><span style="color: #00103E; font-weight: 600;">' . htmlspecialchars($availability) . '</span></td>
+                </tr>';
+}
+
+$html_body .= '
                 <tr>
                     <td class="label">Correo Electrónico:</td>
                     <td class="value"><a href="mailto:' . htmlspecialchars($email) . '">' . htmlspecialchars($email) . '</a></td>
@@ -168,16 +264,22 @@ if (!empty($phone)) {
 if (!empty($location)) {
     $html_body .= '
                 <tr>
-                    <td class="label">Localidad / País:</td>
+                    <td class="label">Ciudad / País:</td>
                     <td class="value">' . htmlspecialchars($location) . '</td>
                 </tr>';
 }
 
 if (!empty($modality)) {
+    $modality_label = 'Modalidad elegida:';
+    if ($form_type === 'empresa') {
+        $modality_label = 'Tipo de Alianza / Apoyo:';
+    } elseif ($form_type === 'practicas') {
+        $modality_label = 'Área de Interés:';
+    }
     $html_body .= '
                 <tr>
-                    <td class="label">Modalidad elegida:</td>
-                    <td class="value"><span style="color: #00103E; font-weight: 600;">' . htmlspecialchars($modality) . '</span></td>
+                    <td class="label">' . $modality_label . '</td>
+                    <td class="value"><span style="color: #EA5A00; font-weight: 600;">' . htmlspecialchars($modality) . '</span></td>
                 </tr>';
 }
 
@@ -189,8 +291,14 @@ $html_body .= '
             </table>';
 
 if (!empty($message)) {
+    $message_heading = 'Mensaje del usuario:';
+    if ($form_type === 'empresa') {
+        $message_heading = 'Propuesta / Mensaje de la Empresa:';
+    } elseif ($form_type === 'practicas') {
+        $message_heading = 'Carta de Motivación / Mensaje:';
+    }
     $html_body .= '
-            <p style="font-weight: 600; color: #00103E; margin-bottom: 8px;">Mensaje del usuario:</p>
+            <p style="font-weight: 600; color: #00103E; margin-bottom: 8px;">' . $message_heading . '</p>
             <div class="message-box">
                 ' . nl2br(htmlspecialchars($message)) . '
             </div>';
@@ -223,9 +331,16 @@ $headers_str = implode("\r\n", $headers);
 // Enviar correo con el parámetro -f para garantizar SPF / Return-Path
 $mail_sent = @mail($to_email, $subject, $html_body, $headers_str, "-f info@fundacionadndeamor.org");
 
+$msg_success = '¡Muchas gracias! Tu mensaje ha sido enviado correctamente a nuestro equipo en info@fundacionadndeamor.org. Nos pondremos en contacto contigo muy pronto.';
+if ($form_type === 'empresa') {
+    $msg_success = '¡Muchas gracias por su interés en aliarse con la Fundación ADN de Amor! Hemos recibido su propuesta en info@fundacionadndeamor.org y nos pondremos en contacto con su organización muy pronto.';
+} elseif ($form_type === 'practicas') {
+    $msg_success = '¡Muchas gracias por postularte para realizar tus prácticas profesionales con nosotros! Tu solicitud ha sido recibida en info@fundacionadndeamor.org y revisaremos tu perfil.';
+}
+
 if ($mail_sent) {
-    respond(true, '¡Muchas gracias! Tu mensaje ha sido enviado correctamente a nuestro equipo en info@fundacionadndeamor.org. Nos pondremos en contacto contigo muy pronto.', $form_type, $is_ajax);
+    respond(true, $msg_success, $form_type, $is_ajax);
 } else {
     // Si la función mail del servidor falla pero el registro se guardó en BD, notificamos éxito al usuario
-    respond(true, '¡Muchas gracias! Hemos recibido tu información exitosamente y nuestro equipo se comunicará contigo.', $form_type, $is_ajax);
+    respond(true, $msg_success, $form_type, $is_ajax);
 }

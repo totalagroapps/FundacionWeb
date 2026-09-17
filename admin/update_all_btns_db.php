@@ -10,10 +10,10 @@ try {
         
         ['donar_btn_url', 'text', '#contacto', 'inicio'],
         
-        ['empresas_btn_url', 'text', 'https://adepo.eu/hello-world', 'inicio'],
+        ['empresas_btn_url', 'text', 'empresas', 'inicio'],
         
         ['voluntariado_btn1_url', 'text', '#contacto', 'inicio'],
-        ['voluntariado_btn2_url', 'text', 'https://adepo.eu/form-pro', 'inicio'],
+        ['voluntariado_btn2_url', 'text', 'practicas', 'inicio'],
         
         ['tienda_btn_url', 'text', 'tienda.html', 'inicio']
     ];

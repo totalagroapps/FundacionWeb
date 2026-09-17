@@ -7,7 +7,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     exit;
 }
 
-// Asegurar que la tabla existe
+// Asegurar que la tabla existe con todas sus columnas
 try {
     $pdo->exec("CREATE TABLE IF NOT EXISTS `contact_messages` (
         `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -17,12 +17,24 @@ try {
         `phone` varchar(100) DEFAULT NULL,
         `location` varchar(255) DEFAULT NULL,
         `modality` varchar(100) DEFAULT NULL,
+        `company` varchar(255) DEFAULT NULL,
+        `position` varchar(255) DEFAULT NULL,
+        `university` varchar(255) DEFAULT NULL,
+        `career` varchar(255) DEFAULT NULL,
+        `availability` varchar(100) DEFAULT NULL,
         `message` text DEFAULT NULL,
         `ip_address` varchar(45) DEFAULT NULL,
         `status` varchar(20) NOT NULL DEFAULT 'nuevo',
         `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (`id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;");
+
+    $cols = $pdo->query("SHOW COLUMNS FROM contact_messages")->fetchAll(PDO::FETCH_COLUMN);
+    if (!in_array('company', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN company varchar(255) NULL AFTER modality"); }
+    if (!in_array('position', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN position varchar(255) NULL AFTER company"); }
+    if (!in_array('university', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN university varchar(255) NULL AFTER position"); }
+    if (!in_array('career', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN career varchar(255) NULL AFTER university"); }
+    if (!in_array('availability', $cols)) { $pdo->exec("ALTER TABLE contact_messages ADD COLUMN availability varchar(100) NULL AFTER career"); }
 } catch (\Exception $e) {}
 
 // Procesar acciones (eliminar o cambiar estado)
@@ -56,6 +68,10 @@ if ($filter === 'contacto') {
     $sql .= " WHERE form_type = 'contacto'";
 } elseif ($filter === 'apadrinar') {
     $sql .= " WHERE form_type = 'apadrinar'";
+} elseif ($filter === 'empresa') {
+    $sql .= " WHERE form_type = 'empresa'";
+} elseif ($filter === 'practicas') {
+    $sql .= " WHERE form_type = 'practicas'";
 } elseif ($filter === 'nuevo') {
     $sql .= " WHERE status = 'nuevo'";
 }
@@ -222,6 +238,10 @@ $count_nuevos = $pdo->query("SELECT COUNT(*) FROM contact_messages WHERE status 
         .badge-contacto { background: rgba(0, 16, 62, 0.1); color: var(--secondary); }
         body.dark-mode .badge-contacto { background: rgba(255, 255, 255, 0.1); color: #93c5fd; }
         .badge-apadrinar { background: rgba(234, 90, 0, 0.15); color: var(--primary); }
+        .badge-empresa { background: rgba(0, 80, 133, 0.15); color: #005085; }
+        body.dark-mode .badge-empresa { background: rgba(56, 189, 248, 0.2); color: #38bdf8; }
+        .badge-practicas { background: rgba(16, 185, 129, 0.15); color: #059669; }
+        body.dark-mode .badge-practicas { background: rgba(52, 211, 153, 0.2); color: #34d399; }
 
         .card-body {
             background: var(--bg-body);
@@ -305,8 +325,10 @@ $count_nuevos = $pdo->query("SELECT COUNT(*) FROM contact_messages WHERE status 
         <div class="filters-bar">
             <a href="mensajes.php?filter=all" class="filter-btn <?= $filter === 'all' ? 'active' : '' ?>">Todos (<?= $count_all ?>)</a>
             <a href="mensajes.php?filter=nuevo" class="filter-btn <?= $filter === 'nuevo' ? 'active' : '' ?>">Nuevos (<?= $count_nuevos ?>)</a>
-            <a href="mensajes.php?filter=contacto" class="filter-btn <?= $filter === 'contacto' ? 'active' : '' ?>">Contacto General</a>
+            <a href="mensajes.php?filter=contacto" class="filter-btn <?= $filter === 'contacto' ? 'active' : '' ?>">Contacto</a>
             <a href="mensajes.php?filter=apadrinar" class="filter-btn <?= $filter === 'apadrinar' ? 'active' : '' ?>">Apadrinamiento</a>
+            <a href="mensajes.php?filter=empresa" class="filter-btn <?= $filter === 'empresa' ? 'active' : '' ?>">Empresas</a>
+            <a href="mensajes.php?filter=practicas" class="filter-btn <?= $filter === 'practicas' ? 'active' : '' ?>">Prácticas</a>
         </div>
 
         <?php if (empty($messages)): ?>
@@ -339,7 +361,11 @@ $count_nuevos = $pdo->query("SELECT COUNT(*) FROM contact_messages WHERE status 
                                 </div>
                             </div>
                             <div style="display: flex; gap: 0.5rem; align-items: center;">
-                                <?php if ($msg['form_type'] === 'apadrinar'): ?>
+                                <?php if ($msg['form_type'] === 'empresa'): ?>
+                                    <span class="badge badge-empresa"><i class="fas fa-building"></i> Alianza Empresa</span>
+                                <?php elseif ($msg['form_type'] === 'practicas'): ?>
+                                    <span class="badge badge-practicas"><i class="fas fa-graduation-cap"></i> Prácticas</span>
+                                <?php elseif ($msg['form_type'] === 'apadrinar'): ?>
                                     <span class="badge badge-apadrinar"><i class="fas fa-heart"></i> Apadrinamiento</span>
                                 <?php else: ?>
                                     <span class="badge badge-contacto"><i class="fas fa-envelope"></i> Contacto</span>
@@ -347,9 +373,37 @@ $count_nuevos = $pdo->query("SELECT COUNT(*) FROM contact_messages WHERE status 
                             </div>
                         </div>
 
+                        <?php if (!empty($msg['company'])): ?>
+                            <div style="margin-bottom: 0.35rem; font-size: 0.95rem;">
+                                <strong><i class="fas fa-building" style="color: var(--text-muted); margin-right: 4px;"></i> Empresa:</strong> 
+                                <span style="font-weight: 600; color: var(--secondary);"><?= htmlspecialchars($msg['company']) ?></span>
+                                <?php if (!empty($msg['position'])): ?>
+                                    <span style="color: var(--text-muted);"> &bull; Cargo: <?= htmlspecialchars($msg['position']) ?></span>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($msg['university'])): ?>
+                            <div style="margin-bottom: 0.35rem; font-size: 0.95rem;">
+                                <strong><i class="fas fa-university" style="color: var(--text-muted); margin-right: 4px;"></i> Universidad:</strong> 
+                                <span style="font-weight: 600; color: var(--secondary);"><?= htmlspecialchars($msg['university']) ?></span>
+                                <?php if (!empty($msg['career'])): ?>
+                                    <span style="color: var(--text-muted);"> &bull; Carrera: <?= htmlspecialchars($msg['career']) ?></span>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($msg['availability'])): ?>
+                            <div style="margin-bottom: 0.35rem; font-size: 0.9rem;">
+                                <strong><i class="far fa-calendar-check" style="color: #059669; margin-right: 4px;"></i> Disponibilidad:</strong> 
+                                <span style="color: #059669; font-weight: 600;"><?= htmlspecialchars($msg['availability']) ?></span>
+                            </div>
+                        <?php endif; ?>
+
                         <?php if (!empty($msg['modality'])): ?>
                             <div style="margin-bottom: 0.5rem; font-size: 0.9rem;">
-                                <strong>Modalidad de interés:</strong> <span style="color: var(--primary); font-weight: 600;"><?= htmlspecialchars($msg['modality']) ?></span>
+                                <strong><?= $msg['form_type'] === 'empresa' ? 'Tipo de Alianza:' : ($msg['form_type'] === 'practicas' ? 'Área de Interés:' : 'Modalidad:') ?></strong> 
+                                <span style="color: var(--primary); font-weight: 600;"><?= htmlspecialchars($msg['modality']) ?></span>
                             </div>
                         <?php endif; ?>
 

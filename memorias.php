@@ -78,8 +78,8 @@
                     <div class="dropdown-content">
                         <a href="apadrinar">Apadrina un Niño</a>
                         <a href="/#donar">Dona por una Causa</a>
-                        <a href="/#empresas">Empresas Socialmente Responsables</a>
-                        <a href="/#empresas">Colaboradores y Prácticas</a>
+                        <a href="empresas">Empresas y Aliados</a>
+                        <a href="practicas">Prácticas Profesionales</a>
                         <a href="/#voluntariado">Ser Voluntario</a>
                     </div>
                 </div>
