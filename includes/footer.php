@@ -17,7 +17,7 @@
             <div class="footer-col-2">
                 <h3>Contáctanos</h3>
                 <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> Santa Rosa de Cabal, Risaralda - Colombia</li>
+                    <li><a href="https://maps.app.goo.gl/r8JanV3Fn8CeYPSt5" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;" title="Ver ubicación en Google Maps"><i class="fas fa-map-marker-alt"></i> Santa Rosa de Cabal, Risaralda - Colombia</a></li>
                     <li><a href="tel:+573162522445" style="color: inherit; text-decoration: none;"><i class="fas fa-phone-alt"></i> +57 316 252 2445</a></li>
                     <li><i class="fas fa-envelope"></i> info@adndeamor.org</li>
                 </ul>

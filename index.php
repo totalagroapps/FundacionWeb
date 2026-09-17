@@ -312,7 +312,7 @@
                     <ul class="feature-list">
                         <li><i class="fas fa-envelope"></i> <?= htmlspecialchars(get_site_content($pdo, 'contacto_email', 'info@adndeamor.org')) ?></li>
                         <li><a href="tel:+573162522445" style="color: inherit; text-decoration: none;"><i class="fas fa-phone"></i> <?= htmlspecialchars(get_site_content($pdo, 'contacto_phone', '+57 316 252 2445')) ?></a></li>
-                        <li><i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars(get_site_content($pdo, 'contacto_location', 'Colombia')) ?></li>
+                        <li><a href="https://maps.app.goo.gl/r8JanV3Fn8CeYPSt5" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;" title="Ver ubicación en Google Maps"><i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars(get_site_content($pdo, 'contacto_location', 'Santa Rosa de Cabal, Risaralda - Colombia')) ?></a></li>
                     </ul>
                 </div>
                 <div class="split-image" style="flex: 1.5;">

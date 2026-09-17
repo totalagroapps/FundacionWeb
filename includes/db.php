@@ -40,6 +40,16 @@ function get_site_content($pdo, $key, $default = '') {
             return '+57 316 252 2445';
         }
     }
+
+    if ($key === 'contacto_location') {
+        if (!$result || empty($result['content_value']) || $result['content_value'] === 'Colombia') {
+            try {
+                $up = $pdo->prepare("INSERT INTO site_content (section_key, content_type, content_value) VALUES ('contacto_location', 'text', 'Santa Rosa de Cabal, Risaralda - Colombia') ON DUPLICATE KEY UPDATE content_value = 'Santa Rosa de Cabal, Risaralda - Colombia'");
+                $up->execute();
+            } catch (\Exception $e) {}
+            return 'Santa Rosa de Cabal, Risaralda - Colombia';
+        }
+    }
     
     return $result ? $result['content_value'] : $default;
 }
