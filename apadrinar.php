@@ -178,7 +178,7 @@
                 </div>
                 <div class="split-image">
                     <div class="organic-img-2">
-                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'apad_intro_img', 'FOTOS BANNERS/MAMA CON ANGELICA  DEFINITIVA BANNER.png')) ? loading="lazy" decoding="async">" alt="Niña sonriendo">
+                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'apad_intro_img', 'FOTOS BANNERS/MAMA CON ANGELICA  DEFINITIVA BANNER.png')) ?>" loading="lazy" decoding="async" alt="Niña sonriendo">
                     </div>
                 </div>
             </div>
@@ -257,7 +257,7 @@
                 </div>
                 <div class="split-image">
                     <div class="organic-img">
-                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'apad_ben_img', 'FOTOS BANNERS/foto principal niños banner final.png')) ? loading="lazy" decoding="async">" alt="Niños felices">
+                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'apad_ben_img', 'FOTOS BANNERS/foto principal niños banner final.png')) ?>" loading="lazy" decoding="async" alt="Niños felices">
                     </div>
                 </div>
             </div>

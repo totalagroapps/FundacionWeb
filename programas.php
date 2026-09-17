@@ -181,7 +181,7 @@
                     </ul>
                 </div>
                 <div class="split-image organic-img">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_donde_img', 'FOTOS BANNERS/foto principal niños original tamaño mejorada luz.png')) ? loading="lazy" decoding="async">" alt="Sede y regiones">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_donde_img', 'FOTOS BANNERS/foto principal niños original tamaño mejorada luz.png')) ?>" loading="lazy" decoding="async" alt="Sede y regiones">
                 </div>
             </div>
         </div>
@@ -205,7 +205,7 @@
                     <p style="margin-top: 1.5rem;"><?= htmlspecialchars(get_site_content($pdo, 'prog_que_p2', 'Cada acción se guía por principios cristianos de amor, fe, esperanza y servicio, buscando sembrar valores, brindar oportunidades y fortalecer comunidades humanas y solidarias.')) ?></p>
                 </div>
                 <div class="split-image organic-img-2">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_que_img', 'FOTOS BANNERS/CENTRO DESARROLLO DE TALENTOS BANNER 1.png')) ? loading="lazy" decoding="async">" alt="Labor de la Fundación">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_que_img', 'FOTOS BANNERS/CENTRO DESARROLLO DE TALENTOS BANNER 1.png')) ?>" loading="lazy" decoding="async" alt="Labor de la Fundación">
                 </div>
             </div>
         </div>
@@ -261,13 +261,13 @@
 
             <div class="grid-3" style="margin-top: 3rem;">
                 <div class="program-card">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img1', 'FOTOS BANNERS/CDT INGLES BANNER FINAL SANDRA.png')) ? loading="lazy" decoding="async">" alt="Clases de Inglés">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img1', 'FOTOS BANNERS/CDT INGLES BANNER FINAL SANDRA.png')) ?>" loading="lazy" decoding="async" alt="Clases de Inglés">
                 </div>
                 <div class="program-card">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img2', 'FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png')) ? loading="lazy" decoding="async">" alt="Clases de Arte">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img2', 'FOTOS BANNERS/CDT ARTE FINAL PINTACARITAS SARI.png')) ?>" loading="lazy" decoding="async" alt="Clases de Arte">
                 </div>
                 <div class="program-card">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img3', 'FOTOS BANNERS/CDT MUSICA 1 SELECCIONADA.png')) ? loading="lazy" decoding="async">" alt="Música">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_cdt_img3', 'FOTOS BANNERS/CDT MUSICA 1 SELECCIONADA.png')) ?>" loading="lazy" decoding="async" alt="Música">
                 </div>
             </div>
 
@@ -304,7 +304,7 @@
                 </div>
                 <div class="split-image">
                     <div class="organic-img-2">
-                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_esp_img', 'FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png')) ? loading="lazy" decoding="async">" alt="Programa Esperanza y Navidades">
+                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_esp_img', 'FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png')) ?>" loading="lazy" decoding="async" alt="Programa Esperanza y Navidades">
                     </div>
                 </div>
             </div>
@@ -331,7 +331,7 @@
                 </div>
                 <div class="split-image">
                     <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_choco_img', 'FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png')) ? loading="lazy" decoding="async">" alt="Misión Chocó"
+                        <img src="<?= htmlspecialchars(get_site_content($pdo, 'prog_choco_img', 'FOTOS BANNERS/MISION CHOCO BANNER OPCION MEJOR 1.png')) ?>" loading="lazy" decoding="async" alt="Misión Chocó"
                             style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                     </div>
                 </div>

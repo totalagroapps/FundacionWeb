@@ -316,7 +316,7 @@ try {
                         ?>
                         <div class="product-card">
                             <div class="product-img-wrapper">
-                                <img class="product-img" src="<?php echo htmlspecialchars($image); ? loading="lazy" decoding="async">" alt="<?php echo htmlspecialchars($name); ?>">
+                                <img class="product-img" src="<?php echo htmlspecialchars($image); ?>" loading="lazy" decoding="async" alt="<?php echo htmlspecialchars($name); ?>">
                                 <?php if ($discount): ?>
                                     <div class="badge-offer">Oferta</div>
                                 <?php endif; ?>

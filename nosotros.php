@@ -127,7 +127,7 @@ require 'includes/db.php';
                     <p><?= htmlspecialchars(get_site_content($pdo, 'nos_quienes_desc4', 'Creemos en el amor al prójimo, la solidaridad, la fe y el servicio como herramientas para construir comunidades más humanas, unidas y llenas de oportunidades.')) ?></p>
                 </div>
                 <div class="split-image organic-img">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'nos_quienes_img', 'FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png')) ? loading="lazy" decoding="async">" alt="Niños de la Fundación">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'nos_quienes_img', 'FOTOS BANNERS/FOTO BANNER NAVIDADES SELECCION.png')) ?>" loading="lazy" decoding="async" alt="Niños de la Fundación">
                 </div>
             </div>
         </div>
@@ -149,7 +149,7 @@ require 'includes/db.php';
                     <p><?= htmlspecialchars(get_site_content($pdo, 'nos_mision_desc2', 'A través del Centro de Desarrollo de Talentos promovemos el fortalecimiento de habilidades artísticas, deportivas y vocacionales, acompañando procesos de crecimiento personal y proyectos de vida desde un enfoque basado en la esperanza, la restauración y el desarrollo humano.')) ?></p>
                 </div>
                 <div class="split-image organic-img">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'nos_mision_img', 'FOTOS BANNERS/foto prinicpal 2 niños banner final.png')) ? loading="lazy" decoding="async">" alt="Nuestra Misión">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'nos_mision_img', 'FOTOS BANNERS/foto prinicpal 2 niños banner final.png')) ?>" loading="lazy" decoding="async" alt="Nuestra Misión">
                 </div>
             </div>
 
@@ -162,7 +162,7 @@ require 'includes/db.php';
                     <p><?= htmlspecialchars(get_site_content($pdo, 'nos_mision_como_desc3', 'Asimismo, impulsamos alianzas y redes de cooperación con organizaciones y personas comprometidas con la transformación social, convencidos de que el trabajo conjunto multiplica el impacto.')) ?></p>
                 </div>
                 <div class="split-image organic-img-2">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'nos_mision_como_img', 'FOTOS BANNERS/foto sandra guamos banner final mejor.png')) ? loading="lazy" decoding="async">" alt="¿Cómo lo hacemos?">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'nos_mision_como_img', 'FOTOS BANNERS/foto sandra guamos banner final mejor.png')) ?>" loading="lazy" decoding="async" alt="¿Cómo lo hacemos?">
                 </div>
             </div>
 
@@ -175,7 +175,7 @@ require 'includes/db.php';
                     <p><?= htmlspecialchars(get_site_content($pdo, 'nos_mision_creemos_desc3', 'Soñamos con generaciones fortalecidas en valores, con oportunidades para crecer, servir y transformar positivamente su entorno.')) ?></p>
                 </div>
                 <div class="split-image organic-img">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'nos_mision_creemos_img', 'FOTOS BANNERS/CDT INGLES BANNER FINAL SANDRA.png')) ? loading="lazy" decoding="async">" alt="En lo que creemos">
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'nos_mision_creemos_img', 'FOTOS BANNERS/CDT INGLES BANNER FINAL SANDRA.png')) ?>" loading="lazy" decoding="async" alt="En lo que creemos">
                 </div>
             </div>
         </div>
@@ -194,7 +194,7 @@ require 'includes/db.php';
                     <p><strong><?= htmlspecialchars(get_site_content($pdo, 'nos_historia_desc5_strong', 'Hoy, sus hijos y nieta, socios fundadores de la Fundación ADN de Amor, continuamos este legado de amor, servicio y compromiso social, honrando sus enseñanzas y manteniendo viva la misión de ayudar a quienes más lo necesitan.')) ?></strong></p>
                 </div>
                 <div class="split-image organic-img-2 text-center">
-                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'nos_historia_img', 'FOTOS BANNERS/FOTO PERFIL MAMA PRIMERA.jpeg')) ? loading="lazy" decoding="async">" alt="Nidia López de Giraldo"
+                    <img src="<?= htmlspecialchars(get_site_content($pdo, 'nos_historia_img', 'FOTOS BANNERS/FOTO PERFIL MAMA PRIMERA.jpeg')) ?>" loading="lazy" decoding="async" alt="Nidia López de Giraldo"
                         style="border-radius: 20px; box-shadow: var(--shadow); max-width: 80%; height: auto; object-fit: cover; aspect-ratio: 1/1;">
                 </div>
             </div>
